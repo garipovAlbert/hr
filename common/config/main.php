@@ -13,5 +13,11 @@ return [
         'session' => [
             'class' => 'yii\web\DbSession',
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'transport' => null, // stored in local config
+            'viewPath' => '@common/mail',
+            'messageConfig' => null, // stored in local config
+        ],
     ],
 ];
