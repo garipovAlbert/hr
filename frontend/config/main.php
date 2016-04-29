@@ -1,12 +1,16 @@
 <?php
-$params = array_merge(
+$params = call_user_func_array('array_merge', [
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
     require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
-);
+    require(__DIR__ . '/params-local.php'),
+]);
 
 return [
+    'class' => 'frontend\components\Application',
+    'name' => 'Karo HR',
+    'sourceLanguage' => 'en-US',
+    'language' => 'ru-RU',
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -28,14 +32,22 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
+            'class' => 'common\components\FrontendUrlManager',
+        ],
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'en-US',
+                    'basePath' => '@app/messages',
+                    'forceTranslation' => true,
+                ],
             ],
         ],
-        */
+        'session' => [
+            'name' => 'karohr_' . YII_ENV,
+        ],
     ],
     'params' => $params,
 ];
