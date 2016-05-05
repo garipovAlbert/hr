@@ -16,9 +16,14 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'publicRoutes' => [
+        'site/login',
+        'site/error',
+        'site/logout',
+    ],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\models\Account',
             'enableAutoLogin' => true,
         ],
         'log' => [

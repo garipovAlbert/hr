@@ -3,7 +3,6 @@
 namespace common\models\gii;
 
 use common\models\Cinema;
-use common\models\queries\AccountQuery;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -15,11 +14,9 @@ use yii\db\ActiveRecord;
  * @property string $role
  * @property string $status
  * @property string $authKey
- * @property string $login
- * @property string $passwordHash
  * @property string $email
- * @property string $firstName
- * @property string $lastName
+ * @property string $passwordHash
+ * @property string $username
  * @property string $position
  * @property integer $createdBy
  * @property integer $updatedBy
@@ -46,12 +43,12 @@ class BaseAccount extends ActiveRecord
     public function rules()
     {
         return [
-            [['role', 'authKey', 'login', 'passwordHash', 'firstName', 'lastName', 'createdAt', 'updatedAt'], 'required'],
+            [['role', 'authKey', 'email', 'passwordHash', 'username', 'createdAt', 'updatedAt'], 'required'],
             [['status'], 'string'],
             [['createdBy', 'updatedBy', 'createdAt', 'updatedAt'], 'integer'],
             [['role'], 'string', 'max' => 31],
-            [['authKey', 'firstName', 'lastName'], 'string', 'max' => 32],
-            [['login', 'passwordHash', 'email', 'position'], 'string', 'max' => 255],
+            [['authKey'], 'string', 'max' => 32],
+            [['email', 'passwordHash', 'username', 'position'], 'string', 'max' => 255],
         ];
     }
 
@@ -65,11 +62,9 @@ class BaseAccount extends ActiveRecord
             'role' => Yii::t('app', 'Role'),
             'status' => Yii::t('app', 'Status'),
             'authKey' => Yii::t('app', 'Auth Key'),
-            'login' => Yii::t('app', 'Login'),
-            'passwordHash' => Yii::t('app', 'Password Hash'),
             'email' => Yii::t('app', 'Email'),
-            'firstName' => Yii::t('app', 'First Name'),
-            'lastName' => Yii::t('app', 'Last Name'),
+            'passwordHash' => Yii::t('app', 'Password Hash'),
+            'username' => Yii::t('app', 'Username'),
             'position' => Yii::t('app', 'Position'),
             'createdBy' => Yii::t('app', 'Created By'),
             'updatedBy' => Yii::t('app', 'Updated By'),
@@ -92,15 +87,6 @@ class BaseAccount extends ActiveRecord
     public function getCinemas()
     {
         return $this->hasMany(Cinema::className(), ['id' => 'cinemaId'])->viaTable('{{%account_cinema_link}}', ['accountId' => 'id']);
-    }
-
-    /**
-     * @inheritdoc
-     * @return AccountQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new AccountQuery(get_called_class());
     }
 
 }

@@ -102,10 +102,63 @@ a.desc:after {
 
 @media(max-width:768px) {
 	.nav li > form {
-	    padding: 3px;
+		padding: 3px;
 	}
 }
 
 .nav > li > form > button:hover {
     text-decoration: none;
+}
+
+
+.site-login {
+	padding-top: 100px;
+	margin-left: auto; 
+	margin-right: auto;
+	width: 800px;
+}
+
+
+.site-error {
+	padding: 50px; 
+}
+
+.content-area {
+	margin-top: 70px;
+	height: 100%;
+}
+
+.nav .active {
+	background: #eee;
+}
+
+
+.nav .active {
+	background: #eee;
+}
+
+.nav > li.disabled.nav-header > a {
+    cursor: default;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nav hr {
+    margin: 1px;
+    height: 1px;
+	border-color: #E2E2E2;
+}
+
+.left-menu {
+	line-height: 1;
+}
+
+
+div.required label.control-label:after {
+	content: " *";
+	color: red;
+}
+div.checkbox label:after {
+	content: "" !important;
 }

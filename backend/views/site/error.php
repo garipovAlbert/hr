@@ -1,14 +1,16 @@
 <?php
-
-/* @var $this yii\web\View */
+/* @var $this View */
 /* @var $name string */
 /* @var $message string */
 /* @var $exception Exception */
 
 use yii\helpers\Html;
+use yii\web\View;
 
 $this->title = $name;
+Yii::$app->controller->layout = 'blank';
 ?>
+
 <div class="site-error">
 
     <h1><?= Html::encode($this->title) ?></h1>
