@@ -6,6 +6,7 @@ use common\models\gii\BaseCity;
 use common\models\queries\CityQuery;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author Albert Garipov <bert320@gmail.com>
@@ -42,11 +43,22 @@ class City extends BaseCity
     }
 
     /**
+     * @return array
+     */
+    public static function getList()
+    {
+        return ArrayHelper::map(City::find()->active()->orderBy(['name' => SORT_ASC])->all(), 'id', 'name');
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
+            ['name', 'required'],
+            ['name', 'unique'],
+            ['isActive', 'in', 'range' => [0, 1]],
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\models\gii\BaseCitizenship;
+use common\models\queries\CitizenshipQuery;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
@@ -46,6 +47,8 @@ class Citizenship extends BaseCitizenship
     public function rules()
     {
         return [
+            ['name', 'required'],
+            ['name', 'unique'],
         ];
     }
 

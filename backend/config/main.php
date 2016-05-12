@@ -15,7 +15,16 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'gridview' => [
+            'class' => '\kartik\grid\Module'
+        // enter optional module parameters below - only if you need to  
+        // use your own export download action or custom translation 
+        // message source
+        // 'downloadAction' => 'gridview/export/download',
+        // 'i18n' => []
+        ]
+    ],
     'publicRoutes' => [
         'site/login',
         'site/error',
@@ -53,6 +62,32 @@ return [
         ],
         'session' => [
             'name' => 'karohr_' . YII_ENV,
+        ],
+        'assetManager' => [
+            'bundles' => [
+//                'dosamigos\editable\EditableSelect2Asset' => [
+//                    'js' => [
+//                        'bootstrap-editable-select2.js',
+//                    ],
+//                    'depends' => [
+//                        'kartik\select2\Select2Asset',
+//                        'dosamigos\editable\EditableBootstrapAsset',
+//                    ],
+//                ],
+//                'kartik\select2\Select2Asset' => [
+//                    'js' => [
+////                        'bootstrap-editable-select2.js',
+//                    ],
+//                    'depends' => [
+////                        'kartik\select2\Select2Asset',
+////                        'dosamigos\editable\EditableBootstrapAsset',
+//                    ],
+//                    'css' => [
+////                        'kartik\select2\Select2Asset',
+////                        'dosamigos\editable\EditableBootstrapAsset',
+//                    ],
+//                ],
+            ],
         ],
     ],
     'params' => $params,

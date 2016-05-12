@@ -13,6 +13,15 @@ class CityQuery extends ActiveQuery
 {
 
     /**
+     * @return static
+     */
+    public function active()
+    {
+        $this->andWhere(['isActive' => 1]);
+        return $this;
+    }
+
+    /**
      * @inheritdoc
      * @return City[]
      */

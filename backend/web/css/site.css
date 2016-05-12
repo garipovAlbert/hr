@@ -124,7 +124,7 @@ a.desc:after {
 }
 
 .content-area {
-	margin-top: 70px;
+	/*margin-top: 70px;*/
 	height: 100%;
 }
 
@@ -161,4 +161,11 @@ div.required label.control-label:after {
 }
 div.checkbox label:after {
 	content: "" !important;
+}
+
+
+/* fix multiline editable label */
+button.kv-editable-value.kv-editable-link
+{
+	text-align: left;
 }

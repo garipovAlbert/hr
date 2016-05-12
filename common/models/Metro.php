@@ -4,8 +4,10 @@ namespace common\models;
 
 use common\models\gii\BaseMetro;
 use common\models\queries\MetroQuery;
+use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author Albert Garipov <bert320@gmail.com>
@@ -42,11 +44,33 @@ class Metro extends BaseMetro
     }
 
     /**
+     * @return array
+     */
+    public static function getList()
+    {
+        return ArrayHelper::map(Metro::find()->orderBy(['name' => SORT_ASC])->all(), 'id', 'name');
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
+            [['name', 'cityId'], 'required'],
+            ['name', 'unique'],
+            ['cityId', 'exist', 'targetClass' => City::className(), 'targetAttribute' => 'id'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'cityId' => Yii::t('app', 'City'),
         ];
     }
 

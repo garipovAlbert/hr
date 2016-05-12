@@ -107,9 +107,9 @@ if ($module instanceof Application) {
     ?>
 
 
-    <div class="container-fluid">
+    <div class="container">
 
-        <div class="col-md-12 well content-area">
+        <div class="col-md-12 content-area">
             <?=
             Breadcrumbs::widget([
                 'homeLink' => false,
@@ -121,7 +121,7 @@ if ($module instanceof Application) {
 
             <?= $content ?>
         </div>
-
+        
     </div>
 
 </div>

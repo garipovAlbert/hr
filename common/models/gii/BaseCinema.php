@@ -6,7 +6,6 @@ use common\models\Account;
 use common\models\Applicant;
 use common\models\City;
 use common\models\Metro;
-use common\models\queries\CinemaQuery;
 use common\models\Vacancy;
 use Yii;
 use yii\db\ActiveQuery;
@@ -18,6 +17,7 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property integer $cityId
  * @property string $name
+ * @property integer $isActive
  * @property integer $createdBy
  * @property integer $updatedBy
  * @property integer $createdAt
@@ -49,8 +49,8 @@ class BaseCinema extends ActiveRecord
     public function rules()
     {
         return [
-            [['cityId', 'createdBy', 'updatedBy', 'createdAt', 'updatedAt'], 'integer'],
-            [['name', 'createdAt', 'updatedAt'], 'required'],
+            [['cityId', 'isActive', 'createdBy', 'updatedBy', 'createdAt', 'updatedAt'], 'integer'],
+            [['name', 'isActive', 'createdAt', 'updatedAt'], 'required'],
             [['name'], 'string', 'max' => 255],
             [['cityId'], 'exist', 'skipOnError' => true, 'targetClass' => City::className(), 'targetAttribute' => ['cityId' => 'id']],
         ];
@@ -65,6 +65,7 @@ class BaseCinema extends ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'cityId' => Yii::t('app', 'City ID'),
             'name' => Yii::t('app', 'Name'),
+            'isActive' => Yii::t('app', 'Is Active'),
             'createdBy' => Yii::t('app', 'Created By'),
             'updatedBy' => Yii::t('app', 'Updated By'),
             'createdAt' => Yii::t('app', 'Created At'),
@@ -134,15 +135,6 @@ class BaseCinema extends ActiveRecord
     public function getVacancies()
     {
         return $this->hasMany(Vacancy::className(), ['id' => 'vacancyId'])->viaTable('{{%vacancy_cinema_link}}', ['cinemaId' => 'id']);
-    }
-
-    /**
-     * @inheritdoc
-     * @return CinemaQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new CinemaQuery(get_called_class());
     }
 
 }
