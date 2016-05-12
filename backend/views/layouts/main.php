@@ -34,6 +34,8 @@ if ($module instanceof Application) {
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    
+    $menuItems = [];
 
     if (!Yii::$app->user->isGuest) {
         $menuItems[] = [
