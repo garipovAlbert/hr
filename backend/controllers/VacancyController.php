@@ -5,17 +5,18 @@ namespace backend\controllers;
 use backend\components\Controller;
 use backend\helpers\ViewHelper;
 use common\models\Cinema;
-use common\models\Metro;
-use common\models\search\CinemaSearch;
+use common\models\City;
+use common\models\search\VacancySearch;
+use common\models\Vacancy;
 use kartik\grid\EditableColumnAction;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
 /**
- * Site controller
+ * @author Albert Garipov <bert320@gmail.com>
  */
-class CinemaController extends Controller
+class VacancyController extends Controller
 {
 
     /**
@@ -26,27 +27,24 @@ class CinemaController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => Cinema::className(),
-                'outputValue' => function (Cinema $model, $attribute, $key, $index) {
-                    if ($attribute === 'cityId') {
-                        return ArrayHelper::getValue($model, 'city.name');
+                'modelClass' => Vacancy::className(),
+                'outputValue' => function (Vacancy $model, $attribute, $key, $index) {
+                    if ($attribute === 'description') {
+                        return nl2br($model->description);
                     }
-                    if ($attribute === 'metroIdsString') {
-                        $metros = Metro::find()
-                        ->where(['in', 'id', explode(',', $model->metroIdsString)])->all();
+                    if ($attribute === 'cinemaIdsString') {
+                        $metros = Cinema::find()
+                        ->where(['in', 'id', explode(',', $model->cinemaIdsString)])->all();
                         return ViewHelper::getMultipleLabel($metros);
                     }
-                    if ($attribute === 'isActive') {
-                        return ViewHelper::getBooleanIcon($model->isActive);
-                    }
                 },
-            ]
+            ],
         ]);
     }
 
     public function actionIndex()
     {
-        $model = new Cinema;
+        $model = new Vacancy;
 
         if ($model->load(Yii::$app->request->post())) {
             if (Yii::$app->request->isAjax) {
@@ -54,21 +52,29 @@ class CinemaController extends Controller
             }
 
             if ($model->save()) {
-                // flash
-                Yii::$app->session->setFlash('success', Yii::t('app', 'New Cinema created.'));
-
+                Yii::$app->session->setFlash('success', Yii::t('app', 'New Vacancy created.'));
                 return $this->refresh();
             }
         }
 
-        $searchModel = new CinemaSearch;
+        $searchModel = new VacancySearch();
         $provider = $searchModel->search(Yii::$app->request->get());
 
 
+        $cities = City::find()->active()
+        ->with([
+            'cinemas' => function($q) {
+                $q->active()->orderBy(['name' => SORT_ASC]);
+            },
+        ])
+        ->orderBy(['name' => SORT_ASC])
+        ->all();
+
         return $this->render('index', [
+            'model' => $model,
             'provider' => $provider,
             'searchModel' => $searchModel,
-            'model' => $model,
+            'cities' => $cities,
         ]);
     }
 
@@ -81,12 +87,12 @@ class CinemaController extends Controller
 
     /**
      * @param int $id
-     * @return Cinema
+     * @return Vacancy
      * @throws NotFoundHttpException
      */
     public function findModel($id)
     {
-        $model = Cinema::findOne($id);
+        $model = Vacancy::findOne($id);
         if ($model === null) {
             throw new NotFoundHttpException(Yii::t('app.error', 'The requested page does not exist.'));
         }

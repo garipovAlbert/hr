@@ -2,6 +2,7 @@
 
 namespace common\models\queries;
 
+use common\models\Cinema;
 use yii\db\ActiveQuery;
 
 /**
@@ -10,6 +11,15 @@ use yii\db\ActiveQuery;
  */
 class CinemaQuery extends ActiveQuery
 {
+
+    /**
+     * @return static
+     */
+    public function active()
+    {
+        $this->andWhere(['isActive' => 1]);
+        return $this;
+    }
 
     /**
      * @inheritdoc
