@@ -4,11 +4,13 @@ namespace backend\controllers;
 
 use backend\components\Controller;
 use backend\helpers\ViewHelper;
-use common\models\Cinema;
 use common\models\City;
 use common\models\search\CitySearch;
+use common\Rbac;
 use kartik\grid\EditableColumnAction;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
@@ -17,6 +19,30 @@ use yii\web\NotFoundHttpException;
  */
 class CityController extends Controller
 {
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => [Rbac::TASK_MANAGE_OBJECTS],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
+            ],
+        ]);
+    }
 
     /**
      * @inheritdoc

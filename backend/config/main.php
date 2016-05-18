@@ -23,7 +23,10 @@ return [
         // message source
         // 'downloadAction' => 'gridview/export/download',
         // 'i18n' => []
-        ]
+        ],
+        'account' => [
+            'class' => 'backend\modules\account\Module',
+        ],
     ],
     'publicRoutes' => [
         'site/login',

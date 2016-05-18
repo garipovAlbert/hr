@@ -16,6 +16,7 @@ use yii\db\ActiveRecord;
  * @property string $authKey
  * @property string $email
  * @property string $passwordHash
+ * @property string $publicPassword
  * @property string $username
  * @property string $position
  * @property integer $createdBy
@@ -43,12 +44,12 @@ class BaseAccount extends ActiveRecord
     public function rules()
     {
         return [
-            [['role', 'authKey', 'email', 'passwordHash', 'username', 'createdAt', 'updatedAt'], 'required'],
+            [['role', 'authKey', 'email', 'username', 'createdAt', 'updatedAt'], 'required'],
             [['status'], 'string'],
             [['createdBy', 'updatedBy', 'createdAt', 'updatedAt'], 'integer'],
             [['role'], 'string', 'max' => 31],
             [['authKey'], 'string', 'max' => 32],
-            [['email', 'passwordHash', 'username', 'position'], 'string', 'max' => 255],
+            [['email', 'passwordHash', 'publicPassword', 'username', 'position'], 'string', 'max' => 255],
         ];
     }
 
@@ -64,6 +65,7 @@ class BaseAccount extends ActiveRecord
             'authKey' => Yii::t('app', 'Auth Key'),
             'email' => Yii::t('app', 'Email'),
             'passwordHash' => Yii::t('app', 'Password Hash'),
+            'publicPassword' => Yii::t('app', 'Public Password'),
             'username' => Yii::t('app', 'Username'),
             'position' => Yii::t('app', 'Position'),
             'createdBy' => Yii::t('app', 'Created By'),

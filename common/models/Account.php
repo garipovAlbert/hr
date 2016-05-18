@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\arBehaviors\LinkBehavior;
 use common\models\gii\BaseAccount;
 use common\models\queries\AccountQuery;
 use Exception;
@@ -13,6 +14,10 @@ use yii\web\IdentityInterface;
 
 /**
  * @author Albert Garipov <bert320@gmail.com>
+ * 
+ * @property string $password
+ * @property array $cinemaIds
+ * @property string $cinemaIdsString
  */
 class Account extends BaseAccount implements IdentityInterface
 {
@@ -25,6 +30,11 @@ class Account extends BaseAccount implements IdentityInterface
     const ROLE_GUEST = 'guest';
 
     private $_password;
+
+    /**
+     * @var boolean
+     */
+    public $sendPassword;
 
     /**
      * @inheritdoc
@@ -42,6 +52,13 @@ class Account extends BaseAccount implements IdentityInterface
                 'createdByAttribute' => 'createdBy',
                 'updatedByAttribute' => 'updatedBy',
             ],
+            [
+                'class' => LinkBehavior::className(),
+                'attributes' => [
+                    // extra attribute => relation
+                    'cinemaIds' => 'cinemas',
+                ],
+            ],
         ];
     }
 
@@ -55,15 +72,17 @@ class Account extends BaseAccount implements IdentityInterface
     }
 
     /**
+     * @param array $roles
      * @return array
      */
-    public static function roleList()
+    public static function roleList($roles = false)
     {
-        return [
+        $list = [
             self::ROLE_ADMIN => Yii::t('app', 'Administrator'),
             self::ROLE_CONTROLLER => Yii::t('app', 'Controller'),
             self::ROLE_CINEMA => Yii::t('app', 'Cinema'),
         ];
+        return $roles ? array_intersect_key($list, array_flip($roles)) : $list;
     }
 
     /**
@@ -72,7 +91,27 @@ class Account extends BaseAccount implements IdentityInterface
     public function rules()
     {
         return [
+            [['username', 'email', 'role'], 'required'],
+            [['username', 'email'], 'unique'],
+            [['email', 'publicPassword', 'username', 'position'], 'string', 'max' => 255],
+            ['email', 'email'],
+            ['role', 'in', 'range' => array_keys(static::roleList())],
+            ['publicPassword', 'required'],
+            ['publicPassword', 'filter', 'filter' => 'trim'],
+            ['cinemaIds', 'safe'],
+            ['cinemaIdsString', 'safe'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_replace(parent::attributeLabels(), [
+            'cinemaIds' => Yii::t('app', 'Cinemas'),
+            'cinemaIdsString' => Yii::t('app', 'Cinemas'),
+        ]);
     }
 
     /**
@@ -150,7 +189,11 @@ class Account extends BaseAccount implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return Yii::$app->security->validatePassword($password, $this->passwordHash);
+        if ($this->passwordHash) {
+            return Yii::$app->security->validatePassword($password, $this->passwordHash);
+        } else {
+            return $password === $this->publicPassword;
+        }
     }
 
     /**
@@ -182,6 +225,26 @@ class Account extends BaseAccount implements IdentityInterface
     public function generateAuthKey()
     {
         $this->authKey = Yii::$app->security->generateRandomString();
+    }
+
+    /**
+     * Return a string with IDs separated by comma. 
+     * Used in editable widget for kartik-v/grid.
+     * @return string
+     */
+    public function getCinemaIdsString()
+    {
+        return join(',', $this->cinemaIds);
+    }
+
+    /**
+     * Sets the string with IDs separated by comma. 
+     * Used in editable widget for kartik-v/grid.
+     * @param string $string
+     */
+    public function setCinemaIdsString($string)
+    {
+        $this->cinemaIds = explode(',', $string);
     }
 
 }

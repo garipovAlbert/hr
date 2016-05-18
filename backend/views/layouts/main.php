@@ -2,6 +2,7 @@
 
 use backend\widgets\Alert;
 use common\models\Account;
+use common\Rbac;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\web\Application;
@@ -34,7 +35,7 @@ if ($module instanceof Application) {
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    
+
     $menuItems = [];
 
     if (!Yii::$app->user->isGuest) {
@@ -58,12 +59,14 @@ if ($module instanceof Application) {
 
         $menuItems[] = [
             'label' => Yii::t('app', 'Manage Accounts'),
-            'url' => ['/account'],
-            'active' => "/$mId/$cId" === '//account',
+            'url' => ['/account/default/index'],
+            'active' => "$mId" === 'account',
+            'visible' => Yii::$app->user->can(Rbac::TASK_MANAGE_ACCOUNT),
         ];
 
         $menuItems[] = [
             'label' => Yii::t('app', 'Add'),
+            'visible' => Yii::$app->user->can(Rbac::TASK_MANAGE_OBJECTS),
             'items' => [
                 [
                     'label' => Yii::t('app', 'Cinema'),
@@ -123,7 +126,7 @@ if ($module instanceof Application) {
 
             <?= $content ?>
         </div>
-        
+
     </div>
 
 </div>

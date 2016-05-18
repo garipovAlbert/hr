@@ -107,4 +107,27 @@ class Cinema extends BaseCinema
         $this->metroIds = explode(',', $string);
     }
 
+    /**
+     * Returns cinema list grouped by city to use in kartik-v Select2 widget.
+     * @return array
+     */
+    public static function getSelect2List()
+    {
+        $cities = City::find()->active()
+        ->with([
+            'cinemas' => function($q) {
+                $q->active()->orderBy(['name' => SORT_ASC]);
+            },
+        ])
+        ->orderBy(['name' => SORT_ASC])
+        ->all();
+
+        $cinemaList = [];
+        foreach ($cities as $city) {
+            $cinemaList[$city->name] = ArrayHelper::map($city->cinemas, 'id', 'name');
+        }
+
+        return $cinemaList;
+    }
+
 }

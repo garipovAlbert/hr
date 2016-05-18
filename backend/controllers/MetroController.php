@@ -5,8 +5,11 @@ namespace backend\controllers;
 use backend\components\Controller;
 use common\models\Metro;
 use common\models\search\MetroSearch;
+use common\Rbac;
 use kartik\grid\EditableColumnAction;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
@@ -15,6 +18,30 @@ use yii\web\NotFoundHttpException;
  */
 class MetroController extends Controller
 {
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => [Rbac::TASK_MANAGE_OBJECTS],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
+            ],
+        ]);
+    }
 
     /**
      * @inheritdoc

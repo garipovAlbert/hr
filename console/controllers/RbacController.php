@@ -25,23 +25,33 @@ class RbacController extends Controller
 
         /* Rules */
 
-        
-        
-        
+
+
+
         /* Permissions */
-        
-        // showBackend
+
+        // show backend
         $showBackend = $auth->createPermission(Rbac::TASK_SHOW_BACKEND);
         $auth->add($showBackend);
-        
 
-        
+        // manage account
+        $manageAccount = $auth->createPermission(Rbac::TASK_MANAGE_ACCOUNT);
+        $auth->add($manageAccount);
+
+        // manage objects
+        $manageObjects = $auth->createPermission(Rbac::TASK_MANAGE_OBJECTS);
+        $auth->add($manageObjects);
+
+
+
         /* Roles */
 
         // admin
         $roleAdmin = $auth->createRole(Account::ROLE_ADMIN);
         $auth->add($roleAdmin);
         $auth->addChild($roleAdmin, $showBackend);
+        $auth->addChild($roleAdmin, $manageAccount);
+        $auth->addChild($roleAdmin, $manageObjects);
 
         // controller
         $roleController = $auth->createRole(Account::ROLE_CONTROLLER);
