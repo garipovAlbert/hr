@@ -21,7 +21,7 @@ use yii\helpers\Html;
 <br/>
 
 <p class="clearfix">
-    <?= Html::a(Yii::t('app', 'Create a new post'), ['create'], ['class' => 'btn btn-success pull-right']) ?>
+    <?= Html::a(Yii::t('app', 'Create a new Account'), ['create'], ['class' => 'btn btn-success pull-right']) ?>
 </p>
 
 
