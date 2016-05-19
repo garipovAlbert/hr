@@ -2,7 +2,6 @@
 
 use backend\components\ButtonGroupColumn;
 use backend\helpers\ViewHelper;
-use common\models\Cinema;
 use common\models\City;
 use common\models\Metro;
 use common\models\search\MetroSearch;

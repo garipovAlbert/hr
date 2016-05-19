@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\models\gii\BaseApplicant;
+use common\models\queries\ApplicantQuery;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -19,6 +20,16 @@ class Applicant extends BaseApplicant
     const STATUS_DECLINED = 'DECLINED';
     const STATUS_UNCONFIRMED = 'UNCONFIRMED';
     const STATUS_CALL = 'CALL';
+
+    /**
+     * When a guest user filling the application form on frontend
+     */
+    const SCENARIO_FILL = 'FILL';
+
+    /**
+     * When a controller processing the application on backend
+     */
+    const SCENARIO_PROCESS = 'PROCESS';
 
     /**
      * @inheritdoc
@@ -63,12 +74,49 @@ class Applicant extends BaseApplicant
         ];
     }
 
+    public function scenarios()
+    {
+        return [
+            static::SCENARIO_FILL => [
+                'firstName', 'lastName', 'age', 'email', 'phone', 'info',
+                'citizenshipId', 'vacancyId', 'cinemaId',
+            ],
+            static::SCENARIO_PROCESS => [
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
+            [
+                [
+                    'firstName', 'lastName', 'age', 'email', 'citizenshipId', 'phone',
+                    'vacancyId', 'cinemaId',
+                ],
+                'required',
+            ],
+            [['firstName', 'lastName'], 'string', 'max' => 255],
+            ['age', 'integer'],
+            ['email', 'email'],
+            ['phone', 'integer'],
+            ['phone', 'string', 'min' => 10, 'max' => 10],
+            ['info', 'string'],
+            [
+                'citizenshipId', 'exist',
+                'targetClass' => Citizenship::className(), 'targetAttribute' => 'id',
+            ],
+            [
+                'cinemaId', 'exist',
+                'targetClass' => Cinema::className(), 'targetAttribute' => 'id',
+            ],
+            [
+                'vacancyId', 'exist',
+                'targetClass' => Vacancy::className(), 'targetAttribute' => 'id',
+            ],
         ];
     }
 

@@ -8,6 +8,7 @@ use common\models\queries\VacancyQuery;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author Albert Garipov <bert320@gmail.com>
@@ -96,6 +97,14 @@ class Vacancy extends BaseVacancy
     public function setCinemaIdsString($string)
     {
         $this->cinemaIds = explode(',', $string);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getList()
+    {
+        return ArrayHelper::map(static::find()->orderBy(['name' => SORT_ASC])->all(), 'id', 'name');
     }
 
 }

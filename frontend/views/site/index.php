@@ -1,53 +1,87 @@
 <?php
 
-/* @var $this yii\web\View */
+use common\models\Applicant;
+use common\models\Cinema;
+use common\models\Citizenship;
+use common\models\Vacancy;
+use kartik\widgets\Select2;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $model Applicant */
+/* @var $form ActiveForm */
 
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    <?php
+    $form = ActiveForm::begin([
+        'enableAjaxValidation' => false,
+        'enableClientValidation' => false,
+//        'options' => [
+//            'autocomplete' => 'off',
+//        ],
+        'id' => 'create-form',
+    ]);
+    ?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+    <div class="container-fluid">
+        <div class="col-md-6">
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+            <?= $form->field($model, 'firstName')->textInput() ?>
 
-    <div class="body-content">
+            <?= $form->field($model, 'lastName')->textInput() ?>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <?php
+            $items = array_combine(range(18, 60), range(18, 60));
+            echo $form->field($model, 'age')->dropDownList($items, ['prompt' => '']);
+            ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <?= $form->field($model, 'citizenshipId')->radioList(Citizenship::getList()) ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <?= $form->field($model, 'phone')->textInput() ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <?= $form->field($model, 'email')->textInput() ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <?= $form->field($model, 'info')->textarea() ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <?php
+            echo $form->field($model, 'cinemaId')
+            ->widget(Select2::classname(), [
+                'data' => Cinema::getSelect2List(),
+                'language' => 'ru',
+                'options' => ['placeholder' => ' '],
+                'pluginOptions' => [
+                    'allowClear' => true,
+                ],
+            ]);
+            ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            <?php
+            echo $form->field($model, 'vacancyId')
+            ->widget(Select2::classname(), [
+                'data' => Vacancy::getList(),
+                'language' => 'ru',
+                'options' => ['placeholder' => ' '],
+                'pluginOptions' => [
+                    'allowClear' => true,
+                ],
+            ]);
+            ?>
+
         </div>
-
     </div>
+
+    <hr/>
+
+    <div class="form-group">
+        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+
 </div>

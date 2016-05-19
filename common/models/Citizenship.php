@@ -6,6 +6,7 @@ use common\models\gii\BaseCitizenship;
 use common\models\queries\CitizenshipQuery;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author Albert Garipov <bert320@gmail.com>
@@ -39,6 +40,14 @@ class Citizenship extends BaseCitizenship
     public static function find()
     {
         return new CitizenshipQuery(get_called_class());
+    }
+
+    /**
+     * @return array
+     */
+    public static function getList()
+    {
+        return ArrayHelper::map(static::find()->orderBy(['name' => SORT_ASC])->all(), 'id', 'name');
     }
 
     /**

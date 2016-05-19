@@ -1,12 +1,12 @@
 <?php
 
-use common\models\AccountModerator;
+use common\models\Account;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\web\View;
 
 /* @var $this View */
-/* @var $model AccountModerator */
+/* @var $model Account */
 /* @var $form ActiveForm */
 
 $this->title = Yii::t('app', 'Create a new Account');
