@@ -82,6 +82,8 @@ $form = ActiveForm::begin([
 
 <hr/>
 
+
+
 <!-- grid -->
 <?php
 $cinemaData = [];

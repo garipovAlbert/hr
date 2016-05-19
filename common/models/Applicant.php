@@ -7,6 +7,7 @@ use common\models\queries\ApplicantQuery;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author Albert Garipov <bert320@gmail.com>
@@ -74,16 +75,19 @@ class Applicant extends BaseApplicant
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function scenarios()
     {
-        return [
+        return ArrayHelper::merge(parent::scenarios(), [
             static::SCENARIO_FILL => [
                 'firstName', 'lastName', 'age', 'email', 'phone', 'info',
                 'citizenshipId', 'vacancyId', 'cinemaId',
             ],
             static::SCENARIO_PROCESS => [
             ],
-        ];
+        ]);
     }
 
     /**
@@ -100,6 +104,7 @@ class Applicant extends BaseApplicant
                 'required',
             ],
             [['firstName', 'lastName'], 'string', 'max' => 255],
+            [['firstName', 'lastName'], 'filter', 'filter' => 'trim'],
             ['age', 'integer'],
             ['email', 'email'],
             ['phone', 'integer'],
@@ -118,6 +123,56 @@ class Applicant extends BaseApplicant
                 'targetClass' => Vacancy::className(), 'targetAttribute' => 'id',
             ],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            $this->name = $this->firstName . ' ' . $this->lastName;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'name' => Yii::t('app', 'Name'),
+            'citizenshipId' => Yii::t('app', 'Citizenship'),
+            'vacancyId' => Yii::t('app', 'Vacancy'),
+            'cinemaId' => Yii::t('app', 'Cinema'),
+            'status' => Yii::t('app', 'Status'),
+            'firstName' => Yii::t('app', 'First Name'),
+            'lastName' => Yii::t('app', 'Last Name'),
+            'age' => Yii::t('app', 'Age'),
+            'phone' => Yii::t('app', 'Phone'),
+            'email' => 'E-mail',
+            'info' => Yii::t('app', 'Info'),
+            'updatedBy' => Yii::t('app', 'Updated By'),
+            'createdAt' => Yii::t('app', 'Date'),
+            'updatedAt' => Yii::t('app', 'Updated At'),
+        ];
+    }
+
+    /**
+     * Sets status to DECLINED
+     */
+    public function decline()
+    {
+        if ($this->status !== static::STATUS_DECLINED) {
+            $this->status = static::STATUS_DECLINED;
+            $this->save(false);
+        }
     }
 
 }

@@ -1,0 +1,132 @@
+<?php
+
+namespace common\models\search;
+
+use common\helpers\DateHelper;
+use common\models\Applicant;
+use common\models\queries\AccountQuery;
+use common\models\queries\ApplicantQuery;
+use Yii;
+use yii\data\ActiveDataProvider;
+
+/**
+ * @author Albert Garipov <bert320@gmail.com>
+ * @see Applicant
+ */
+class ApplicantSearch extends Applicant
+{
+
+    public $pageSize = 1000;
+
+    /**
+     * @var AccountQuery
+     */
+    public $query;
+
+    /**
+     * @inheritdoc
+     */
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), [
+            'cityId',
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [
+                [
+                    'id', 'name', 'email', 'cityId', 'cinemaId', 'vacancyId', 'citizenshipId',
+                    'status', 'createdAt',
+                ],
+                'safe',
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_replace(parent::attributeLabels(), [
+            'createdAt' => 'Date',
+        ]);
+    }
+
+    /**
+     * @param array $params
+     * @param string $formName
+     * @return ActiveDataProvider
+     */
+    public function search($params = [], $formName = null)
+    {
+        /* @var $query ApplicantQuery */
+        $query = $this->query ? $this->query : Applicant::find();
+
+        $query->with([
+            'cinema.city',
+            'vacancy',
+        ]);
+
+        $provider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $provider->pagination->defaultPageSize = $this->pageSize;
+
+        $provider->sort->defaultOrder = [
+            'id' => SORT_DESC,
+        ];
+
+        // load the seach form data and validate
+        if (!($this->load($params, $formName) && $this->validate())) {
+            return $provider;
+        }
+
+        $query->andFilterWhere(['id' => $this->id]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
+
+        $query->andFilterWhere(['status' => $this->status]);
+
+        if (strlen($this->createdAt)) {
+            list($start, $end) = $this->parseDateRange($this->createdAt);
+            if ($start) {
+                $query->andFilterWhere(['between', 'createdAt', $start, $end]);
+            }
+        }
+
+        return $provider;
+    }
+
+    /**
+     * @param string $dateRange Example "19.05.2016 - 21.06.2016"
+     * @return array 0 - start timestamp, 1 - end timestamp
+     */
+    private function parseDateRange($dateRange)
+    {
+        $m = null;
+        if (preg_match('/([^\s]+) \- ([^\s]+)/', $dateRange, $m) !== 1) {
+            return false;
+        }
+
+        $result = [];
+        for ($i = 1; $i <= 2; $i++) {
+            $ts = DateHelper::parseDateValue($m[$i], Yii::$app->formatter->dateFormat);
+            if (!$ts) {
+                return false;
+            }
+            $result[] = $ts;
+        }
+
+        $result[1] += (60 * 60 * 24); // plus 24 hours - end of day
+
+        return $result;
+    }
+
+}

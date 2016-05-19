@@ -12,6 +12,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
+/* @var $this View */
 /* @var $provider ActiveDataProvider */
 /* @var $searchModel AccountSearch */
 ?>

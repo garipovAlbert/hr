@@ -3,7 +3,7 @@
 namespace common\models\gii;
 
 use common\models\Cinema;
-use common\models\queries\ApplicantQuery;
+use common\models\Citizenship;
 use common\models\Vacancy;
 use Yii;
 use yii\db\ActiveQuery;
@@ -19,6 +19,7 @@ use yii\db\ActiveRecord;
  * @property string $status
  * @property string $firstName
  * @property string $lastName
+ * @property string $name
  * @property integer $age
  * @property integer $phone
  * @property string $email
@@ -49,9 +50,9 @@ class BaseApplicant extends ActiveRecord
     {
         return [
             [['citizenshipId', 'vacancyId', 'cinemaId', 'age', 'phone', 'updatedBy', 'createdAt', 'updatedAt'], 'integer'],
-            [['vacancyId', 'cinemaId', 'firstName', 'lastName', 'age', 'phone', 'email', 'createdAt', 'updatedAt'], 'required'],
+            [['vacancyId', 'cinemaId', 'firstName', 'lastName', 'name', 'age', 'phone', 'email', 'createdAt', 'updatedAt'], 'required'],
             [['status', 'info'], 'string'],
-            [['firstName', 'lastName', 'email'], 'string', 'max' => 255],
+            [['firstName', 'lastName', 'name', 'email'], 'string', 'max' => 255],
             [['citizenshipId'], 'exist', 'skipOnError' => true, 'targetClass' => Citizenship::className(), 'targetAttribute' => ['citizenshipId' => 'id']],
             [['vacancyId'], 'exist', 'skipOnError' => true, 'targetClass' => Vacancy::className(), 'targetAttribute' => ['vacancyId' => 'id']],
             [['cinemaId'], 'exist', 'skipOnError' => true, 'targetClass' => Cinema::className(), 'targetAttribute' => ['cinemaId' => 'id']],
@@ -71,6 +72,7 @@ class BaseApplicant extends ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'firstName' => Yii::t('app', 'First Name'),
             'lastName' => Yii::t('app', 'Last Name'),
+            'name' => Yii::t('app', 'firstName + \" \" + lastName'),
             'age' => Yii::t('app', 'Age'),
             'phone' => Yii::t('app', 'Phone'),
             'email' => Yii::t('app', 'Email'),
@@ -103,15 +105,6 @@ class BaseApplicant extends ActiveRecord
     public function getCinema()
     {
         return $this->hasOne(Cinema::className(), ['id' => 'cinemaId']);
-    }
-
-    /**
-     * @inheritdoc
-     * @return ApplicantQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new ApplicantQuery(get_called_class());
     }
 
 }
