@@ -69,7 +69,7 @@ class ApplicantSearch extends Applicant
         /* @var $query ApplicantQuery */
         $query = $this->query ? $this->query : Applicant::find();
 
-        $query->with([
+        $query->joinWith([
             'cinema.city',
             'vacancy',
         ]);
@@ -89,15 +89,20 @@ class ApplicantSearch extends Applicant
             return $provider;
         }
 
-        $query->andFilterWhere(['id' => $this->id]);
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['applicant.id' => $this->id]);
+        $query->andFilterWhere(['like', 'applicant.name', $this->name]);
 
-        $query->andFilterWhere(['status' => $this->status]);
+        $query->andFilterWhere(['citizenshipId' => $this->citizenshipId]);
+        $query->andFilterWhere(['vacancyId' => $this->vacancyId]);
+        $query->andFilterWhere(['cinemaId' => $this->cinemaId]);
+        $query->andFilterWhere(['city.id' => $this->cityId]);
+
+        $query->andFilterWhere(['applicant.status' => $this->status]);
 
         if (strlen($this->createdAt)) {
             list($start, $end) = $this->parseDateRange($this->createdAt);
             if ($start) {
-                $query->andFilterWhere(['between', 'createdAt', $start, $end]);
+                $query->andFilterWhere(['between', 'applicant.createdAt', $start, $end]);
             }
         }
 
