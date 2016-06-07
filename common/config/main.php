@@ -23,5 +23,11 @@ return [
             'viewPath' => '@common/mail',
             'messageConfig' => null, // stored in local config
         ],
+        'sms' => [
+            'class' => 'common\components\sms\Sms',
+            'login' => null, // stored in local config
+            'password' => null, // stored in local config
+            'originator' => null, // stored in local config
+        ],
     ],
 ];

@@ -3,6 +3,7 @@
 use common\components\BackendUrlManager;
 use common\components\FrontendUrlManager;
 use common\components\lang\ILangApplication;
+use common\components\sms\Sms;
 use common\models\Account;
 use yii\BaseYii;
 use yii\web\Application;
@@ -44,6 +45,7 @@ class MyUser extends User
  * @property FrontendUrlManager $frontendUrlManager
  * @property BackendUrlManager $backendUrlManager
  * @property DbSession $session
+ * @property Sms $sms
  */
 class MyApp extends Application implements ILangApplication
 {

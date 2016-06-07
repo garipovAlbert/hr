@@ -109,3 +109,9 @@ use yii\web\View;
     </div>
 </div>
 
+<div class="container-fluid">
+    <div class="col-md-6">
+        <hr/>
+        <?= $form->field($model, 'sendPassword')->checkbox() ?>
+    </div>
+</div>

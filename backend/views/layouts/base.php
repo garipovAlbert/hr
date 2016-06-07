@@ -44,18 +44,6 @@ if ($module instanceof Application) {
         ];
 
         $menuItems[] = [
-            'label' => Yii::t('app', 'Show Report'),
-            'url' => ['/report'],
-            'active' => "/$mId/$cId" === '//report',
-        ];
-
-        $menuItems[] = [
-            'label' => Yii::t('app', 'Instructions / Files'),
-            'url' => ['/info'],
-            'active' => "/$mId/$cId" === '//info',
-        ];
-
-        $menuItems[] = [
             'label' => Yii::t('app', 'Manage Accounts'),
             'url' => ['/account/default/index'],
             'active' => "$mId" === 'account',

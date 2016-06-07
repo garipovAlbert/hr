@@ -7,6 +7,7 @@ use common\models\Applicant;
 use common\models\City;
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
 /**
@@ -33,13 +34,21 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if (!$this->checkApplicantTimeout()) {
+            return $this->render('index-success');
+        }
+
         $model = new Applicant([
             'scenario' => Applicant::SCENARIO_FILL,
         ]);
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
-                return $this->render('index-success');
+                Yii::$app->sms->send('+7' . $model->phone, Yii::t('app', 'Your code is: {code}', [
+                    'code' => $model->confirmationCode,
+                ]));
+
+                return $this->redirect(['confirm', 'id' => $model->id]);
             }
         }
 
@@ -79,6 +88,43 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionConfirm($id)
+    {
+        if (!$this->checkApplicantTimeout()) {
+            return $this->render('index-success');
+        }
+
+        $model = $this->findModel($id);
+        $model->scenario = Applicant::SCENARIO_CONFIRM;
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                return $this->render('index-success');
+            }
+        }
+
+        return $this->render('confirm', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Not more than 3 attempts per hour allowed.
+     * @return boolean
+     */
+    private function checkApplicantTimeout()
+    {
+        $count = Applicant::find()
+        ->andWhere([
+            'ip' => Yii::$app->request->getUserIP(),
+            'status' => Applicant::STATUS_UNCONFIRMED,
+        ])
+        ->andWhere(['>', 'createdAt', time() - 60 * 60]) // 1 hour timeout
+        ->count();
+
+        return $count < 3;
+    }
+
     public function getCityList()
     {
         $models = City::find()
@@ -94,10 +140,32 @@ class SiteController extends Controller
     {
         return $this->render('we-offer');
     }
-    
+
     public function actionJob()
     {
         return $this->render('job');
+    }
+
+    /**
+     * @param int $id
+     * @return Applicant
+     */
+    public function findModel($id)
+    {
+        $model = Applicant::find()
+        ->andWhere([
+            'id' => $id,
+            'ip' => Yii::$app->request->getUserIP(),
+            'status' => Applicant::STATUS_UNCONFIRMED,
+        ])
+        ->andWhere(['>', 'createdAt', time() - 40 * 60]) // 20 minutes timeout
+        ->one();
+
+        if ($model === null) {
+            throw new NotFoundHttpException(Yii::t('app.error', 'The requested page does not exist.'));
+        }
+
+        return $model;
     }
 
 }

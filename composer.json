@@ -30,7 +30,8 @@
         "vova07/yii2-imperavi-widget": "*",
         "alexgx/yii2-phpexcel": "@dev",
         "moonlandsoft/yii2-phpexcel": "@dev",
-        "yii2mod/yii2-chosen-select": "*"
+        "yii2mod/yii2-chosen-select": "*",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -61,7 +61,7 @@ class VacancyController extends Controller
                     }
                     if ($attribute === 'cinemaIdsString') {
                         $metros = Cinema::find()
-                        ->where(['in', 'id', explode(',', $model->cinemaIdsString)])->all();
+                        ->andWhere(['in', 'id', explode(',', $model->cinemaIdsString)])->all();
                         return ViewHelper::getMultipleLabel($metros);
                     }
                 },

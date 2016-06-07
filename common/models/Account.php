@@ -98,9 +98,36 @@ class Account extends BaseAccount implements IdentityInterface
             ['role', 'in', 'range' => array_keys(static::roleList())],
             ['publicPassword', 'required'],
             ['publicPassword', 'filter', 'filter' => 'trim'],
+            ['sendPassword', 'safe'],
             ['cinemaIds', 'safe'],
             ['cinemaIdsString', 'safe'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        if ($this->sendPassword) {
+            if ($insert) {
+                Yii::$app->mailer->compose('account-created', [
+                    'model' => $this,
+                ])
+                ->setTo($this->email)
+                ->setSubject(Yii::t('app', 'Account created'))
+                ->send();
+            } elseif (array_key_exists('publicPassword', $changedAttributes)) {
+                Yii::$app->mailer->compose('password-changed', [
+                    'model' => $this,
+                ])
+                ->setTo($this->email)
+                ->setSubject(Yii::t('app', 'Password changed'))
+                ->send();
+            }
+        }
     }
 
     /**

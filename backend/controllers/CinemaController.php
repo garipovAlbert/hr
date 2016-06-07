@@ -60,7 +60,7 @@ class CinemaController extends Controller
                     }
                     if ($attribute === 'metroIdsString') {
                         $metros = Metro::find()
-                        ->where(['in', 'id', explode(',', $model->metroIdsString)])->all();
+                        ->andWhere(['in', 'id', explode(',', $model->metroIdsString)])->all();
                         return ViewHelper::getMultipleLabel($metros);
                     }
                     if ($attribute === 'isActive') {

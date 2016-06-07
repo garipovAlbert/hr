@@ -49,6 +49,19 @@ $this->params['breadcrumbs'] = [
 //                    'editableValueOptions' => ['class' => 'well well-sm']
                 ]),
             ],
+            'createdAt:date',
+            [
+                'attribute' => 'cinema.name',
+                'label' => Yii::t('app', 'Cinema'),
+            ],
+            'age',
+            [
+                'attribute' => 'citizenship.name',
+                'label' => Yii::t('app', 'Citizenship'),
+            ],
+            'formattedPhone',
+            'email',
+            'info',
         ],
     ])
     ?>

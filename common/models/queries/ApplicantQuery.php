@@ -2,6 +2,10 @@
 
 namespace common\models\queries;
 
+use backend\components\Application as backendApplication;
+use common\models\Account;
+use common\models\Applicant;
+use Yii;
 use yii\db\ActiveQuery;
 
 /**
@@ -10,6 +14,19 @@ use yii\db\ActiveQuery;
  */
 class ApplicantQuery extends ActiveQuery
 {
+
+    public function init()
+    {
+        parent::init();
+
+        if (Yii::$app instanceof backendApplication && Account::current()) {
+            $account = Account::current();
+            if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
+                $ids = $account->getCinemas()->column();
+                $this->andWhere(['in', 'applicant.id', $ids]);
+            }
+        }
+    }
 
     /**
      * @inheritdoc

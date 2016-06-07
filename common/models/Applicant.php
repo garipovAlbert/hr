@@ -34,6 +34,11 @@ class Applicant extends BaseApplicant
     const SCENARIO_PROCESS = 'PROCESS';
 
     /**
+     * SMS confirmation
+     */
+    const SCENARIO_CONFIRM = 'CONFIRM';
+
+    /**
      * @var int
      */
     public $cityId;
@@ -42,6 +47,11 @@ class Applicant extends BaseApplicant
      * @var int
      */
     public $metroId;
+
+    /**
+     * @var string
+     */
+    public $confirmationInput;
 
     /**
      * @inheritdoc
@@ -99,6 +109,9 @@ class Applicant extends BaseApplicant
             static::SCENARIO_PROCESS => [
                 'status',
             ],
+            static::SCENARIO_CONFIRM => [
+                'confirmationInput',
+            ],
         ]);
     }
 
@@ -136,7 +149,17 @@ class Applicant extends BaseApplicant
                 'vacancyId', 'exist',
                 'targetClass' => Vacancy::className(), 'targetAttribute' => 'id',
             ],
+            ['confirmationInput', 'filter', 'filter' => 'trim'],
+            ['confirmationInput', 'required'],
+            ['confirmationInput', 'validateConfirmation'],
         ];
+    }
+
+    public function validateConfirmation()
+    {
+        if (trim($this->confirmationInput) !== $this->confirmationCode) {
+            $this->addError('confirmationInput', Yii::t('app', 'Wrong confirmation code'));
+        }
     }
 
     /**
@@ -148,10 +171,33 @@ class Applicant extends BaseApplicant
 
             $this->name = $this->firstName . ' ' . $this->lastName;
 
+            if ($this->scenario === self::SCENARIO_FILL && $insert) {
+                $this->confirmationCode = mt_rand(100000, 999999);
+                $this->status = Applicant::STATUS_UNCONFIRMED;
+                $this->ip = Yii::$app->request->getUserIP();
+            }
+
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        if (!$insert && array_key_exists('status', $changedAttributes) && $this->status === self::STATUS_DECLINED) {
+            // on decline
+            Yii::$app->mailer->compose('decline', [
+                'model' => $this,
+            ])
+            ->setTo($this->email)
+            ->setSubject(Yii::t('app', 'KARO FILM'))
+            ->send();
+        }
     }
 
     /**
@@ -177,6 +223,8 @@ class Applicant extends BaseApplicant
             'createdAt' => Yii::t('app', 'Date'),
             'updatedAt' => Yii::t('app', 'Updated At'),
             'formattedPhone' => Yii::t('app', 'Phone'),
+            'confirmationCode' => Yii::t('app', 'Confirmation Code'),
+            'confirmationInput' => Yii::t('app', 'Confirmation Code'),
         ];
     }
 
