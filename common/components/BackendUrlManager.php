@@ -16,7 +16,8 @@ class BackendUrlManager extends UrlManager
         $this->enablePrettyUrl = true;
 
         $this->rules = [
-            '/' => 'site/index',
+            '/' => 'applicant/index',
+            '/' => 'applicant',
         ];
 
         parent::init();

@@ -15,6 +15,12 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'publicRoutes' => [
+        'site/login',
+        'site/error',
+        'site/logout',
+    ],
+    'defaultRoute' => 'applicant/index',
     'modules' => [
         'gridview' => [
             'class' => '\kartik\grid\Module'
@@ -27,11 +33,6 @@ return [
         'account' => [
             'class' => 'backend\modules\account\Module',
         ],
-    ],
-    'publicRoutes' => [
-        'site/login',
-        'site/error',
-        'site/logout',
     ],
     'components' => [
         'user' => [
