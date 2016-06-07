@@ -11,6 +11,7 @@ use yii\helpers\ArrayHelper;
 
 /**
  * @author Albert Garipov <bert320@gmail.com>
+ * @property-read string $formattedPhone
  */
 class Applicant extends BaseApplicant
 {
@@ -31,6 +32,16 @@ class Applicant extends BaseApplicant
      * When a controller processing the application on backend
      */
     const SCENARIO_PROCESS = 'PROCESS';
+
+    /**
+     * @var int
+     */
+    public $cityId;
+
+    /**
+     * @var int
+     */
+    public $metroId;
 
     /**
      * @inheritdoc
@@ -83,9 +94,10 @@ class Applicant extends BaseApplicant
         return ArrayHelper::merge(parent::scenarios(), [
             static::SCENARIO_FILL => [
                 'firstName', 'lastName', 'age', 'email', 'phone', 'info',
-                'citizenshipId', 'vacancyId', 'cinemaId',
+                'citizenshipId', 'vacancyId', 'cinemaId', 'cityId', 'metroId',
             ],
             static::SCENARIO_PROCESS => [
+                'status',
             ],
         ]);
     }
@@ -110,6 +122,8 @@ class Applicant extends BaseApplicant
             ['phone', 'integer'],
             ['phone', 'string', 'min' => 10, 'max' => 10],
             ['info', 'string'],
+            ['cityId', 'safe'],
+            ['metroId', 'safe'],
             [
                 'citizenshipId', 'exist',
                 'targetClass' => Citizenship::className(), 'targetAttribute' => 'id',
@@ -151,6 +165,7 @@ class Applicant extends BaseApplicant
             'citizenshipId' => Yii::t('app', 'Citizenship'),
             'vacancyId' => Yii::t('app', 'Vacancy'),
             'cinemaId' => Yii::t('app', 'Cinema'),
+            'cityId' => Yii::t('app', 'City'),
             'status' => Yii::t('app', 'Status'),
             'firstName' => Yii::t('app', 'First Name'),
             'lastName' => Yii::t('app', 'Last Name'),
@@ -161,6 +176,7 @@ class Applicant extends BaseApplicant
             'updatedBy' => Yii::t('app', 'Updated By'),
             'createdAt' => Yii::t('app', 'Date'),
             'updatedAt' => Yii::t('app', 'Updated At'),
+            'formattedPhone' => Yii::t('app', 'Phone'),
         ];
     }
 
@@ -172,6 +188,28 @@ class Applicant extends BaseApplicant
         if ($this->status !== static::STATUS_DECLINED) {
             $this->status = static::STATUS_DECLINED;
             $this->save(false);
+        }
+    }
+
+    public static function statusToCssClass()
+    {
+        return [
+            Applicant::STATUS_NEW => 'bg-success',
+            Applicant::STATUS_HIRED => 'bg-primary',
+            Applicant::STATUS_INVITED => 'bg-info',
+            Applicant::STATUS_DECLINED => 'bg-danger',
+            Applicant::STATUS_UNCONFIRMED => 'bg-warning',
+            Applicant::STATUS_CALL => 'bg-info',
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getFormattedPhone()
+    {
+        if ($this->phone) {
+            return '+7 (' . substr($this->phone, 0, 3) . ')' . substr($this->phone, 3);
         }
     }
 

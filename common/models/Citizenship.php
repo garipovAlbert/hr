@@ -47,7 +47,7 @@ class Citizenship extends BaseCitizenship
      */
     public static function getList()
     {
-        return ArrayHelper::map(static::find()->orderBy(['name' => SORT_ASC])->all(), 'id', 'name');
+        return ArrayHelper::map(static::find()->orderBy(['id' => SORT_ASC])->all(), 'id', 'name');
     }
 
     /**

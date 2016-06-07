@@ -1,0 +1,2105 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=latin,cyrillic-ext);
+
+
+.datepicker {
+    top: 0;
+    left: 0;
+    padding: 4px;
+    margin-top: 1px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+.datepicker:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -7px;
+    left: 6px
+}
+.datepicker:after {
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    position: absolute;
+    top: -6px;
+    left: 7px
+}
+.datepicker>div {
+    display: none
+}
+.datepicker table {
+    width: 100%;
+    margin: 0
+}
+.datepicker td,
+.datepicker th {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+.datepicker td.day:hover {
+    background: #eeeeee;
+    cursor: pointer
+}
+.datepicker td.day.disabled {
+    color: #eeeeee
+}
+.datepicker td.old,
+.datepicker td.new {
+    color: #999999
+}
+.datepicker td.active,
+.datepicker td.active:hover {
+    color: #ffffff;
+    background-color: #006dcc;
+    background-image: -moz-linear-gradient(top, #08c, #04c);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08c), to(#04c));
+    background-image: -webkit-linear-gradient(top, #08c, #04c);
+    background-image: -o-linear-gradient(top, #08c, #04c);
+    background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+    background-repeat: repeat-x;
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #0044cc #0044cc #002a80;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #0044cc;
+    filter: progid: DXImageTransform.Microsoft.gradient(enabled false);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+}
+.datepicker td.active:hover,
+.datepicker td.active:hover:hover,
+.datepicker td.active:focus,
+.datepicker td.active:hover:focus,
+.datepicker td.active:active,
+.datepicker td.active:hover:active,
+.datepicker td.active.active,
+.datepicker td.active:hover.active,
+.datepicker td.active.disabled,
+.datepicker td.active:hover.disabled,
+.datepicker td.active[disabled],
+.datepicker td.active:hover[disabled] {
+    color: #ffffff;
+    background-color: #0044cc;
+    *background-color: #003bb3
+}
+.datepicker td.active:active,
+.datepicker td.active:hover:active,
+.datepicker td.active.active,
+.datepicker td.active:hover.active {
+    background-color: #003399 \9
+}
+.datepicker td span {
+    display: block;
+    width: 47px;
+    height: 54px;
+    line-height: 54px;
+    float: left;
+    margin: 2px;
+    cursor: pointer;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+.datepicker td span:hover {
+    background: #eeeeee
+}
+.datepicker td span.active {
+    color: #ffffff;
+    background-color: #006dcc;
+    background-image: -moz-linear-gradient(top, #08c, #04c);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08c), to(#04c));
+    background-image: -webkit-linear-gradient(top, #08c, #04c);
+    background-image: -o-linear-gradient(top, #08c, #04c);
+    background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+    background-repeat: repeat-x;
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #0044cc #0044cc #002a80;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #0044cc;
+    filter: progid: DXImageTransform.Microsoft.gradient(enabled false);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+}
+.datepicker td span.active:hover,
+.datepicker td span.active:focus,
+.datepicker td span.active:active,
+.datepicker td span.active.active,
+.datepicker td span.active.disabled,
+.datepicker td span.active[disabled] {
+    color: #ffffff;
+    background-color: #0044cc;
+    *background-color: #003bb3
+}
+.datepicker td span.active:active,
+.datepicker td span.active.active {
+    background-color: #003399 \9
+}
+.datepicker td span.old {
+    color: #999999
+}
+.datepicker th.switch {
+    width: 145px
+}
+.datepicker th.next,
+.datepicker th.prev {
+    font-size: 21px
+}
+.datepicker thead tr:first-child th {
+    cursor: pointer
+}
+.datepicker thead tr:first-child th:hover {
+    background: #eeeeee
+}
+.input-append.date .add-on i,
+.input-prepend.date .add-on i {
+    display: block;
+    cursor: pointer;
+    width: 16px;
+    height: 16px
+}
+.chosen-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    zoom: 1;
+    *display: inline;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
+.chosen-container .chosen-drop {
+    position: absolute;
+    top: 100%;
+    left: -9999px;
+    z-index: 1010;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #aaa;
+    border-top: 0;
+    background: #fff;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15)
+}
+.chosen-container.chosen-with-drop .chosen-drop {
+    left: 0
+}
+.chosen-container.chosen-with-dropup .chosen-choices,
+.chosen-container.chosen-with-dropup .chosen-single {
+    z-index: 1011
+}
+.chosen-container.chosen-with-dropup .chosen-drop {
+    top: auto;
+    bottom: 100%;
+    border: solid #aaa;
+    border-width: 1px 1px 0 1px;
+    border-radius: 5px 5px 0 0
+}
+.chosen-container a {
+    cursor: pointer
+}
+.chosen-container-single .chosen-single {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 0 0 0 8px;
+    height: 23px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background-color: #fff;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #fff), color-stop(50%, #f6f6f6), color-stop(52%, #eee), color-stop(100%, #f4f4f4));
+    background: -webkit-linear-gradient(top, #fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
+    background: -moz-linear-gradient(top, #fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
+    background: -o-linear-gradient(top, #fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
+    background: linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background-clip: padding-box;
+    box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #444;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 24px
+}
+.chosen-container-single .chosen-default {
+    color: #999
+}
+.chosen-container-single .chosen-single span {
+    display: block;
+    overflow: hidden;
+    margin-right: 26px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.chosen-container-single .chosen-single-with-deselect span {
+    margin-right: 38px
+}
+.chosen-container-single .chosen-single abbr {
+    position: absolute;
+    top: 6px;
+    right: 26px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url(/static-assets/images/chosen-sprite.png) -42px 1px no-repeat;
+    font-size: 1px
+}
+.chosen-container-single .chosen-single abbr:hover {
+    background-position: -42px -10px
+}
+.chosen-container-single.chosen-disabled .chosen-single abbr:hover {
+    background-position: -42px -10px
+}
+.chosen-container-single .chosen-single div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 18px;
+    height: 100%
+}
+.chosen-container-single .chosen-single div b {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(/static-assets/images/chosen-sprite.png) no-repeat 0px 2px
+}
+.chosen-container-single .chosen-search {
+    position: relative;
+    z-index: 1010;
+    margin: 0;
+    padding: 3px 4px;
+    white-space: nowrap
+}
+.chosen-container-single .chosen-search input[type="text"] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1px 0;
+    padding: 4px 20px 4px 5px;
+    width: 100%;
+    height: auto;
+    outline: 0;
+    border: 1px solid #aaa;
+    background: #fff url(/static-assets/images/chosen-sprite.png) no-repeat 100% -20px;
+    background: url(/static-assets/images/chosen-sprite.png) no-repeat 100% -20px;
+    font-size: 1em;
+    font-family: sans-serif;
+    line-height: normal;
+    border-radius: 0
+}
+.chosen-container-single .chosen-drop {
+    margin-top: -1px;
+    border-radius: 0 0 4px 4px;
+    background-clip: padding-box
+}
+.chosen-container-single.chosen-container-single-nosearch .chosen-search {
+    position: absolute;
+    left: -9999px
+}
+.chosen-container-single.chosen-container-single-nosearch.chosen-with-dropup .chosen-results {
+    padding-top: 4px
+}
+.chosen-container-single.chosen-container-single-nosearch.chosen-with-dropup .chosen-single {
+    z-index: 1011
+}
+.chosen-container .chosen-results {
+    color: #444;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0 4px 4px 0;
+    padding: 0 0 0 4px;
+    max-height: 240px;
+    -webkit-overflow-scrolling: touch
+}
+.chosen-container .chosen-results li {
+    display: none;
+    margin: 0;
+    padding: 5px 6px;
+    list-style: none;
+    line-height: 15px;
+    word-wrap: break-word;
+    -webkit-touch-callout: none
+}
+.chosen-container .chosen-results li.active-result {
+    display: list-item;
+    cursor: pointer
+}
+.chosen-container .chosen-results li.disabled-result {
+    display: list-item;
+    color: #ccc;
+    cursor: default
+}
+.chosen-container .chosen-results li.highlighted {
+    background-color: #3875d7;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
+    background-image: -webkit-linear-gradient(#3875d7 20%, #2a62bc 90%);
+    background-image: -moz-linear-gradient(#3875d7 20%, #2a62bc 90%);
+    background-image: -o-linear-gradient(#3875d7 20%, #2a62bc 90%);
+    background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);
+    color: #fff
+}
+.chosen-container .chosen-results li.no-results {
+    color: #777;
+    display: list-item;
+    background: #f4f4f4
+}
+.chosen-container .chosen-results li.group-result {
+    display: list-item;
+    font-weight: bold;
+    cursor: default
+}
+.chosen-container .chosen-results li.group-option {
+    padding-left: 15px
+}
+.chosen-container .chosen-results li em {
+    font-style: normal;
+    text-decoration: underline
+}
+.chosen-container-multi .chosen-choices {
+    position: relative;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 5px;
+    width: 100%;
+    height: auto !important;
+    height: 1%;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #eee), color-stop(15%, #fff));
+    background-image: -webkit-linear-gradient(#eee 1%, #fff 15%);
+    background-image: -moz-linear-gradient(#eee 1%, #fff 15%);
+    background-image: -o-linear-gradient(#eee 1%, #fff 15%);
+    background-image: linear-gradient(#eeeeee 1%, #ffffff 15%);
+    cursor: text
+}
+.chosen-container-multi .chosen-choices li {
+    float: left;
+    list-style: none
+}
+.chosen-container-multi .chosen-choices li.search-field {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap
+}
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+    margin: 1px 0;
+    padding: 5px 0;
+    height: 15px;
+    outline: 0;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none;
+    box-sizing: content-box;
+    color: #999;
+    font-size: 100%;
+    font-family: sans-serif;
+    line-height: normal;
+    border-radius: 0
+}
+.chosen-container-multi .chosen-choices li.search-choice {
+    position: relative;
+    margin: 3px 5px 3px 0;
+    padding: 3px 20px 3px 5px;
+    border: 1px solid #aaa;
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #eeeeee;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eee));
+    background-image: -webkit-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: -moz-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: -o-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-size: 100% 19px;
+    background-repeat: repeat-x;
+    background-clip: padding-box;
+    box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+    color: #333;
+    line-height: 13px;
+    cursor: default
+}
+.chosen-container-multi .chosen-choices li.search-choice span {
+    word-wrap: break-word
+}
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+    position: absolute;
+    top: 4px;
+    right: 3px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url(/static-assets/images/chosen-sprite.png) -42px 1px no-repeat;
+    font-size: 1px
+}
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover {
+    background-position: -42px -10px
+}
+.chosen-container-multi .chosen-choices li.search-choice-disabled {
+    padding-right: 5px;
+    border: 1px solid #ccc;
+    background-color: #e4e4e4;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eee));
+    background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: -o-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    color: #666
+}
+.chosen-container-multi .chosen-choices li.search-choice-focus {
+    background: #d4d4d4
+}
+.chosen-container-multi .chosen-choices li.search-choice-focus .search-choice-close {
+    background-position: -42px -10px
+}
+.chosen-container-multi.chosen-with-dropup .chosen-drop {
+    border-radius: 0
+}
+.chosen-container-multi .chosen-results {
+    margin: 0;
+    padding: 0
+}
+.chosen-container-multi .chosen-drop .result-selected {
+    display: list-item;
+    color: #ccc;
+    cursor: default
+}
+.chosen-container-active .chosen-single {
+    border: 1px solid #5897fb;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+}
+.chosen-container-active.chosen-with-drop .chosen-single {
+    border: 1px solid #aaa;
+    -moz-border-radius-bottomright: 0;
+    border-bottom-right-radius: 0;
+    -moz-border-radius-bottomleft: 0;
+    border-bottom-left-radius: 0;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #eee), color-stop(80%, #fff));
+    background-image: -webkit-linear-gradient(#eee 20%, #fff 80%);
+    background-image: -moz-linear-gradient(#eee 20%, #fff 80%);
+    background-image: -o-linear-gradient(#eee 20%, #fff 80%);
+    background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);
+    box-shadow: 0 1px 0 #fff inset
+}
+.chosen-container-active.chosen-with-drop .chosen-single div {
+    border-left: none;
+    background: transparent
+}
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+    background-position: -18px 2px
+}
+.chosen-container-active.chosen-with-drop.chosen-with-dropup .chosen-single {
+    border-radius: 0 0 5px 5px
+}
+.chosen-container-active .chosen-choices {
+    border: 1px solid #5897fb;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+}
+.chosen-container-active .chosen-choices li.search-field input[type="text"] {
+    color: #222 !important
+}
+.chosen-disabled {
+    opacity: 0.5 !important;
+    cursor: default
+}
+.chosen-disabled .chosen-single {
+    cursor: default
+}
+.chosen-disabled .chosen-choices .search-choice .search-choice-close {
+    cursor: default
+}
+.chosen-rtl {
+    text-align: right
+}
+.chosen-rtl .chosen-single {
+    overflow: visible;
+    padding: 0 8px 0 0
+}
+.chosen-rtl .chosen-single span {
+    margin-right: 0;
+    margin-left: 26px;
+    direction: rtl
+}
+.chosen-rtl .chosen-single-with-deselect span {
+    margin-left: 38px
+}
+.chosen-rtl .chosen-single div {
+    right: auto;
+    left: 3px
+}
+.chosen-rtl .chosen-single abbr {
+    right: auto;
+    left: 26px
+}
+.chosen-rtl .chosen-choices li {
+    float: right
+}
+.chosen-rtl .chosen-choices li.search-field input[type="text"] {
+    direction: rtl
+}
+.chosen-rtl .chosen-choices li.search-choice {
+    margin: 3px 5px 3px 0;
+    padding: 3px 5px 3px 19px
+}
+.chosen-rtl .chosen-choices li.search-choice .search-choice-close {
+    right: auto;
+    left: 4px
+}
+.chosen-rtl.chosen-container-single-nosearch .chosen-search,
+.chosen-rtl .chosen-drop {
+    left: 9999px
+}
+.chosen-rtl.chosen-container-single .chosen-results {
+    margin: 0 0 4px 4px;
+    padding: 0 4px 0 0
+}
+.chosen-rtl .chosen-results li.group-option {
+    padding-right: 15px;
+    padding-left: 0
+}
+.chosen-rtl.chosen-container-active.chosen-with-drop .chosen-single div {
+    border-right: none
+}
+.chosen-rtl .chosen-search input[type="text"] {
+    padding: 4px 5px 4px 20px;
+    background: #fff url(/static-assets/images/chosen-sprite.png) no-repeat -30px -20px;
+    background: url(/static-assets/images/chosen-sprite.png) no-repeat -30px -20px;
+    direction: rtl
+}
+.chosen-rtl.chosen-container-single .chosen-single div b {
+    background-position: 6px 2px
+}
+.chosen-rtl.chosen-container-single.chosen-with-drop .chosen-single div b {
+    background-position: -12px 2px
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 144dpi) {
+    .chosen-rtl .chosen-search input[type="text"],
+    .chosen-container-single .chosen-single abbr,
+    .chosen-container-single .chosen-single div b,
+    .chosen-container-single .chosen-search input[type="text"],
+    .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
+    .chosen-container .chosen-results-scroll-down span,
+    .chosen-container .chosen-results-scroll-up span {
+        background-image: url(/static-assets/images/chosen-sprite@2x.png) !important;
+        background-size: 52px 37px !important;
+        background-repeat: no-repeat !important
+    }
+    .chosen-rtl .chosen-search input[type="text"],
+    .chosen-container-single .chosen-search input[type="text"] {
+        background-color: #fff
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* vacancies */
+.vacancies_list .new_vacancy,
+.vacancies_new .new_vacancy,
+.vacancies_edit .new_vacancy {
+    margin-bottom: 2em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #DDDDDD
+}
+.vacancies_list .new_vacancy .vacancy_name,
+.vacancies_list .new_vacancy .vacancy_description,
+.vacancies_list .new_vacancy .vacancy_cinemas,
+.vacancies_list .new_vacancy .vacancy_external_id,
+.vacancies_new .new_vacancy .vacancy_name,
+.vacancies_new .new_vacancy .vacancy_description,
+.vacancies_new .new_vacancy .vacancy_cinemas,
+.vacancies_new .new_vacancy .vacancy_external_id,
+.vacancies_edit .new_vacancy .vacancy_name,
+.vacancies_edit .new_vacancy .vacancy_description,
+.vacancies_edit .new_vacancy .vacancy_cinemas,
+.vacancies_edit .new_vacancy .vacancy_external_id {
+    margin-bottom: 1.5em
+}
+.vacancies_list .new_vacancy .vacancy_name label,
+.vacancies_list .new_vacancy .vacancy_description label,
+.vacancies_list .new_vacancy .vacancy_cinemas label,
+.vacancies_list .new_vacancy .vacancy_external_id label,
+.vacancies_new .new_vacancy .vacancy_name label,
+.vacancies_new .new_vacancy .vacancy_description label,
+.vacancies_new .new_vacancy .vacancy_cinemas label,
+.vacancies_new .new_vacancy .vacancy_external_id label,
+.vacancies_edit .new_vacancy .vacancy_name label,
+.vacancies_edit .new_vacancy .vacancy_description label,
+.vacancies_edit .new_vacancy .vacancy_cinemas label,
+.vacancies_edit .new_vacancy .vacancy_external_id label {
+    font-weight: 400;
+    margin-right: 0.8em
+}
+.vacancies_list .new_vacancy .vacancy_name label abbr,
+.vacancies_list .new_vacancy .vacancy_description label abbr,
+.vacancies_list .new_vacancy .vacancy_cinemas label abbr,
+.vacancies_list .new_vacancy .vacancy_external_id label abbr,
+.vacancies_new .new_vacancy .vacancy_name label abbr,
+.vacancies_new .new_vacancy .vacancy_description label abbr,
+.vacancies_new .new_vacancy .vacancy_cinemas label abbr,
+.vacancies_new .new_vacancy .vacancy_external_id label abbr,
+.vacancies_edit .new_vacancy .vacancy_name label abbr,
+.vacancies_edit .new_vacancy .vacancy_description label abbr,
+.vacancies_edit .new_vacancy .vacancy_cinemas label abbr,
+.vacancies_edit .new_vacancy .vacancy_external_id label abbr {
+    display: none
+}
+.vacancies_list .new_vacancy .vacancy_name .controls,
+.vacancies_list .new_vacancy .vacancy_description .controls,
+.vacancies_list .new_vacancy .vacancy_cinemas .controls,
+.vacancies_list .new_vacancy .vacancy_external_id .controls,
+.vacancies_new .new_vacancy .vacancy_name .controls,
+.vacancies_new .new_vacancy .vacancy_description .controls,
+.vacancies_new .new_vacancy .vacancy_cinemas .controls,
+.vacancies_new .new_vacancy .vacancy_external_id .controls,
+.vacancies_edit .new_vacancy .vacancy_name .controls,
+.vacancies_edit .new_vacancy .vacancy_description .controls,
+.vacancies_edit .new_vacancy .vacancy_cinemas .controls,
+.vacancies_edit .new_vacancy .vacancy_external_id .controls {
+    float: left;
+    margin-bottom: 1.5em
+}
+.vacancies_list .new_vacancy .vacancy_name .controls .chosen-container,
+.vacancies_list .new_vacancy .vacancy_description .controls .chosen-container,
+.vacancies_list .new_vacancy .vacancy_cinemas .controls .chosen-container,
+.vacancies_list .new_vacancy .vacancy_external_id .controls .chosen-container,
+.vacancies_new .new_vacancy .vacancy_name .controls .chosen-container,
+.vacancies_new .new_vacancy .vacancy_description .controls .chosen-container,
+.vacancies_new .new_vacancy .vacancy_cinemas .controls .chosen-container,
+.vacancies_new .new_vacancy .vacancy_external_id .controls .chosen-container,
+.vacancies_edit .new_vacancy .vacancy_name .controls .chosen-container,
+.vacancies_edit .new_vacancy .vacancy_description .controls .chosen-container,
+.vacancies_edit .new_vacancy .vacancy_cinemas .controls .chosen-container,
+.vacancies_edit .new_vacancy .vacancy_external_id .controls .chosen-container {
+    width: 100% !important
+}
+.vacancies_list .new_vacancy .vacancy_name .controls #vacancy_external_id,
+.vacancies_list .new_vacancy .vacancy_description .controls #vacancy_external_id,
+.vacancies_list .new_vacancy .vacancy_cinemas .controls #vacancy_external_id,
+.vacancies_list .new_vacancy .vacancy_external_id .controls #vacancy_external_id,
+.vacancies_new .new_vacancy .vacancy_name .controls #vacancy_external_id,
+.vacancies_new .new_vacancy .vacancy_description .controls #vacancy_external_id,
+.vacancies_new .new_vacancy .vacancy_cinemas .controls #vacancy_external_id,
+.vacancies_new .new_vacancy .vacancy_external_id .controls #vacancy_external_id,
+.vacancies_edit .new_vacancy .vacancy_name .controls #vacancy_external_id,
+.vacancies_edit .new_vacancy .vacancy_description .controls #vacancy_external_id,
+.vacancies_edit .new_vacancy .vacancy_cinemas .controls #vacancy_external_id,
+.vacancies_edit .new_vacancy .vacancy_external_id .controls #vacancy_external_id {
+    width: 5.6em
+}
+.vacancies_list .new_vacancy .vacancy_name .controls #vacancy_cinema_ids_chosen,
+.vacancies_list .new_vacancy .vacancy_description .controls #vacancy_cinema_ids_chosen,
+.vacancies_list .new_vacancy .vacancy_cinemas .controls #vacancy_cinema_ids_chosen,
+.vacancies_list .new_vacancy .vacancy_external_id .controls #vacancy_cinema_ids_chosen,
+.vacancies_new .new_vacancy .vacancy_name .controls #vacancy_cinema_ids_chosen,
+.vacancies_new .new_vacancy .vacancy_description .controls #vacancy_cinema_ids_chosen,
+.vacancies_new .new_vacancy .vacancy_cinemas .controls #vacancy_cinema_ids_chosen,
+.vacancies_new .new_vacancy .vacancy_external_id .controls #vacancy_cinema_ids_chosen,
+.vacancies_edit .new_vacancy .vacancy_name .controls #vacancy_cinema_ids_chosen,
+.vacancies_edit .new_vacancy .vacancy_description .controls #vacancy_cinema_ids_chosen,
+.vacancies_edit .new_vacancy .vacancy_cinemas .controls #vacancy_cinema_ids_chosen,
+.vacancies_edit .new_vacancy .vacancy_external_id .controls #vacancy_cinema_ids_chosen {
+    width: 19.5em !important
+}
+.vacancies_list .new_vacancy .vacancy_description .controls,
+.vacancies_new .new_vacancy .vacancy_description .controls,
+.vacancies_edit .new_vacancy .vacancy_description .controls {
+    float: none
+}
+.vacancies_list .new_vacancy .vacancy_description .controls textarea,
+.vacancies_new .new_vacancy .vacancy_description .controls textarea,
+.vacancies_edit .new_vacancy .vacancy_description .controls textarea {
+    width: 100%;
+    height: 150px
+}
+.vacancies_list .results td .vacancy_cinemas .chosen-container,
+.vacancies_new .results td .vacancy_cinemas .chosen-container,
+.vacancies_edit .results td .vacancy_cinemas .chosen-container {
+    width: 100% !important
+}
+.vacancies_list .results td .form-actions,
+.vacancies_new .results td .form-actions,
+.vacancies_edit .results td .form-actions {
+    float: right
+}
+.vacancies_list .search .control-group,
+.vacancies_new .search .control-group,
+.vacancies_edit .search .control-group {
+    margin-right: 0.5em
+}
+/* /vacancies */
+
+
+
+
+
+
+
+
+/* subway_stations */
+.subway_stations_list .form_add_subway_station,
+.subway_stations_new .form_add_subway_station,
+.subway_stations_edit .form_add_subway_station {
+    margin-bottom: 2em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #DDDDDD
+}
+.subway_stations_list .form_add_subway_station .form-inputs label,
+.subway_stations_new .form_add_subway_station .form-inputs label,
+.subway_stations_edit .form_add_subway_station .form-inputs label {
+    font-weight: 400;
+    margin-right: 0.8em
+}
+.subway_stations_list .form_add_subway_station .form-inputs label abbr,
+.subway_stations_new .form_add_subway_station .form-inputs label abbr,
+.subway_stations_edit .form_add_subway_station .form-inputs label abbr {
+    display: none
+}
+.subway_stations_list .form_add_subway_station .form-inputs .controls,
+.subway_stations_new .form_add_subway_station .form-inputs .controls,
+.subway_stations_edit .form_add_subway_station .form-inputs .controls {
+    float: left;
+    margin-bottom: 1.5em
+}
+.subway_stations_list .form_add_subway_station .form-inputs .controls #subway_station_name,
+.subway_stations_new .form_add_subway_station .form-inputs .controls #subway_station_name,
+.subway_stations_edit .form_add_subway_station .form-inputs .controls #subway_station_name {
+    width: 16em
+}
+.subway_stations_list .form_add_subway_station .form-inputs .controls #subway_station_external_id,
+.subway_stations_new .form_add_subway_station .form-inputs .controls #subway_station_external_id,
+.subway_stations_edit .form_add_subway_station .form-inputs .controls #subway_station_external_id {
+    width: 5.6em !important
+}
+.subway_stations_list .search .control-group,
+.subway_stations_new .search .control-group,
+.subway_stations_edit .search .control-group {
+    margin-right: 0.5em
+}
+/* /subway_stations */
+
+
+
+/* cities_list */
+.cities_list .form_add_city,
+.cities_new .form_add_city,
+.cities_edit .form_add_city {
+    margin-bottom: 2em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #DDDDDD
+}
+.cities_list .form_add_city .city_name,
+.cities_list .form_add_city .city_external_id,
+.cities_new .form_add_city .city_name,
+.cities_new .form_add_city .city_external_id,
+.cities_edit .form_add_city .city_name,
+.cities_edit .form_add_city .city_external_id {
+    margin-bottom: 1.5em
+}
+.cities_list .form_add_city .city_name label,
+.cities_list .form_add_city .city_external_id label,
+.cities_new .form_add_city .city_name label,
+.cities_new .form_add_city .city_external_id label,
+.cities_edit .form_add_city .city_name label,
+.cities_edit .form_add_city .city_external_id label {
+    font-weight: 400;
+    margin-right: 0.8em
+}
+.cities_list .form_add_city .city_name label abbr,
+.cities_list .form_add_city .city_external_id label abbr,
+.cities_new .form_add_city .city_name label abbr,
+.cities_new .form_add_city .city_external_id label abbr,
+.cities_edit .form_add_city .city_name label abbr,
+.cities_edit .form_add_city .city_external_id label abbr {
+    display: none
+}
+.cities_list .form_add_city .city_name .controls,
+.cities_list .form_add_city .city_external_id .controls,
+.cities_new .form_add_city .city_name .controls,
+.cities_new .form_add_city .city_external_id .controls,
+.cities_edit .form_add_city .city_name .controls,
+.cities_edit .form_add_city .city_external_id .controls {
+    float: left;
+    margin-bottom: 1.5em
+}
+.cities_list .form_add_city .city_name .controls,
+.cities_new .form_add_city .city_name .controls,
+.cities_edit .form_add_city .city_name .controls {
+    width: 48%
+}
+.cities_list .form_add_city .city_external_id .controls,
+.cities_new .form_add_city .city_external_id .controls,
+.cities_edit .form_add_city .city_external_id .controls {
+    width: 63%
+}
+.cities_list .search .control-group,
+.cities_new .search .control-group,
+.cities_edit .search .control-group {
+    margin-right: 0.5em
+}
+/* /cities_list */
+
+
+
+
+/* citizenships */
+.citizenships .form_add_citizenship {
+    margin-bottom: 2em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #DDDDDD
+}
+.citizenships .form_add_citizenship .citizenship_name,
+.citizenships .form_add_citizenship .citizenship_external_id {
+    margin-bottom: 1.5em
+}
+.citizenships .form_add_citizenship .citizenship_name label,
+.citizenships .form_add_citizenship .citizenship_external_id label {
+    font-weight: 400;
+    margin-right: 0.8em
+}
+.citizenships .form_add_citizenship .citizenship_name label abbr,
+.citizenships .form_add_citizenship .citizenship_external_id label abbr {
+    display: none
+}
+.citizenships .form_add_citizenship .citizenship_name .controls,
+.citizenships .form_add_citizenship .citizenship_external_id .controls {
+    width: 48%;
+    float: left;
+    margin-bottom: 1.5em
+}
+.citizenships .search .control-group {
+    margin-right: 0.5em
+}
+/* /citizenships */
+
+
+
+/* cinemas_list */
+.cinemas_list .new_cinema,
+.cinemas_new .new_cinema,
+.cinemas_edit .new_cinema {
+    margin-bottom: 2em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #DDDDDD
+}
+.cinemas_list .new_cinema .form-inputs .cinema_city .controls,
+.cinemas_new .new_cinema .form-inputs .cinema_city .controls,
+.cinemas_edit .new_cinema .form-inputs .cinema_city .controls {
+    width: 12.8em
+}
+.cinemas_list .new_cinema .form-inputs .cinema_subway_stations .controls,
+.cinemas_new .new_cinema .form-inputs .cinema_subway_stations .controls,
+.cinemas_edit .new_cinema .form-inputs .cinema_subway_stations .controls {
+    width: 19.5em
+}
+.cinemas_list .new_cinema .form-inputs .cinema_name .controls,
+.cinemas_new .new_cinema .form-inputs .cinema_name .controls,
+.cinemas_edit .new_cinema .form-inputs .cinema_name .controls {
+    width: 18.5em
+}
+.cinemas_list .new_cinema .form-inputs .cinema_external_id .controls,
+.cinemas_new .new_cinema .form-inputs .cinema_external_id .controls,
+.cinemas_edit .new_cinema .form-inputs .cinema_external_id .controls {
+    width: 7em
+}
+.cinemas_list .new_cinema .form-inputs label,
+.cinemas_new .new_cinema .form-inputs label,
+.cinemas_edit .new_cinema .form-inputs label {
+    font-weight: 400;
+    margin-right: 0.8em;
+    text-align: right
+}
+.cinemas_list .new_cinema .form-inputs label abbr,
+.cinemas_new .new_cinema .form-inputs label abbr,
+.cinemas_edit .new_cinema .form-inputs label abbr {
+    display: none
+}
+.cinemas_list .new_cinema .form-inputs .controls,
+.cinemas_new .new_cinema .form-inputs .controls,
+.cinemas_edit .new_cinema .form-inputs .controls {
+    float: left;
+    margin-bottom: 1.5em
+}
+.cinemas_list .new_cinema .form-inputs .controls .chosen-container,
+.cinemas_new .new_cinema .form-inputs .controls .chosen-container,
+.cinemas_edit .new_cinema .form-inputs .controls .chosen-container {
+    width: 100% !important
+}
+.cinemas_list .search .control-group,
+.cinemas_new .search .control-group,
+.cinemas_edit .search .control-group {
+    margin-right: 0.5em
+}
+/* /cinemas_list */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* static_pages */
+#apply_page.modal-open .modal_vertical_center.fade.in {
+    display: table !important
+}
+#apply_page .full_screen .container .alert-success {
+    width: 40.5em;
+    margin: 1.5em auto 0
+}
+#apply_page .new_applicant {
+    color: black
+}
+#apply_page .new_applicant .form-inputs:first-child {
+    margin-bottom: 3.5em
+}
+#apply_page .new_applicant .apply_form {
+    background: url(/static-assets/images/background-white-opacity.png) repeat;
+    padding: 3.6em
+}
+#apply_page .new_applicant .title {
+    font-size: 40px;
+    font-weight: 300;
+    margin: 0 0 0.9em
+}
+#apply_page .new_applicant .form_row {
+    position: relative
+}
+#apply_page .new_applicant label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 2.25em;
+    min-height: 2.25em;
+    color: black
+}
+#apply_page .new_applicant label abbr {
+    border-bottom: none;
+    color: #cc3333
+}
+#apply_page .new_applicant .controls {
+    float: right;
+    width: 58%;
+    margin-bottom: 30px;
+    position: relative
+}
+#apply_page .new_applicant .controls .chosen-container {
+    width: 100% !important
+}
+#apply_page .new_applicant .controls .chosen-container .chosen-single {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height: 2.6em;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-color: #aaaaaa
+}
+#apply_page .new_applicant .controls .chosen-container .chosen-single span {
+    line-height: 2.6em
+}
+#apply_page .new_applicant .controls .chosen-container .chosen-single b {
+    background-position: 0 0.7em
+}
+#apply_page .new_applicant .controls .chosen-container .chosen-drop .chosen-results {
+    padding: 0
+}
+#apply_page .new_applicant .controls .chosen-container .chosen-drop .chosen-results .result-selected,
+#apply_page .new_applicant .controls .chosen-container .chosen-drop .chosen-results .highlighted {
+    background: #D9534F
+}
+#apply_page .new_applicant .controls .chosen-container .chosen-single-with-deselect abbr {
+    top: 13px
+}
+#apply_page .new_applicant .controls .chosen-container.chosen-with-drop .chosen-single div b {
+    background-position: -1.3em 0.7em
+}
+#apply_page .new_applicant .controls input {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 16px;
+    min-height: 2.25em;
+    color: black;
+    border-color: #aaaaaa;
+    padding-top: 0;
+    padding-bottom: 0
+}
+#apply_page .new_applicant .controls textarea {
+    font-size: 16px;
+    min-height: 5.5em;
+    overflow: hidden;
+    color: black;
+    border-color: #aaaaaa;
+    padding: 0.5em 0.8em
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper {
+    position: relative;
+    float: left;
+    width: 58%;
+    clear: none
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper .controls {
+    position: static;
+    margin-bottom: 0
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper .applicant_phone_code .help-inline .icon_arrow {
+    left: 68px;
+    right: auto
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper .applicant_phone_number .help-inline .icon_arrow {
+    left: 168px;
+    right: auto
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper .control-group.error .controls {
+    margin-bottom: 65px
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper .control-group.error .help-inline {
+    position: absolute;
+    width: 100%;
+    left: 0
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper .control-group.error+.error .controls {
+    margin-bottom: 140px
+}
+#apply_page .new_applicant .phone_field .phone_full_number_wrapper .control-group.error+.error .help-inline {
+    top: 100px
+}
+#apply_page .new_applicant .seven {
+    float: left;
+    font-size: 24px;
+    height: 1.625em;
+    line-height: 1.625em;
+    color: black
+}
+#apply_page .new_applicant span {
+    line-height: 2em;
+    color: black
+}
+#apply_page .new_applicant .applicant_phone_code .controls {
+    width: 3.55em;
+    margin-left: 1.5em;
+    float: left
+}
+#apply_page .new_applicant .applicant_phone_code input {
+    padding: 0 0.5em;
+    text-align: center
+}
+#apply_page .new_applicant .applicant_phone_number .controls {
+    width: 6em;
+    float: left;
+    margin-left: 1.5em
+}
+#apply_page .new_applicant .applicant_phone_number .controls .help-inline {
+    top: 35px
+}
+#apply_page .new_applicant .applicant_phone_number input {
+    text-align: center;
+    padding: 0 0.5em;
+    width: 6.5em
+}
+#apply_page .new_applicant .agreement {
+    margin-top: 15px;
+    margin-bottom: 3.5em
+}
+#apply_page .new_applicant .agreement input {
+    display: block;
+    float: left;
+    margin: 0 0.7em 1.5em 0
+}
+#apply_page .new_applicant .agreement label {
+    font-size: 13px;
+    font-style: italic;
+    display: inline-block;
+    margin: 0;
+    line-height: 16px;
+    text-align: left;
+    width: 91%;
+    margin-top: 3px
+}
+#apply_page .new_applicant .agreement label a {
+    color: #cc3333
+}
+#apply_page .new_applicant .agreement label a:hover {
+    text-decoration: underline
+}
+#apply_page .new_applicant .agreement #agreement_modal {
+    display: none
+}
+#apply_page .new_applicant .error input,
+#apply_page .new_applicant .error textarea {
+    border-color: #cc3333;
+    color: #cc3333
+}
+#apply_page .new_applicant .error .controls .chosen-container .chosen-single {
+    border-color: #cc3333
+}
+#apply_page .new_applicant .help-inline {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 16px;
+    background: #333;
+    color: #ccc;
+    width: 100%;
+    padding: 12px 15px 13px;
+    margin-top: 10px;
+    position: relative
+}
+#apply_page .new_applicant .help-inline .icon_arrow {
+    position: absolute;
+    top: -6px;
+    display: block;
+    height: 6px;
+    width: 12px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    background: url(/static-assets/images/icon-arrow-top-error.png) no-repeat 0 0
+}
+#apply_page .new_applicant .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 0
+}
+#apply_page .new_applicant .form-group {
+    margin-bottom: 0
+}
+#apply_page .new_applicant .form-group .alert {
+    margin: 1.45em 0
+}
+#apply_page .new_applicant .form-group .alert .alert {
+    padding: 0;
+    margin: 0
+}
+#apply_page .new_applicant .place_work label {
+    height: auto;
+    min-height: 1px
+}
+#apply_page .new_applicant .place_work label.control-label {
+    font-weight: 600;
+    margin-bottom: 15px
+}
+#apply_page .new_applicant .place_work .back_to_step_link {
+    display: none;
+    color: #cc3333;
+    float: left;
+    clear: both
+}
+#apply_page .new_applicant .place_work .back_to_step_link:hover {
+    text-decoration: underline
+}
+#apply_page .new_applicant .place_work .controls {
+    width: 100%;
+    float: none;
+    clear: both;
+    margin-bottom: 0
+}
+#apply_page .new_applicant .place_work .controls .radio {
+    padding-left: 0;
+    line-height: 1.2
+}
+#apply_page .new_applicant .place_work .controls .radio input.radio_buttons {
+    display: none
+}
+#apply_page .new_applicant .place_work .applicant_city,
+#apply_page .new_applicant .place_work .applicant_subway_station,
+#apply_page .new_applicant .place_work .applicant_cinema,
+#apply_page .new_applicant .place_work .applicant_vacancy {
+    width: 100%
+}
+#apply_page .new_applicant .place_work .row.expanded {
+    clear: both
+}
+#apply_page .new_applicant .place_work .row.expanded .controls .radio {
+    float: left;
+    width: 48%;
+    padding-right: 2%;
+    margin-top: 0;
+    height: 35px
+}
+#apply_page .new_applicant .place_work .row.expanded .controls .radio label {
+    line-height: 1.2
+}
+#apply_page .new_applicant .place_work .row.expanded .controls .radio .radio_button_theme {
+    margin-top: 1px;
+    margin-bottom: 7px
+}
+#apply_page .new_applicant .place_work .row.expanded .controls .radio.odd {
+    clear: both
+}
+#apply_page .new_applicant .place_work .row.expanded.applicant_city_row .controls:nth-child(2n+1) {
+    clear: both
+}
+#apply_page .new_applicant .place_work .row.narrowed {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #aaaaaa
+}
+#apply_page .new_applicant .place_work .row.narrowed label {
+    pointer-events: none;
+    width: auto;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px
+}
+#apply_page .new_applicant .place_work .row.narrowed label.radio_buttons {
+    line-height: 1.1
+}
+#apply_page .new_applicant .place_work .row.narrowed .controls {
+    float: left;
+    width: auto;
+    clear: none
+}
+#apply_page .new_applicant .place_work .row.narrowed .controls .radio {
+    display: none !important;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    height: auto
+}
+#apply_page .new_applicant .place_work .row.narrowed .controls .radio label {
+    line-height: 1.2
+}
+#apply_page .new_applicant .place_work .row.narrowed .controls .radio .input_theme {
+    display: none
+}
+#apply_page .new_applicant .place_work .row.narrowed .controls .radio.active {
+    display: block !important
+}
+#apply_page .new_applicant .place_work .row.narrowed .applicant_city,
+#apply_page .new_applicant .place_work .row.narrowed .applicant_subway_station,
+#apply_page .new_applicant .place_work .row.narrowed .applicant_cinema,
+#apply_page .new_applicant .place_work .row.narrowed .applicant_vacancy {
+    float: left;
+    width: auto
+}
+#apply_page .new_applicant .place_work .row.narrowed .back_to_step_link {
+    display: block;
+    clear: none
+}
+#apply_page .new_applicant .applicant_citizenship .controls .radio {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    line-height: 1;
+    padding-left: 0
+}
+#apply_page .new_applicant .applicant_citizenship .controls .radio:first-child {
+    margin-left: 0
+}
+#apply_page .new_applicant .applicant_vacancy_row {
+    clear: both
+}
+#apply_page .new_applicant label:hover .input_theme {
+    border-color: #cc3333
+}
+#apply_page #new_applicant label:hover .input_theme {
+    border-color: #cc3333
+}
+#apply_page .new_applicant input:checked+.input_theme {
+    border-color: #cc3333
+}
+#apply_page .new_applicant input:checked+.radio_button_theme {
+    background: url(/static-assets/images/icon-radio-checked.png) no-repeat center center
+}
+#apply_page .new_applicant input:checked+.checkbox_button_theme {
+    background: url(/static-assets/images/icon-checkbox-checked.png) no-repeat center center
+}
+#apply_page .new_applicant .input_theme {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    float: left;
+    height: 18px;
+    width: 18px;
+    border: 2px solid #646464;
+    margin-right: 6px
+}
+#apply_page .new_applicant .input_theme:hover {
+    border-color: #cc3333;
+    cursor: pointer
+}
+#apply_page .new_applicant .checkbox_button_theme {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px
+}
+#apply_page .new_applicant .radio_buttons .controls label {
+    padding-left: 0;
+    height: auto;
+    min-height: 1px;
+    line-height: 1
+}
+#apply_page .modal_vertical_center {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center
+}
+#apply_page .modal_vertical_center .modal-dialog {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0
+}
+#apply_page .modal_vertical_center .modal-dialog .modal-content {
+    margin: 0 auto;
+    max-width: 600px;
+    position: relative
+}
+#apply_page .modal_vertical_center .popups-close {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0.7em;
+    right: 0.7em;
+    background: url(/static-assets/images/close-popup.png)
+}
+#apply_page .modal_vertical_center .popups-close:hover {
+    cursor: pointer
+}
+#apply_page .modal_vertical_center .popups-close.green {
+    background: green
+}
+#apply_page #success-applicant .modal-dialog .modal-content.modal_content_agreement {
+    max-width: 800px;
+    overflow: auto;
+    max-height: 500px
+}
+#apply_page #success-applicant .modal-dialog .modal-content .success_message,
+#apply_page #success-applicant .modal-dialog .modal-content .agreement_text {
+    padding: 1.2em;
+    text-align: center;
+    color: black
+}
+#apply_page #success-applicant .modal-dialog .modal-content .success_message .title,
+#apply_page #success-applicant .modal-dialog .modal-content .agreement_text .title {
+    font-weight: 600;
+    padding-right: 2.5em
+}
+#apply_page #success-applicant .modal-dialog .modal-content .success_message a img,
+#apply_page #success-applicant .modal-dialog .modal-content .agreement_text a img {
+    margin: 0.4em 0
+}
+#apply_page #success-applicant .modal-dialog .modal-content .agreement_text ul {
+    text-align: left;
+    list-style: none;
+    padding: 0
+}
+#apply_page #success-applicant .modal-dialog .modal-content .agreement_text ul li {
+    margin-bottom: 1em
+}
+#apply_page #success-applicant .modal-dialog .modal-content .agreement_text ul ul {
+    padding-left: 1em
+}
+#apply_page #success-applicant .modal-dialog .modal-content .agreement_text ul ul li {
+    margin-top: 1em
+}
+#apply_page .modal_vacancy_description {
+    color: #000
+}
+#apply_page .modal_vacancy_description .modal-content {
+    padding: 1.2em
+}
+#apply_page .modal_vacancy_description .title {
+    font-weight: 600;
+    padding-right: 2.5em;
+    text-align: center
+}
+#apply_page .work_in_karo_block {
+    font-size: 18px
+}
+#apply_page .work_in_karo_block .semibold_text {
+    font-weight: 600
+}
+#apply_page .work_in_karo_block .block_title {
+    margin-bottom: 15px
+}
+#apply_page .work_in_karo_block .pluses_block {
+    font-size: 14px;
+    font-weight: 300;
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #aaa
+}
+#apply_page .work_in_karo_block .pluses_block .work_in_karo_item {
+    padding-left: 40px;
+    min-height: 24px;
+    margin-bottom: 5px
+}
+#apply_page .work_in_karo_block .pluses_block .work_in_karo_item.icon_clock {
+    background: url(/static-assets/images/icon-clock-small.png) no-repeat
+}
+#apply_page .work_in_karo_block .pluses_block .work_in_karo_item.icon_map_markers {
+    background: url(/static-assets/images/icon-map-markers-small.png) no-repeat
+}
+#apply_page .work_in_karo_block .pluses_block .work_in_karo_item.icon_square_cap {
+    background: url(/static-assets/images/icon-square-cap-small.png) no-repeat
+}
+#apply_page .work_in_karo_block .pluses_block .work_in_karo_item.icon_briefcase {
+    background: url(/static-assets/images/icon-briefcase-small.png) no-repeat
+}
+#apply_page .work_in_karo_block .pluses_block .work_in_karo_item.icon_scales {
+    background: url(/static-assets/images/icon-scales-small.png) no-repeat
+}
+#apply_page .work_in_karo_block .vacancies_in_karo_block {
+    clear: both;
+    line-height: 30px;
+    padding-bottom: 16px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #aaa
+}
+#apply_page .work_in_karo_block .vacancies_in_karo_block .vacancies_open {
+    line-height: 1.3;
+    margin-bottom: 6px
+}
+#apply_page .work_in_karo_block .vacancies_in_karo_block .semibold_text {
+    line-height: 1.3
+}
+#apply_page .work_in_karo_block .vacancies_in_karo_block .vacancies_list {
+    line-height: 1.3
+}
+#apply_page .work_in_karo_block .vacancies_in_karo_block .vacancies_list a {
+    color: #cc3333;
+    font-weight: 300
+}
+#apply_page .confirmation_applicant_form_block.success_block .title {
+    margin-bottom: 38px
+}
+#apply_page .confirmation_applicant_form_block .confirmation_applicant_form {
+    padding: 35px 50px 50px;
+    background: url(/static-assets/images/background-white-opacity.png) repeat
+}
+#apply_page .confirmation_applicant_form_block .title {
+    font-size: 52px;
+    line-height: 62px;
+    margin-bottom: 23px
+}
+#apply_page .confirmation_applicant_form_block .confirmation_applicant_form_description {
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 22px
+}
+#apply_page .confirmation_applicant_form_block .confirmation_applicant_form_description.text_light {
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0
+}
+#apply_page .confirmation_applicant_form_block .sms_code_block {
+    text-align: center;
+    margin-bottom: 40px
+}
+#apply_page .confirmation_applicant_form_block .sms_code_block label {
+    width: auto
+}
+#apply_page .confirmation_applicant_form_block .sms_code_block .controls {
+    width: 130px;
+    margin-left: 20px
+}
+#apply_page .confirmation_applicant_form_block .sms_code_block .control-group {
+    display: inline-block;
+    padding-top: 10px
+}
+#apply_page .confirmation_applicant_form_block .sms_code_block .control-label,
+#apply_page .confirmation_applicant_form_block .sms_code_block .controls {
+    margin-bottom: 0
+}
+#apply_page .confirmation_applicant_form_block .sms_code_block .verification_error {
+    color: #cc3333;
+    font-size: 18px;
+    margin-bottom: 5px
+}
+#apply_page .confirmation_applicant_form_block .form-actions .btn {
+    color: #fff
+}
+#apply_page .confirmation_applicant_form_block .form-actions .btn:disabled {
+    background: #e7e7e7;
+    color: #989898
+}
+#apply_page .confirmation_applicant_form_block.success .confirmation_applicant_form_description {
+    margin-bottom: 0
+}
+.static_page {
+    background-image: url(/static-assets/images/background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    color: white;
+    padding-top: 1.3em
+}
+.static_page .header {
+    text-shadow: 1px 1px 0 black;
+    background: none;
+    border-bottom: none;
+    padding: 0
+}
+.static_page .header h1 {
+    font-size: 40px;
+    color: white;
+    font-weight: 300;
+    margin-bottom: 0.85em
+}
+.static_page .header img {
+    float: none;
+    margin: 0
+}
+.static_page .header .description {
+    font-size: 20px;
+    font-weight: 300
+}
+.static_page .header .menu {
+    margin-bottom: 3em;
+    padding: 0
+}
+.static_page .header .menu li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 12%
+}
+.static_page .header .menu li:first-child {
+    margin-left: 0
+}
+.static_page .header .menu li a {
+    text-shadow: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    border: 1px solid white;
+    margin: 1px;
+    min-height: 2.25em;
+    line-height: 2.25em;
+    width: 14.5em;
+    padding: 1px;
+    display: block
+}
+.static_page .header .menu li a:hover,
+.static_page .header .menu li a.active {
+    border-width: 2px;
+    padding: 0;
+    font-weight: 600
+}
+.static_page .wrapper {
+    background: none
+}
+.static_page .container.wrapper {
+    padding: 0
+}
+.static_page .development {
+    text-shadow: 1px 1px black;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em
+}
+.static_page .development a {
+    display: inline-block;
+    color: white;
+    font-size: 16px
+}
+.static_page .development a span {
+    float: left;
+    margin-right: 0.6em;
+    margin-top: 0.25em
+}
+.static_page .development a:hover {
+    cursor: pointer
+}
+.static_page .development a:hover span {
+    text-decoration: underline
+}
+.static_page .apply_page_link {
+    border: none;
+    display: block;
+    font-size: 20px;
+    min-height: 2.5em;
+    line-height: 2.5em;
+    text-transform: uppercase;
+    margin-bottom: 2.5em;
+    padding: 0;
+    background: #cc3333
+}
+.static_page .apply_page_link:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    background: #f25656
+}
+.static_page .apply_page_link:active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    background: #e43d3d
+}
+.static_page .apply_page_link.disabled {
+    background: #e7e7e7
+}
+.static_page .page_descr {
+    text-shadow: 1px 1px 0 black;
+    padding-bottom: 3em
+}
+.static_page .page_descr h1 {
+    margin-top: 0;
+    font-size: 40px;
+    color: white;
+    font-weight: 300;
+    line-height: 1.2em
+}
+.static_page .page_descr .description {
+    font-size: 20px;
+    color: white
+}
+.static_page .main_static_block {
+    background: url(/static-assets/images/background-white-opacity.png) repeat;
+    color: black;
+    padding: 2.5em;
+    font-size: 20px
+}
+.static_page .main_static_block div:last-child {
+    margin-bottom: 0
+}
+.static_page .main_static_block .main_descr {
+    margin-bottom: 2em
+}
+.static_page .main_static_block .dev {
+    color: white;
+    font-size: 16px;
+    text-shadow: 1px 1px 0 black
+}
+.static_page .main_static_block .static_page_label {
+    font-size: 40px;
+    font-weight: 300;
+    color: black;
+    line-height: 1.2em;
+    margin-bottom: 0.6em
+}
+.static_page .main_static_block .semibold_descr {
+    font-weight: 600;
+    margin-bottom: 2em
+}
+.static_page .main_static_block .with_images .descr_item {
+    padding-left: 3.45em
+}
+.static_page .main_static_block .with_images .descr_item.number_one {
+    background: url(/static-assets/images/icon-square-one.png) no-repeat 0 6px
+}
+.static_page .main_static_block .with_images .descr_item.number_two {
+    background: url(/static-assets/images/icon-square-two.png) no-repeat 0 6px
+}
+.static_page .main_static_block .with_images .descr_item.number_three {
+    background: url(/static-assets/images/icon-square-three.png) no-repeat 0 6px
+}
+.static_page .main_static_block .with_images .descr_item.icon_clock {
+    background: url(/static-assets/images/icon-clock.png) no-repeat 0 6px
+}
+.static_page .main_static_block .with_images .descr_item.icon_map_markers {
+    background: url(/static-assets/images/icon-map-markers.png) no-repeat 0 6px
+}
+.static_page .main_static_block .with_images .descr_item.icon_square_cap {
+    background: url(/static-assets/images/icon-square-cap.png) no-repeat 0 6px
+}
+.static_page .main_static_block .with_images .descr_item.icon_briefcase {
+    background: url(/static-assets/images/icon-briefcase.png) no-repeat 0 6px
+}
+.static_page .main_static_block .with_images .descr_item.icon_scales {
+    background: url(/static-assets/images/icon-scales.png) no-repeat 0 6px
+}
+.static_page .main_static_block .descr_item {
+    clear: both;
+    margin-bottom: 1.75em;
+    font-weight: 300
+}
+.static_page .main_static_block .descr_item.last {
+    margin-bottom: 0
+}
+.static_page .main_static_block .descr_item_title {
+    color: #cc3333;
+    font-weight: 600;
+    margin-bottom: 0.2em
+}
+#page_static_we_offer .main_static_block .apply_page_link {
+    margin-bottom: 1.5em
+}
+@media (max-width: 767px) {
+    #apply_page .form-group {
+        margin-bottom: 0
+    }
+    .static_page .header .menu {
+        margin-bottom: 0
+    }
+    .static_page .header .menu li {
+        margin-bottom: 2.3em
+    }
+    .static_page .header .menu li:last-child {
+        margin-left: 0
+    }
+    .static_page .development {
+        text-align: center
+    }
+    .static_page .development a {
+        display: inline-block
+    }
+    .static_page .development a span {
+        float: none;
+        margin-top: 0;
+        margin-right: 0
+    }
+    .static_page .development a img {
+        display: block;
+        margin: 0.5em auto 0
+    }
+}
+@media (max-width: 670px) {
+    #apply_page .new_applicant .apply_form,
+    #apply_page .new_applicant .confirmation_applicant_form {
+        padding: 2em
+    }
+    #apply_page .new_applicant .agreement label {
+        width: 89%
+    }
+    .static_page .header .menu {
+        margin-bottom: 0
+    }
+    .static_page .header .menu li {
+        margin: 0 2em 2.3em
+    }
+    .static_page .header .menu li:first-child,
+    .static_page .header .menu li:last-child {
+        margin-left: 2em
+    }
+    .static_page .main_static_block {
+        padding: 1.5em
+    }
+}
+@media (max-width: 510px) {
+    #apply_page .new_applicant .title {
+        font-size: 30px
+    }
+    #apply_page .new_applicant .confirmation_applicant_form_block .title {
+        line-height: 40px
+    }
+    #apply_page .new_applicant label,
+    #apply_page .new_applicant .controls {
+        float: none;
+        width: 100%
+    }
+    #apply_page .new_applicant .agreement .agreement_wrapper {
+        width: 100%;
+        margin-left: 0
+    }
+    #apply_page .new_applicant .agreement label {
+        width: 89%
+    }
+    #apply_page .new_applicant .phone_field.error label {
+        margin-bottom: 1.5em
+    }
+    #apply_page .new_applicant .phone_field .phone_full_number_wrapper {
+        width: 100%;
+        clear: both
+    }
+    #apply_page .new_applicant .place_work .row.expanded {
+        clear: both;
+        margin-bottom: 15px
+    }
+    #apply_page .new_applicant .place_work .row.expanded .controls .radio {
+        width: 98%;
+        clear: both
+    }
+    #apply_page .new_applicant .place_work .row.narrowed .applicant_city,
+    #apply_page .new_applicant .place_work .row.narrowed .applicant_subway_station,
+    #apply_page .new_applicant .place_work .row.narrowed .applicant_cinema,
+    #apply_page .new_applicant .place_work .row.narrowed .applicant_vacancy {
+        float: none;
+        width: 100%
+    }
+    #apply_page .new_applicant .place_work .row.narrowed .back_to_step_link {
+        clear: both
+    }
+    .static_page {
+        min-width: 320px
+    }
+    .static_page .header h1 {
+        font-size: 30px
+    }
+    .static_page .header .menu {
+        margin-bottom: 0
+    }
+    .static_page .header .menu li {
+        margin: 0 0 2em
+    }
+    .static_page .header .menu li:last-child,
+    .static_page .header .menu li:first-child {
+        margin-left: 0
+    }
+    .static_page .page_descr h1 {
+        font-size: 30px
+    }
+    .static_page .main_static_block {
+        font-size: 16px
+    }
+    .static_page .main_static_block .static_page_label {
+        font-size: 30px
+    }
+    .static_page .main_static_block .with_images .descr_item {
+        padding-left: 4.2em
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #apply_page .new_applicant .title {
+        font-size: 30px
+    }
+    #apply_page .new_applicant .confirmation_applicant_form_block .title {
+        line-height: 40px
+    }
+    #apply_page .new_applicant .confirmation_applicant_form_block .sms_code_block .controls {
+        float: none
+    }
+    #apply_page .new_applicant .apply_form {
+        padding: 2em
+    }
+    #apply_page .new_applicant .agreement .agreement_wrapper {
+        margin-left: 0
+    }
+    #apply_page .new_applicant .agreement label {
+        width: 85%
+    }
+    #apply_page .new_applicant label {
+        float: none;
+        width: 100%
+    }
+    #apply_page .new_applicant .controls {
+        float: none;
+        width: 100%
+    }
+    #apply_page .new_applicant .phone_field.error label {
+        margin-bottom: 1.5em
+    }
+    #apply_page .new_applicant .applicant_citizenship .controls .radio {
+        margin-left: 40px
+    }
+    #apply_page .new_applicant .applicant_citizenship .controls .radio:first-child {
+        margin-left: 0
+    }
+    #apply_page .new_applicant .place_work .row.expanded .controls .radio {
+        width: 98%
+    }
+    .static_page .header .menu {
+        margin-bottom: 0
+    }
+    .static_page .header .menu li {
+        margin-bottom: 2.3em
+    }
+    .static_page .header .menu li:last-child {
+        margin-left: 0
+    }
+    .static_page .main_static_block {
+        padding: 2em;
+        font-size: 16px
+    }
+    .static_page .main_static_block .static_page_label {
+        font-size: 30px
+    }
+    .static_page .main_static_block .with_images .descr_item {
+        padding-left: 4.2em
+    }
+}
+@media (min-width: 992px) and (max-width: 1279px) {
+    #apply_page .new_applicant .apply_form {
+        padding: 2em
+    }
+    #apply_page .new_applicant .agreement label {
+        width: 85%
+    }
+    #apply_page .work_in_karo_block .pluses_block .work_in_karo_item:nth-child(2n) {
+        float: right
+    }
+    .static_page .header .menu {
+        margin-bottom: 0
+    }
+    .static_page .header .menu li {
+        margin-bottom: 2.3em
+    }
+    .static_page .header .menu li:last-child {
+        margin-left: 0
+    }
+    .static_page .main_static_block {
+        padding: 1.5em
+    }
+}
+@media (min-width: 1279px) {
+    #apply_page .new_applicant .place_work {
+        margin-top: 40px
+    }
+    #apply_page .new_applicant .place_work .back_to_step_link {
+        margin-top: 5px
+    }
+    #apply_page .new_applicant .place_work .controls {
+        width: 100%;
+        float: none;
+        clear: both;
+        margin-bottom: 0
+    }
+    #apply_page .new_applicant .place_work .controls .radio input.radio_buttons {
+        display: none
+    }
+    #apply_page .new_applicant .place_work .row.narrowed {
+        float: left;
+        width: auto;
+        padding-left: 20px;
+        margin: 0 20px 10px 0;
+        border-left: 1px solid #aaaaaa;
+        border-bottom: 0;
+        padding-bottom: 0
+    }
+    #apply_page .new_applicant .place_work .row.narrowed.applicant_city_row {
+        border-left: none;
+        padding-left: 0;
+        max-width: 155px
+    }
+    #apply_page .new_applicant .place_work .row.narrowed.applicant_subway_station_row {
+        max-width: 190px
+    }
+    #apply_page .new_applicant .place_work .row.narrowed.applicant_subway_station_row+.applicant_cinema_row.expanded {
+        max-width: 200px;
+        clear: none;
+        border-left: 1px solid #aaaaaa;
+        padding-left: 20px
+    }
+    #apply_page .new_applicant .place_work .row.narrowed.applicant_subway_station_row+.applicant_cinema_row.expanded .control-label {
+        line-height: 1
+    }
+    #apply_page .new_applicant .place_work .row.narrowed.applicant_subway_station_row+.applicant_cinema_row.expanded .radio {
+        width: 98%;
+        padding-right: 2%;
+        clear: both
+    }
+    #apply_page .new_applicant .place_work .row.narrowed.applicant_cinema_row {
+        max-width: 220px;
+        margin-right: 0
+    }
+    #apply_page .new_applicant .place_work .row.narrowed label {
+        float: none;
+        width: auto
+    }
+    #apply_page .new_applicant .place_work .row.narrowed .control-label {
+        margin-bottom: 14px;
+        width: auto
+    }
+    #apply_page .new_applicant .place_work .row.narrowed .controls {
+        float: none;
+        width: auto
+    }
+    #apply_page .new_applicant .place_work .row.expanded {
+        clear: both;
+        float: left;
+        width: 100%
+    }
+    #apply_page .new_applicant .place_work .row.expanded .radio_buttons .controls .radio {
+        float: left;
+        width: 32%;
+        padding-right: 1.33%
+    }
+    #apply_page .new_applicant .place_work .row.expanded .radio_buttons .controls .radio.odd {
+        clear: none
+    }
+    #apply_page .new_applicant .place_work .row.expanded .radio_buttons .controls .radio.third_line_start {
+        clear: none
+    }
+    #apply_page .new_applicant .place_work .row.expanded.applicant_city_row {
+        float: none;
+        border-left: none;
+        padding-left: 0
+    }
+    #apply_page .new_applicant .place_work .row.expanded.applicant_cinema_row .controls .radio {
+        float: left;
+        width: 48%;
+        padding-right: 2%;
+        margin: 0 0 10px
+    }
+    #apply_page .new_applicant .applicant_citizenship .controls .radio {
+        margin-left: 40px
+    }
+    #apply_page .new_applicant .applicant_citizenship .controls .radio:first-child {
+        margin-left: 0
+    }
+    #apply_page .work_in_karo_block .pluses_block .work_in_karo_item:nth-child(2n) {
+        float: right
+    }
+}
+/* /static_pages */
+
+
+
+body {
+    font-family: "Open Sans", sans-serif !important;
+}
+
+.tooltip {
+    font-family: "Open Sans", sans-serif !important;
+}
+
+.popover {
+    font-family: "Open Sans", sans-serif !important;
+}
+
+
+
+/* form */
+.form-group .controls p {
+	margin: 0;
+}
+div.required label.control-label:after {
+	content: " *";
+	color: red;
+}
+div.checkbox label:after {
+	content: "" !important;
+}
+/* /form */
+
+
+
+

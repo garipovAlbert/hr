@@ -42,6 +42,10 @@ class RbacController extends Controller
         $manageObjects = $auth->createPermission(Rbac::TASK_MANAGE_OBJECTS);
         $auth->add($manageObjects);
 
+        // manage objects
+        $deleteApplicant = $auth->createPermission(Rbac::TASK_DELETE_APPLICANT);
+        $auth->add($deleteApplicant);
+
 
 
         /* Roles */
@@ -52,6 +56,7 @@ class RbacController extends Controller
         $auth->addChild($roleAdmin, $showBackend);
         $auth->addChild($roleAdmin, $manageAccount);
         $auth->addChild($roleAdmin, $manageObjects);
+        $auth->addChild($roleAdmin, $deleteApplicant);
 
         // controller
         $roleController = $auth->createRole(Account::ROLE_CONTROLLER);

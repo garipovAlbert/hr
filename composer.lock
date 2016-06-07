@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e9d14f70279937da7804ab577818a24a",
-    "content-hash": "ee4aa95ed459f86b9fe5d2402e6bc862",
+    "hash": "ad5f52ffc3b3897e38da06104d5aa49c",
+    "content-hash": "a2b86a8bbb492934ece95b9c964bc890",
     "packages": [
         {
             "name": "2amigos/yii2-dosamigos-asset-bundle",
@@ -140,6 +140,50 @@
             "time": "2014-12-17 09:28:22"
         },
         {
+            "name": "alexgx/yii2-phpexcel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AlexGx/yii2-phpexcel.git",
+                "reference": "5078b80e6db5e921299c7ca99b785cd2e713c7f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AlexGx/yii2-phpexcel/zipball/5078b80e6db5e921299c7ca99b785cd2e713c7f2",
+                "reference": "5078b80e6db5e921299c7ca99b785cd2e713c7f2",
+                "shasum": ""
+            },
+            "require": {
+                "phpoffice/phpexcel": "1.8.1",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "alexgx\\phpexcel\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Gubarev",
+                    "email": "gubarev.alex@gmail.com",
+                    "homepage": "http://actionmedia-labs.net"
+                }
+            ],
+            "description": "PhpExcel component extension for Yii2.",
+            "keywords": [
+                "PHPExcel",
+                "component",
+                "extension",
+                "yii"
+            ],
+            "time": "2016-04-07 08:24:10"
+        },
+        {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.5",
             "source": {
@@ -186,6 +230,45 @@
                 "mobile-first",
                 "responsive",
                 "web"
+            ]
+        },
+        {
+            "name": "bower-asset/drmonty-chosen",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrohnstock/chosen.git",
+                "reference": "932c3a5aca9c4f45b8c89ae5b77e72566b2e7f57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrohnstock/chosen/zipball/932c3a5aca9c4f45b8c89ae5b77e72566b2e7f57",
+                "reference": "932c3a5aca9c4f45b8c89ae5b77e72566b2e7f57",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.4.4"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "js/chosen.jquery.js",
+                "bower-asset-ignore": [
+                    "component.json",
+                    "package.json",
+                    "composer.json"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Chosen is a library for making long, unwieldy select boxes more friendly.",
+            "keywords": [
+                "dropdown",
+                "form",
+                "input",
+                "multiselect",
+                "select",
+                "ui"
             ]
         },
         {
@@ -2091,6 +2174,51 @@
             "time": "2015-12-05 10:37:16"
         },
         {
+            "name": "moonlandsoft/yii2-phpexcel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moonlandsoft/yii2-phpexcel.git",
+                "reference": "2e10fed15fc2f7457bd904dc0afdac7aff0c3ba1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moonlandsoft/yii2-phpexcel/zipball/2e10fed15fc2f7457bd904dc0afdac7aff0c3ba1",
+                "reference": "2e10fed15fc2f7457bd904dc0afdac7aff0c3ba1",
+                "shasum": ""
+            },
+            "require": {
+                "phpoffice/phpexcel": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "moonland\\phpexcel\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Moh Khoirul Anam",
+                    "email": "moh.khoirul.anaam@gmail.com"
+                }
+            ],
+            "description": "Exporting PHP to Excel or Importing Excel to PHP",
+            "keywords": [
+                "excel",
+                "export",
+                "extension",
+                "import",
+                "xls",
+                "yii2"
+            ],
+            "time": "2016-03-11 04:49:37"
+        },
+        {
             "name": "mpdf/mpdf",
             "version": "v6.1.1",
             "source": {
@@ -2140,6 +2268,63 @@
                 "utf-8"
             ],
             "time": "2016-04-28 18:19:01"
+        },
+        {
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2015-05-01 07:00:55"
         },
         {
             "name": "setasign/fpdi",
@@ -2304,6 +2489,46 @@
                 "yii2"
             ],
             "time": "2015-12-10 21:16:23"
+        },
+        {
+            "name": "yii2mod/yii2-chosen-select",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yii2mod/yii2-chosen-select.git",
+                "reference": "4f886172a14d9b481fed6f2c0e54ef8d8add7a7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yii2mod/yii2-chosen-select/zipball/4f886172a14d9b481fed6f2c0e54ef8d8add7a7c",
+                "reference": "4f886172a14d9b481fed6f2c0e54ef8d8add7a7c",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/drmonty-chosen": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii2mod\\chosen\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Chepurnoy",
+                    "email": "igorzfort@gmail.com"
+                }
+            ],
+            "description": "Chosen Select Widget based on Chosen jQuery plugin",
+            "keywords": [
+                "module",
+                "yii2"
+            ],
+            "time": "2016-05-13 13:31:33"
         },
         {
             "name": "yiisoft/yii2",
@@ -2867,7 +3092,9 @@
         "kartik-v/yii2-builder": 20,
         "kartik-v/yii2-editable": 20,
         "kartik-v/yii2-checkbox-x": 20,
-        "kartik-v/yii2-date-range": 20
+        "kartik-v/yii2-date-range": 20,
+        "alexgx/yii2-phpexcel": 20,
+        "moonlandsoft/yii2-phpexcel": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

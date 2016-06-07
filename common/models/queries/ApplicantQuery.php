@@ -29,4 +29,14 @@ class ApplicantQuery extends ActiveQuery
         return parent::one($db);
     }
 
+    /**
+     * @param string $status
+     * @return static
+     */
+    public function status($status)
+    {
+        $this->andWhere(['status' => $status]);
+        return $this;
+    }
+
 }

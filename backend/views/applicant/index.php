@@ -1,20 +1,22 @@
 <?php
 
-use backend\components\ButtonGroupColumn;
-use backend\widgets\ActionButton;
 use common\models\Applicant;
 use common\models\Cinema;
 use common\models\Citizenship;
 use common\models\City;
 use common\models\search\ApplicantSearch;
 use common\models\Vacancy;
+use common\Rbac;
 use common\widgets\Alert;
+use common\widgets\Embedjs;
+use kartik\grid\CheckboxColumn;
 use kartik\grid\GridView;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
+use yii\widgets\DetailView;
 
 /* @var $this View */
 /* @var $provider ActiveDataProvider */
@@ -23,6 +25,8 @@ use yii\widgets\Breadcrumbs;
 
 
 $this->context->layout = 'base';
+
+$statusList = Applicant::statusList();
 ?>
 
 <div class="container">
@@ -40,6 +44,30 @@ $this->context->layout = 'base';
         <h2><?= Yii::t('app', 'Applications') ?></h2>
         <br/>
 
+        <?php
+        $statuses = [
+            Applicant::STATUS_HIRED,
+            Applicant::STATUS_DECLINED,
+            Applicant::STATUS_INVITED,
+            Applicant::STATUS_NEW,
+            Applicant::STATUS_CALL,
+            Applicant::STATUS_UNCONFIRMED,
+        ];
+        ?>
+        <table class="" style="width:400px">
+            <tr>
+                <td style="width:250px">
+                    <?= Yii::t('app', 'Total applications found') ?>
+                </td>
+                <td><?= Applicant::find()->count() ?></td>
+            </tr>
+            <?php foreach ($statuses as $status): ?>
+                <tr>
+                    <td><?= $statusList[$status] ?></td>
+                    <td><?= Applicant::find()->status($status)->count() ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
 
     </div>
 
@@ -48,14 +76,53 @@ $this->context->layout = 'base';
 <div class="container-fluid">
 
     <div class="col-md-12 content-area">
+
+        <p class="clearfix">
+            <?= Html::beginForm('', 'post', ['id' => 'checked-form']) ?>
+            <?=
+            Html::submitButton(Yii::t('app', 'Fast Decline'), [
+                'class' => 'btn btn-warning js-checked-button js-decline-all',
+                'style' => 'margin-right: 10px',
+                'name' => 'decline',
+                'value' => '1',
+                'disabled' => 'disabled',
+            ])
+            ?>
+
+            <?php if (Yii::$app->user->can(Rbac::TASK_DELETE_APPLICANT)): ?>
+                <?=
+                Html::submitButton(Yii::t('yii', 'Delete'), [
+                    'class' => 'btn btn-danger js-checked-button js-delete-all',
+                    'style' => 'margin-right: 10px',
+                    'name' => 'delete',
+                    'value' => '1',
+                    'disabled' => 'disabled',
+                ])
+                ?>
+            <?php endif; ?>
+
+            <?=
+            Html::submitButton(Yii::t('app', 'Export'), [
+                'class' => 'btn btn-primary',
+                'style' => 'margin-right: 10px',
+                'name' => 'export',
+                'value' => '1',
+            ])
+            ?>
+
+        </p>
+        <?= Html::endForm() ?>
+
+
         <!-- grid -->
         <?php
         $citizenshipList = Citizenship::getList();
         $vacancyList = Vacancy::getList();
 
-        $statusList = Applicant::statusList();
+
 
         echo GridView::widget([
+            'id' => 'applicant-grid',
             'dataProvider' => $provider,
             'filterModel' => $searchModel,
             'condensed' => true,
@@ -65,10 +132,17 @@ $this->context->layout = 'base';
                 'style' => 'font-size:90%',
             ],
             'columns' => [
-//                [
-//                    'class' => CheckboxColumn::className(),
-//                    'rowSelectedClass' => GridView::TYPE_INFO,
-//                ],
+                [
+                    'class' => CheckboxColumn::className(),
+                    'rowSelectedClass' => GridView::TYPE_INFO,
+                    'checkboxOptions' => function() {
+                        return [
+                            'class' => 'selection-checkbox',
+                            'form' => 'checked-form',
+                        ];
+                    },
+                    'headerOptions' => ['class' => 'kartik-sheet-style'],
+                ],
                 [
                     'attribute' => 'id',
                     'width' => '60px',
@@ -159,15 +233,7 @@ $this->context->layout = 'base';
                         return ArrayHelper::getValue($statusList, $model->status);
                     },
                     'contentOptions' => function(Applicant $model) {
-                        $class = strtr($model->status, [
-                            Applicant::STATUS_NEW => 'bg-success',
-                            Applicant::STATUS_HIRED => 'bg-primary',
-                            Applicant::STATUS_INVITED => 'bg-info',
-                            Applicant::STATUS_DECLINED => 'bg-danger',
-                            Applicant::STATUS_UNCONFIRMED => 'bg-warning',
-                            Applicant::STATUS_CALL => 'bg-info',
-                        ]);
-
+                        $class = strtr($model->status, Applicant::statusToCssClass());
                         return [
                             'class' => $class,
                         ];
@@ -182,58 +248,46 @@ $this->context->layout = 'base';
                     ],
                     'width' => '230px',
                 ],
-                [
-                    'class' => ButtonGroupColumn::className(),
-                    'header' => false,
-                    'template' => '{decline}',
-                    'buttons' => [
-                        'decline' => function($url, $model, $key) {
-                            $options = [
-                                'title' => Yii::t('yii', 'Fast Decline'),
-                                'aria-label' => Yii::t('yii', 'Fast Decline'),
-                                'data-confirm' => Yii::t('yii', 'Are you sure you want to decline this application?'),
-                                'data-method' => 'post',
-                                'data-pjax' => '1',
-                            ];
-
-                            return ActionButton::widget([
-                                'url' => $url,
-                                'options' => $options,
-                                'type' => 'warning xs',
-                                'label' => Yii::t('app', 'Fast Decline'),
-                            ]);
-                        },
-                    ],
-                    'width' => '130px',
-                ],
-                [
-                    'class' => ButtonGroupColumn::className(),
-                    'header' => false,
-                    'template' => '{delete}',
-                    'buttons' => [
-                        'delete' => function($url, $model, $key) {
-                            $options = [
-                                'title' => Yii::t('yii', 'Delete'),
-                                'aria-label' => Yii::t('yii', 'Delete'),
-                                'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                                'data-method' => 'post',
-                                'data-pjax' => '0',
-                            ];
-
-                            return ActionButton::widget([
-                                'url' => $url,
-                                'options' => $options,
-                                'type' => 'danger xs',
-                                'label' => Yii::t('yii', 'Delete'),
-                            ]);
-                        },
-                    ],
-                    'width' => '100px',
-                ],
             ],
         ]);
         ?>
         <!-- /grid -->
+
+        <?php
+        Embedjs::begin([
+            'data' => [
+                'deleteMessage' => Yii::t('app', 'Are you sure you want to delete selected items?'),
+                'declineMessage' => Yii::t('app', 'Are you sure you want to decline selected applications?'),
+            ],
+        ])
+        ?>
+        <script>
+            var refreshButtonsState = function (keys) {
+                console.log(keys);
+                if (keys.length) {
+                    $('.js-checked-button').removeAttr('disabled');
+                } else {
+                    $('.js-checked-button').attr('disabled', 'disabled');
+                }
+            };
+
+            $('#applicant-grid').on('click', 'input[type=checkbox]', function () {
+                setTimeout(function () {
+                    var keys = $('#applicant-grid').yiiGridView('getSelectedRows');
+
+                    refreshButtonsState(keys);
+                }, 10);
+            });
+
+            $('.js-delete-all').click(function (e) {
+                !confirm(data.deleteMessage) && e.preventDefault();
+            });
+
+            $('.js-decline-all').click(function () {
+                !confirm(data.declineMessage) && e.preventDefault();
+            });
+        </script>
+        <?php Embedjs::end() ?>
 
 
     </div>

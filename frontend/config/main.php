@@ -8,7 +8,7 @@ $params = call_user_func_array('array_merge', [
 
 return [
     'class' => 'frontend\components\Application',
-    'name' => 'Karo HR',
+    'name' => 'Karo Film HR Online System',
     'sourceLanguage' => 'en-US',
     'language' => 'ru-RU',
     'id' => 'app-frontend',
@@ -47,6 +47,14 @@ return [
         ],
         'session' => [
             'name' => 'karohr_' . YII_ENV,
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    // use own bootstrap css
+                    'css' => [],
+                ],
+            ],
         ],
     ],
     'params' => $params,

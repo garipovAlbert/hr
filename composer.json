@@ -27,7 +27,10 @@
         "kartik-v/yii2-date-range": "@dev",
         "2amigos/yii2-grid-view-library": "*",
         "kartik-v/yii2-widget-select2": "1.*",
-        "vova07/yii2-imperavi-widget": "*"
+        "vova07/yii2-imperavi-widget": "*",
+        "alexgx/yii2-phpexcel": "@dev",
+        "moonlandsoft/yii2-phpexcel": "@dev",
+        "yii2mod/yii2-chosen-select": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
