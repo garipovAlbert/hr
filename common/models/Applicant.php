@@ -12,6 +12,8 @@ use yii\helpers\ArrayHelper;
 /**
  * @author Albert Garipov <bert320@gmail.com>
  * @property-read string $formattedPhone
+ * 
+ * @see ApplicantQuery
  */
 class Applicant extends BaseApplicant
 {
@@ -207,18 +209,19 @@ class Applicant extends BaseApplicant
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
+            'name' => Yii::t('app', 'Applicant Name'),
             'citizenshipId' => Yii::t('app', 'Citizenship'),
             'vacancyId' => Yii::t('app', 'Vacancy'),
             'cinemaId' => Yii::t('app', 'Cinema'),
             'cityId' => Yii::t('app', 'City'),
+            'metroId' => Yii::t('app', 'Metro'),
             'status' => Yii::t('app', 'Status'),
             'firstName' => Yii::t('app', 'First Name'),
             'lastName' => Yii::t('app', 'Last Name'),
             'age' => Yii::t('app', 'Age'),
             'phone' => Yii::t('app', 'Phone'),
             'email' => 'E-mail',
-            'info' => Yii::t('app', 'Info'),
+            'info' => Yii::t('app', 'Applicant Info'),
             'updatedBy' => Yii::t('app', 'Updated By'),
             'createdAt' => Yii::t('app', 'Date'),
             'updatedAt' => Yii::t('app', 'Updated At'),

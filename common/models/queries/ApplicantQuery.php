@@ -23,7 +23,12 @@ class ApplicantQuery extends ActiveQuery
             $account = Account::current();
             if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
                 $ids = $account->getCinemas()->column();
-                $this->andWhere(['in', 'applicant.id', $ids]);
+                $this->andWhere([
+                    'or',
+                    ['in', 'applicant.id', $ids],
+                    // older than 24 hours ago
+                    ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
+                ]);
             }
         }
     }

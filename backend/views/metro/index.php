@@ -122,7 +122,7 @@ echo GridView::widget([
         ],
         [
             /* Metro */
-            'header' => Yii::t('app', 'Metro'),
+            'header' => Yii::t('app', 'Cinemas'),
             'value' => function($model) {
                 return ViewHelper::getMultipleLabel($model->cinemas);
             },

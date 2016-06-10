@@ -99,6 +99,8 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
+                $model->status = Applicant::STATUS_NEW;
+                $model->save(false);
                 return $this->render('index-success');
             }
         }

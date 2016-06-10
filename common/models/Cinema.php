@@ -74,12 +74,12 @@ class Cinema extends BaseCinema
      */
     public function attributeLabels()
     {
-        return [
+        return array_replace(parent::attributeLabels(), [
             'id' => Yii::t('app', 'ID'),
             'cityId' => Yii::t('app', 'City'),
             'metroIds' => Yii::t('app', 'Metro'),
             'metroIdsString' => Yii::t('app', 'Metro'),
-        ];
+        ]);
     }
 
     public function getMetroLabels()

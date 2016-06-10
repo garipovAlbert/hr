@@ -59,7 +59,7 @@ return [
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'sourceLanguage' => 'en-US',
-                    'basePath' => '@app/messages',
+                    'basePath' => '@backend/messages',
                     'forceTranslation' => true,
                 ],
             ],

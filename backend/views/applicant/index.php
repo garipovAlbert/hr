@@ -16,7 +16,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
-use yii\widgets\DetailView;
 
 /* @var $this View */
 /* @var $provider ActiveDataProvider */
@@ -256,7 +255,7 @@ $statusList = Applicant::statusList();
         <?php
         Embedjs::begin([
             'data' => [
-                'deleteMessage' => Yii::t('app', 'Are you sure you want to delete selected items?'),
+                'deleteMessage' => Yii::t('app', 'Are you sure you want to delete selected applications?'),
                 'declineMessage' => Yii::t('app', 'Are you sure you want to decline selected applications?'),
             ],
         ])

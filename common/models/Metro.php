@@ -68,10 +68,10 @@ class Metro extends BaseMetro
      */
     public function attributeLabels()
     {
-        return [
+        return array_replace(parent::attributeLabels(), [
             'id' => Yii::t('app', 'ID'),
             'cityId' => Yii::t('app', 'City'),
-        ];
+        ]);
     }
 
 }

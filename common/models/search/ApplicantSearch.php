@@ -42,7 +42,7 @@ class ApplicantSearch extends Applicant
             [
                 [
                     'id', 'name', 'email', 'cityId', 'cinemaId', 'vacancyId', 'citizenshipId',
-                    'status', 'createdAt',
+                    'status', 'createdAt', 'age',
                 ],
                 'safe',
             ],

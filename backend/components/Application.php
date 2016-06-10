@@ -40,6 +40,7 @@ class Application extends baseApplication
     {
         if (Yii::$app->user->getIsGuest()) {
             Yii::$app->user->loginRequired();
+            Yii::$app->end();
         } else {
             Yii::$app->controller->layout = 'blank';
             throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));

@@ -138,6 +138,8 @@ class Account extends BaseAccount implements IdentityInterface
         return array_replace(parent::attributeLabels(), [
             'cinemaIds' => Yii::t('app', 'Cinemas'),
             'cinemaIdsString' => Yii::t('app', 'Cinemas'),
+            'role' => Yii::t('app', 'Account Role'),
+            'position' => Yii::t('app', 'Job Position'),
         ]);
     }
 

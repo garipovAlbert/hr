@@ -72,11 +72,11 @@ class Vacancy extends BaseVacancy
      */
     public function attributeLabels()
     {
-        return [
+        return array_replace(parent::attributeLabels(), [
             'id' => Yii::t('app', 'ID'),
             'cinemaIds' => Yii::t('app', 'Cinemas'),
             'cinemaIdsString' => Yii::t('app', 'Cinemas'),
-        ];
+        ]);
     }
 
     /**

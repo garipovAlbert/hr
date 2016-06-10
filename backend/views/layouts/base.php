@@ -44,7 +44,7 @@ if ($module instanceof Application) {
         ];
 
         $menuItems[] = [
-            'label' => Yii::t('app', 'Manage Accounts'),
+            'label' => Yii::t('app', 'Account management'),
             'url' => ['/account/default/index'],
             'active' => "$mId" === 'account',
             'visible' => Yii::$app->user->can(Rbac::TASK_MANAGE_ACCOUNT),
@@ -55,27 +55,27 @@ if ($module instanceof Application) {
             'visible' => Yii::$app->user->can(Rbac::TASK_MANAGE_OBJECTS),
             'items' => [
                 [
-                    'label' => Yii::t('app', 'Cinema'),
+                    'label' => Yii::t('app', 'Cinema #accusative#'),
                     'url' => ['/cinema'],
                     'active' => "/$mId/$cId" === '//cinema',
                 ],
                 [
-                    'label' => Yii::t('app', 'Vacancy'),
+                    'label' => Yii::t('app', 'Vacancy #accusative#'),
                     'url' => ['/vacancy'],
                     'active' => "/$mId/$cId" === '//vacancy',
                 ],
                 [
-                    'label' => Yii::t('app', 'City'),
+                    'label' => Yii::t('app', 'City #accusative#'),
                     'url' => ['/city'],
                     'active' => "/$mId/$cId" === '//city',
                 ],
                 [
-                    'label' => Yii::t('app', 'Metro'),
+                    'label' => Yii::t('app', 'Metro #accusative#'),
                     'url' => ['/metro'],
                     'active' => "/$mId/$cId" === '//metro',
                 ],
                 [
-                    'label' => Yii::t('app', 'Citizenship'),
+                    'label' => Yii::t('app', 'Citizenship #accusative#'),
                     'url' => ['/citizenship'],
                     'active' => "/$mId/$cId" === '//citizenship',
                 ],
