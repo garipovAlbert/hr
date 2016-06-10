@@ -36,7 +36,7 @@ $this->params['breadcrumbs'] = [
                     'inputType' => Editable::INPUT_SELECT2,
                     'displayValue' => ArrayHelper::getValue(Applicant::statusList(), $model->status),
                     'options' => [
-                        'data' => v(Applicant::statusList()),
+                        'data' => Applicant::statusList(),
                         'pluginOptions' => [
                             'allowClear' => true,
                         ],
