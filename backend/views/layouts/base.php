@@ -27,7 +27,8 @@ if ($module instanceof Application) {
 
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::t('app', 'Karo HR Backend'),
+        'brandLabel' => 'KARO D.R.S.',
+        'brandOptions' => ['class' => 'karo-logo'],
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',

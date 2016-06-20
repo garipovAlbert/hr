@@ -64,6 +64,7 @@ return [
     'Job Position' => 'Должность',
     'Username' => 'Имя пользователя',
     // application / applicant
+    'Application' => 'Анкета',
     'Applications' => 'Анкеты кандидатов',
     'Total applications found' => 'Всего найдено анкет',
     'Fast Decline' => 'Быстрый отказ',

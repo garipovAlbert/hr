@@ -22,12 +22,19 @@ class ApplicantQuery extends ActiveQuery
         if (Yii::$app instanceof backendApplication && Account::current()) {
             $account = Account::current();
             if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
-                $ids = $account->getCinemas()->column();
+                $relatedCinemaIds = $account->getRelatedCinemaIds();
+                $cityCinemaIds = $account->getCityCinemaIds();
+
                 $this->andWhere([
                     'or',
-                    ['in', 'applicant.id', $ids],
-                    // older than 24 hours ago
-                    ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
+                    ['in', 'applicant.cinemaId', $relatedCinemaIds],
+                    [
+                        // show to other cinema managers in city 
+                        // if the application has been sent more than 24 hours ago
+                        'and',
+                        ['in', 'applicant.cinemaId', $cityCinemaIds],
+                        ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
+                    ],
                 ]);
             }
         }

@@ -99,6 +99,18 @@ class Applicant extends BaseApplicant
     }
 
     /**
+     * Statuses allowed to be set by user.
+     * @return array
+     */
+    public static function statusListSet()
+    {
+        $statuses = static::statusList();
+        unset($statuses[self::STATUS_UNCONFIRMED]);
+
+        return $statuses;
+    }
+
+    /**
      * @inheritdoc
      */
     public function scenarios()
@@ -132,6 +144,12 @@ class Applicant extends BaseApplicant
             ],
             [['firstName', 'lastName'], 'string', 'max' => 255],
             [['firstName', 'lastName'], 'filter', 'filter' => 'trim'],
+            [
+                ['firstName', 'lastName'],
+                'match',
+                'pattern' => '/[А-ЯЁа-яё\s\-]/',
+                'message' => Yii::t('app', 'Only cyrillic symbols allowed'),
+            ],
             ['age', 'integer'],
             ['email', 'email'],
             ['phone', 'integer'],
@@ -154,6 +172,7 @@ class Applicant extends BaseApplicant
             ['confirmationInput', 'filter', 'filter' => 'trim'],
             ['confirmationInput', 'required'],
             ['confirmationInput', 'validateConfirmation'],
+            ['status', 'in', 'range' => array_keys(static::statusListSet())],
         ];
     }
 

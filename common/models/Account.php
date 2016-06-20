@@ -10,6 +10,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 /**
@@ -274,6 +275,40 @@ class Account extends BaseAccount implements IdentityInterface
     public function setCinemaIdsString($string)
     {
         $this->cinemaIds = explode(',', $string);
+    }
+
+    private $_relatedCinemaIds;
+    private $_cityCinemaIds;
+
+    /**
+     * @param boolean $refresh
+     * @return array
+     */
+    public function getRelatedCinemaIds($refresh = false)
+    {
+        if ($this->_relatedCinemaIds === null || $refresh) {
+            $this->_relatedCinemaIds = ArrayHelper::getColumn($this->cinemas, 'id');
+        }
+
+        return $this->_relatedCinemaIds;
+    }
+
+    /**
+     * @param boolean $refresh
+     * @return array
+     */
+    public function getCityCinemaIds($refresh = false)
+    {
+        if ($this->_cityCinemaIds === null || $refresh) {
+            $cityIds = array_unique(ArrayHelper::getColumn($this->cinemas, 'city.id'));
+
+            $this->_cityCinemaIds = Cinema::find()
+            ->andWhere(['in', 'cityId', $cityIds])
+            ->select('id')
+            ->column();
+        }
+
+        return $this->_cityCinemaIds;
     }
 
 }

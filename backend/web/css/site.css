@@ -128,10 +128,21 @@ a.desc:after {
 	height: 100%;
 }
 
+.karo-logo
+{
+	background-image: url(logo-white.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	text-indent: 130px;
+}
+
+.navbar {
+	background: #1B2226;
+}
+
 .nav .active {
 	background: #eee;
 }
-
 
 .nav .active {
 	background: #eee;

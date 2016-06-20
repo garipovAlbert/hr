@@ -55,10 +55,10 @@ $statusList = Applicant::statusList();
         ?>
         <table class="" style="width:400px">
             <tr>
-                <td style="width:250px">
+                <th style="width:250px">
                     <?= Yii::t('app', 'Total applications found') ?>
-                </td>
-                <td><?= Applicant::find()->count() ?></td>
+                </th>
+                <th><?= Applicant::find()->count() ?></th>
             </tr>
             <?php foreach ($statuses as $status): ?>
                 <tr>
@@ -172,7 +172,7 @@ $statusList = Applicant::statusList();
                 ],
                 [
                     'attribute' => 'age',
-                    'width' => '80px',
+                    'width' => '40px',
                 ],
                 [
                     'attribute' => 'citizenshipId',
@@ -185,7 +185,7 @@ $statusList = Applicant::statusList();
                             'allowClear' => true,
                         ],
                     ],
-                    'width' => '170px',
+                    'width' => '120px',
                 ],
                 [
                     'attribute' => 'vacancyId',
@@ -198,7 +198,7 @@ $statusList = Applicant::statusList();
                             'allowClear' => true,
                         ],
                     ],
-                    'width' => '170px',
+                    'width' => '150px',
                 ],
                 [
                     'attribute' => 'cityId',
@@ -211,7 +211,7 @@ $statusList = Applicant::statusList();
                             'allowClear' => true,
                         ],
                     ],
-                    'width' => '200px',
+                    'width' => '160px',
                 ],
                 [
                     'attribute' => 'cinemaId',

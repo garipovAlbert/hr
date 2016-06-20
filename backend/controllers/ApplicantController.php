@@ -45,11 +45,11 @@ class ApplicantController extends Controller
             'editable' => [
                 'class' => EditableColumnAction::className(),
                 'modelClass' => Applicant::className(),
-//                'findModel' => function ($id, \yii\base\Action $action) {
-//                    $model = $action->controller->findModel($id);
-//                    $model->scenario = Applicant::SCENARIO_PROCESS;
-//                    return $model;
-//                },
+                'findModel' => function ($id, \yii\base\Action $action) {
+                    $model = $action->controller->findModel($id);
+                    $model->scenario = Applicant::SCENARIO_PROCESS;
+                    return $model;
+                },
                 'outputValue' => function (Applicant $model, $attribute, $key, $index) {
                     if ($attribute === 'status') {
                         return ArrayHelper::getValue(Applicant::statusList(), $model->status);

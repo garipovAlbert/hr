@@ -3,6 +3,7 @@
 use common\models\Applicant;
 use kartik\editable\Editable;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $model Applicant */
@@ -19,13 +20,15 @@ $this->params['breadcrumbs'] = [
 ?>
 
 
+<h2><?= Yii::t('app', 'Application') ?>. <?= Html::encode($model->name) ?></h2>
+<br/>
+
 <div style="max-width: 900px">
     <?php
     echo DetailView::widget([
         'model' => $model,
         'template' => '<tr><th style="width:150px">{label}</th><td>{value}</td></tr>',
         'attributes' => [
-            'name',
             [
                 'attribute' => 'status',
                 'format' => 'raw',
@@ -36,7 +39,7 @@ $this->params['breadcrumbs'] = [
                     'inputType' => Editable::INPUT_SELECT2,
                     'displayValue' => ArrayHelper::getValue(Applicant::statusList(), $model->status),
                     'options' => [
-                        'data' => Applicant::statusList(),
+                        'data' => Applicant::statusListSet(),
                         'pluginOptions' => [
                             'allowClear' => true,
                         ],
@@ -59,8 +62,16 @@ $this->params['breadcrumbs'] = [
                 'attribute' => 'citizenship.name',
                 'label' => Yii::t('app', 'Citizenship'),
             ],
-            'formattedPhone',
-            'email',
+            [
+                'attribute' => 'formattedPhone',
+                'value' => Html::a(Html::encode($model->formattedPhone), 'tel:' . $model->formattedPhone),
+                'format' => 'raw',
+            ],
+            [
+                'attribute' => 'email',
+                'value' => Html::a(Html::encode($model->email), 'mailto:' . $model->email),
+                'format' => 'raw',
+            ],
             'info',
         ],
     ])
