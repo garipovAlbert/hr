@@ -9,13 +9,6 @@ use yii\web\View;
 ?>
 
 <div class="new_applicant">
-    <div class="container">
-        <div class="page_descr">
-            <div class="row text-center">
-                <h1 class="second_label">Заполни анкету прямо сейчас!</h1></div>
-            <div class="row text-center description">Если вы молоды, энергичны и любите кино, приходите работать и строить свою карьеру в КАРО!</div>
-        </div>
-    </div>
     <div class="confirmation_applicant_form_block success_block row">
         <div class="container">
             <div class="col-lg-8 col-md-8 col-sm-8">

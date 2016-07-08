@@ -5,31 +5,68 @@ use yii\web\View;
 /* @var $this View */
 ?>
 
-<div class="container">
-    <div class="page_descr">
-        <div class="row text-center">
-            <h1 class="second_label">КАРО — крупнейшая в России сеть кинотеатров.</h1></div>
-        <div class="row text-center description">Создана в июле 1997 года и представленная более 30 кинотеатрами.</div>
-    </div>
-</div>
-<div class="container">
-    <div class="col-lg-8 col-md-8 col-sm-8">
-        <div class="col-lg-10 col-md-10 col-sm-10 main_static_block">
-            <div class="static_page_label text-center">Присоединяйся к нашей команде!</div><a class="apply_page_link btn btn-danger" href="/">Заполнить анкету</a>
-            <div class="semibold_descr text-center">«КАРО» — это динамичная, современная, прогрессивная сеть кинотеатров, которая входит в тройку лидеров в кинотеатральном бизнесе Росии.</div>
-            <div class="static_page_label text-center">Работа в КАРО — это:</div>
-            <div class="main_descr work_karo with_images">
-                <div class="descr_item icon_clock">
-                    <div class="descr_item_title">Гибкий график</div>Выбирай удобное для тебя время и легко совмещай работу со своими интересами. Настройся на удобный для тебя ритм, а мы с радостью поддержим тебя в этом!</div>
-                <div class="descr_item icon_map_markers">
-                    <div class="descr_item_title">Выбери свой кинотеатр</div>Более 30 кинотеатров в России, и их количество становится больше!</div>
-                <div class="descr_item icon_square_cap">
-                    <div class="descr_item_title">Перспективы и возможность карьерного роста</div>В нашей компании ценят сотрудников и предоставляют обучение способствующее профессиональному и личностному обучению. Расти вместе с нами!</div>
-                <div class="descr_item icon_briefcase">
-                    <div class="descr_item_title">Конкурентная заработная плата</div>Предоставляемый компенсационный пакет позволяет быть уверенным в завтрашнем дне и в стабильности!</div>
-                <div class="descr_item last icon_scales">
-                    <div class="descr_item_title">Официальное трудоустройство</div>Отношения с работодателем оформляются в рамках действующего законодательства.</div>
+<h4>КАРО — крупнейшая в России сеть кинотеатров.</h4>
+<p>Создана в июле 1997 года и представленная 28 кинотеатрами.</p>
+<h4>Присоединяйся к нашей команде!</h4>
+<p>«КАРО» — это динамичная, современная, прогрессивная сеть <br>
+    кинотеатров, которая входит в тройку лидеров <br>
+    в кинотеатральном бизнесе Росии.</p>
+<h4>Работа в КАРО — это:</h4>
+<div class="offer-items container-fluid">
+    <ul class="row">
+        <li class="col-xs-12 col-sm-12 col-md-6">
+            <div class="left">
+                <img src="/img/icons/1.png" alt="">
             </div>
-        </div>
-    </div>
+            <div class="right">
+                <h6>Гибкий график</h6>
+                <p>Выбирай удобное для тебя время и легко совмещай работу со своими интересами. Настройся на удобный для тебя ритм, а мы с радостью поддержим тебя в этом</p>
+            </div>
+        </li>
+        <li class="col-xs-12 col-sm-12 col-md-6">
+            <div class="left">
+                <img src="/img/icons/2.png" alt="">
+            </div>
+            <div class="right">
+                <h6>Конкурентная заработная плата</h6>
+                <p>Предоставляемый компенсационный пакет позволяет быть уверенным в завтрашнем дне и в стабильности!</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="row">
+        <li class="col-xs-12 col-sm-12 col-md-6">
+            <div class="left">
+                <img src="/img/icons/3.png" alt="">
+            </div>
+            <div class="right">
+                <h6>Официальное трудоустройство</h6>
+                <p>Отношения с работодателем оформляются в рамках действующего законодательства.</p>
+            </div>
+        </li>
+        <li class="col-xs-12 col-sm-12 col-md-6">
+            <div class="left">
+                <img src="/img/icons/4.png" alt="">
+            </div>
+            <div class="right">
+                <h6>Выбери свой кинотеатр</h6>
+                <p>28 кинотеатров в России, <br>
+                    и их количество становится <br>
+                    больше!</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="row">
+        <li class="col-xs-12 col-sm-12 col-md-12">
+            <div class="left">
+                <img src="/img/icons/5.png" alt="">
+            </div>
+            <div class="right">
+                <h6>Перспективы и возможность карьерного роста</h6>
+                <p>В нашей компании ценят сотрудников <br>
+                    и предоставляют обучение способствующее <br>
+                    профессиональному и личностному <br>
+                    обучению. Расти вместе с нами!</p>
+            </div>
+        </li>
+    </ul>
 </div>

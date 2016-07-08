@@ -71,66 +71,78 @@ BootstrapPluginAsset::register($this);
 </div>
 
 
+<h3>Заполни онлайн-заявку прямо сейчас!</h3>
+<p><span>Если вы молоды, энергичны и любите кино, </span>
+    <span>приходите работать и строить свою карьеру в КАРО!</span></p>
+<h3>Работа в КАРО — это:</h3>
+<div class="slider-offer">
+    <ul class="owl-carousel">
+        <li>
+            <img src="/img/icons/1.png" alt="">
+            Гибкий график
+        </li>
+        <li>
+            <img src="/img/icons/4.png" alt="">
+            28 кинотеатров
+        </li>
+        <li>
+            <img src="/img/icons/2.png" alt="">
+            Конкурентная <br>
+            заработная плата
+        </li>
+        <li>
+            <img src="/img/icons/3.png" alt="">
+            Официальное <br>
+            трудоустройство
+        </li>
+        <li>
+            <img src="/img/icons/5.png" alt="">
+            Перспективы и возможность карьерного роста
+        </li>
+    </ul>
+</div>  
+<div class="inner-content">
+    <h4>У нас открыты вакансии:</h4>
+    <ul class="vacancy-list">
+        <li>
+            <h5><a href="#">Контролер-кассир</a></h5>
+        </li>
+    </ul>
+    <p>
+        Ты можешь работать в КАРО, если: ты гражданин <br>
+        РФ или Белоруссии; тебе исполнилось 18 лет.
+    </p>
+    <div class="separator"></div>
+    <div>
 
-<?php
-/* @var $form ActiveForm */
-$form = ActiveForm::begin([
-    'enableAjaxValidation' => false,
-    'enableClientValidation' => true,
-    'options' => [
-        'class' => 'simple_form new_applicant',
-        'role' => 'form',
-    ],
-    'id' => 'new_applicant',
-]);
-?>
+        <?php
+        /* @var $form ActiveForm */
+        $form = ActiveForm::begin([
+            'enableAjaxValidation' => false,
+            'enableClientValidation' => true,
+            'options' => [
+                'class' => 'simple_form new_applicant',
+                'role' => 'form',
+            ],
+            'id' => 'new_applicant',
+        ]);
+        ?>
 
-<div class="container">
-    <div class="page_descr"><div class="row text-center">
-            <h1 class="second_label">Заполни анкету прямо сейчас!</h1>
-        </div>
-        <div class="row text-center description">
-            Если вы молоды, энергичны и любите кино, приходите работать и строить свою карьеру в КАРО!
-        </div>                        
-    </div>  
-</div>
-
-
-
-<div class="form-group has-error row">
-    <div class="container">
-        <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="apply_form col-lg-10 col-md-10 col-sm-10">
-                <div class="work_in_karo_block">
-                    <div class="block_title semibold_text">Работа в КАРО — это:</div>
-                    <div class="pluses_block row">
-                        <div class="work_in_karo_item icon_clock col-lg-6 col-md-6 col-sm-12 col-xs-12">Гибкий график</div>
-                        <div class="work_in_karo_item icon_square_cap col-lg-6 col-md-6 col-sm-12 col-xs-12">Перспективы и возможность карьерного роста</div>
-                        <div class="work_in_karo_item icon_map_markers col-lg-6 col-md-6 col-sm-12 col-xs-12">Более 30 кинотеатров в России</div>
-                        <div class="work_in_karo_item last icon_scales col-lg-6 col-md-6 col-sm-12 col-xs-12">Официальное трудоустройство</div>
-                        <div class="work_in_karo_item icon_briefcase col-lg-6 col-md-6 col-sm-12 col-xs-12">Конкурентная заработная плата</div>
-                    </div>
-                    <div class="vacancies_in_karo_block row">
-                        <div class="vacancies_open">
-                            <span class="semibold_text">У нас открыты вакансии: </span>
-                            <span class="vacancies_list"><a data-target="#vacancy_description_20" data-toggle="modal" href="http://hr.karofilm.ru/#">Контролер-кассир.</a> </span>
-                        </div>
-                        <div class="vacancy_condition">
-                            <span class="semibold_text">Ты можешь работать в КАРО, если: </span>ты гражданин РФ или Белоруссии; тебе исполнилось 18 лет.
-                        </div>
-                    </div>
-                </div>
-                <div class="form-inputs row">
-                    <div class="row">
-                        <div class="title text-center">Личная информация</div>                                        
-                    </div>
+        <div class="form-group has-error row">
+            <div class="container">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="apply_form col-lg-10 col-md-10 col-sm-10">
+                        <div class="form-inputs row">
+                            <div class="row">
+                                <div class="title text-center">Личная информация</div>                                        
+                            </div>
 
 
 
-                    <!-- /applicant.lastName -->
-                    <?=
-                    $form->field($model, 'lastName', [
-                        'template' => '
+                            <!-- /applicant.lastName -->
+                            <?=
+                            $form->field($model, 'lastName', [
+                                'template' => '
                         <div class="row">
                             <div class="form_row">
                                 <div class="control-group string required applicant_name">
@@ -141,20 +153,20 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                        'labelOptions' => [
-                            'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
-                        ],
-                    ])
-                    ->textInput()
-                    ?>
-                    <!-- /applicant.lastName -->
+                                'labelOptions' => [
+                                    'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
+                                ],
+                            ])
+                            ->textInput()
+                            ?>
+                            <!-- /applicant.lastName -->
 
 
 
-                    <!-- applicant.firstName -->
-                    <?=
-                    $form->field($model, 'firstName', [
-                        'template' => '
+                            <!-- applicant.firstName -->
+                            <?=
+                            $form->field($model, 'firstName', [
+                                'template' => '
                         <div class="row">
                             <div class="form_row">
                                 <div class="control-group string required applicant_name">
@@ -165,20 +177,20 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                        'labelOptions' => [
-                            'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
-                        ],
-                    ])
-                    ->textInput()
-                    ?>
-                    <!-- /applicant.firstName -->
+                                'labelOptions' => [
+                                    'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
+                                ],
+                            ])
+                            ->textInput()
+                            ?>
+                            <!-- /applicant.firstName -->
 
 
 
-                    <!-- applicant.age -->
-                    <?=
-                    $form->field($model, 'age', [
-                        'template' => '
+                            <!-- applicant.age -->
+                            <?=
+                            $form->field($model, 'age', [
+                                'template' => '
                         <div class="row">
                             <div class="form_row">
                                 <div class="control-group string required applicant_name">
@@ -189,25 +201,25 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                    ])
-                    ->widget(ChosenSelect::className(), [
-                        'items' => ['' => ''] + array_combine(range(18, 60), range(18, 60)),
-                        'options' => ['data-placeholder' => ' ', 'multiple' => false],
-                        'pluginOptions' => [
-                            'disable_search_threshold' => 2,
-                            'disable_search' => true,
-                            'width' => '200px',
-                        ],
-                    ]);
-                    ?>
-                    <!-- /applicant.age -->
+                            ])
+                            ->widget(ChosenSelect::className(), [
+                                'items' => ['' => ''] + array_combine(range(18, 60), range(18, 60)),
+                                'options' => ['data-placeholder' => ' ', 'multiple' => false],
+                                'pluginOptions' => [
+                                    'disable_search_threshold' => 2,
+                                    'disable_search' => true,
+                                    'width' => '200px',
+                                ],
+                            ]);
+                            ?>
+                            <!-- /applicant.age -->
 
 
 
-                    <!-- applicant.citizenshipId -->
-                    <?=
-                    $form->field($model, 'citizenshipId', [
-                        'template' => '
+                            <!-- applicant.citizenshipId -->
+                            <?=
+                            $form->field($model, 'citizenshipId', [
+                                'template' => '
                         <div class="row">
                             <div class="form_row">
                                 <div class="control-group radio_buttons string required applicant_citizenship">
@@ -218,13 +230,13 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                        'labelOptions' => [
-                            'class' => 'radio_buttons required control-label col-lg-5 col-md-5 col-xs-5 text-left',
-                        ],
-                    ])
-                    ->radioList(Citizenship::getList(), [
-                        'item' => function($index, $label, $name, $checked, $value) {
-                            $return = "
+                                'labelOptions' => [
+                                    'class' => 'radio_buttons required control-label col-lg-5 col-md-5 col-xs-5 text-left',
+                                ],
+                            ])
+                            ->radioList(Citizenship::getList(), [
+                                'item' => function($index, $label, $name, $checked, $value) {
+                                    $return = "
                                 <span class=\"radio\">
                                     <label>
                                         <input class=\"radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
@@ -232,18 +244,18 @@ $form = ActiveForm::begin([
                                     </label>
                                 </span>
                             ";
-                            return $return;
-                        }
-                    ])
-                    ?>
-                    <!-- /applicant.citizenshipId -->
+                                    return $return;
+                                }
+                            ])
+                            ?>
+                            <!-- /applicant.citizenshipId -->
 
 
 
-                    <!-- applicant.phone -->
-                    <?=
-                    $form->field($model, 'phone', [
-                        'template' => '
+                            <!-- applicant.phone -->
+                            <?=
+                            $form->field($model, 'phone', [
+                                'template' => '
                         <div class="row">
                             <div class="form_row">
                                 <div class="control-group string required applicant_name">
@@ -256,20 +268,20 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                        'labelOptions' => [
-                            'class' => 'select required control-label col-lg-5 col-md-5 col-xs-5 text-left',
-                        ],
-                    ])
-                    ->textInput()
-                    ?>
-                    <!-- /applicant.phone -->
+                                'labelOptions' => [
+                                    'class' => 'select required control-label col-lg-5 col-md-5 col-xs-5 text-left',
+                                ],
+                            ])
+                            ->textInput()
+                            ?>
+                            <!-- /applicant.phone -->
 
 
 
-                    <!-- applicant.email -->
-                    <?=
-                    $form->field($model, 'email', [
-                        'template' => '
+                            <!-- applicant.email -->
+                            <?=
+                            $form->field($model, 'email', [
+                                'template' => '
                         <div class="row">
                             <div class="form_row">
                                 <div class="control-group string required applicant_name">
@@ -280,20 +292,20 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                        'labelOptions' => [
-                            'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
-                        ],
-                    ])
-                    ->textInput()
-                    ?>
-                    <!-- /applicant.email -->
+                                'labelOptions' => [
+                                    'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
+                                ],
+                            ])
+                            ->textInput()
+                            ?>
+                            <!-- /applicant.email -->
 
 
 
-                    <!-- applicant.info -->
-                    <?=
-                    $form->field($model, 'info', [
-                        'template' => '
+                            <!-- applicant.info -->
+                            <?=
+                            $form->field($model, 'info', [
+                                'template' => '
                         <div class="row">
                             <div class="form_row">
                                 <div class="control-group string applicant_info_from">
@@ -304,24 +316,24 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                        'labelOptions' => [
-                            'class' => 'control-label col-lg-5 col-md-5 col-xs-5 text-left',
-                        ],
-                    ])
-                    ->textarea()
-                    ?>
-                    <!-- /applicant.info -->
+                                'labelOptions' => [
+                                    'class' => 'control-label col-lg-5 col-md-5 col-xs-5 text-left',
+                                ],
+                            ])
+                            ->textarea()
+                            ?>
+                            <!-- /applicant.info -->
 
-                </div>
-                <div class="form-inputs row place_work">
-                    <div class="row">
-                        <div class="title text-center">Желаемое место работы</div>                                  
-                    </div>
+                        </div>
+                        <div class="form-inputs row place_work">
+                            <div class="row">
+                                <div class="title text-center">Желаемое место работы</div>                                  
+                            </div>
 
-                    <!-- applicant.citizenshipId -->
-                    <?=
-                    $form->field($model, 'cityId', [
-                        'template' => '
+                            <!-- applicant.citizenshipId -->
+                            <?=
+                            $form->field($model, 'cityId', [
+                                'template' => '
                         <div class="form_row">
                             <div class="control-group radio_buttons required applicant_city">
                                 {label}
@@ -330,17 +342,17 @@ $form = ActiveForm::begin([
                                 </div>
                             </div>
                         </div>',
-                        'labelOptions' => [
-                            'class' => 'radio_buttons required control-label col-lg-12 col-md-12 col-xs-12 text-left',
-                        ],
-                        'options' => [
-                            'class' => 'row applicant_city_row expanded',
-                        ],
-                    ])
-                    ->radioList(ArrayHelper::map($cities, 'id', 'name'), [
-                        'tag' => false,
-                        'item' => function($index, $label, $name, $checked, $value) {
-                            $return = "
+                                'labelOptions' => [
+                                    'class' => 'radio_buttons required control-label col-lg-12 col-md-12 col-xs-12 text-left',
+                                ],
+                                'options' => [
+                                    'class' => 'row applicant_city_row expanded',
+                                ],
+                            ])
+                            ->radioList(ArrayHelper::map($cities, 'id', 'name'), [
+                                'tag' => false,
+                                'item' => function($index, $label, $name, $checked, $value) {
+                                    $return = "
                                 <span class=\"radio\">
                                     <label>
                                         <input class=\"radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
@@ -348,43 +360,45 @@ $form = ActiveForm::begin([
                                     </label>
                                 </span>
                             ";
-                            return $return;
-                        }
-                    ])
-                    ?>
-                    <!-- /applicant.citizenshipId -->
+                                    return $return;
+                                }
+                            ])
+                            ?>
+                            <!-- /applicant.citizenshipId -->
 
-                    <div class="js-metro-container row"></div>
-                    <div class="js-cinema-container row"></div>
-                    <div class="js-vacancy-container row"></div>
+                            <div class="js-metro-container row"></div>
+                            <div class="js-cinema-container row"></div>
+                            <div class="js-vacancy-container row"></div>
 
 
-                    <div class="agreement row">
-                        <div class="form_row">
-                            <div class="agreement_wrapper">
-                                <input id="accept" name="accept" type="checkbox" value="0" style="display: none;">
-                                <a date-input-id="accept" class="checkbox_button_theme input_theme"><div class="theme_inner"></div></a>
-                                <label for="accept">
-                                    Нажимая кнопку "Отправить", я подтверждаю свою дееспособность, даю согласие на обработку своих персональных данных ООО «КАРО Фильм Менеджмент» 
-                                    <br/>
-                                    <a class="open_agreement" data-target="#success-applicant" data-toggle="modal" href="#">на следующих условиях</a>
-                                </label>
+                            <div class="agreement row">
+                                <div class="form_row">
+                                    <div class="agreement_wrapper">
+                                        <input id="accept" name="accept" type="checkbox" value="0" style="display: none;">
+                                        <a date-input-id="accept" class="checkbox_button_theme input_theme"><div class="theme_inner"></div></a>
+                                        <label for="accept">
+                                            Нажимая кнопку "Отправить", я подтверждаю свою дееспособность, даю согласие на обработку своих персональных данных ООО «КАРО Фильм Менеджмент» 
+                                            <br/>
+                                            <a class="open_agreement" data-target="#success-applicant" data-toggle="modal" href="#">на следующих условиях</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-actions row">
+                            <div class="text-center">
+                                <input class="btn disabled apply_page_link" data-disable-with="Отправка..." disabled="disabled" name="commit" type="submit" value="Отправить">
                             </div>
                         </div>
-                    </div>
-
-                </div>
-                <div class="form-actions row">
-                    <div class="text-center">
-                        <input class="btn disabled apply_page_link" data-disable-with="Отправка..." disabled="disabled" name="commit" type="submit" value="Отправить">
                     </div>
                 </div>
             </div>
         </div>
+        <?php ActiveForm::end(); ?>
+
     </div>
 </div>
-<?php ActiveForm::end(); ?>
-
 
 
 
@@ -489,6 +503,11 @@ Embedjs::begin([
     window.closeModal = function () {
         $(".modal.fade.in").click()
     }
+    
+    
+    $('.agreement_wrapper .checkbox_button_theme').click(function(){
+        $(this).closest('.agreement_wrapper').find('input').click();
+    });
 
 </script>
 <?php Embedjs::end(); ?>

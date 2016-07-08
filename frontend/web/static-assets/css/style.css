@@ -1570,61 +1570,9 @@ only screen and (min-resolution: 144dpi) {
     color: white;
     padding-top: 1.3em
 }
-.static_page .header {
-    text-shadow: 1px 1px 0 black;
-    background: none;
-    border-bottom: none;
-    padding: 0
-}
-.static_page .header h1 {
-    font-size: 40px;
-    color: white;
-    font-weight: 300;
-    margin-bottom: 0.85em
-}
-.static_page .header img {
-    float: none;
-    margin: 0
-}
-.static_page .header .description {
-    font-size: 20px;
-    font-weight: 300
-}
-.static_page .header .menu {
-    margin-bottom: 3em;
-    padding: 0
-}
-.static_page .header .menu li {
-    display: inline-block;
-    list-style: none;
-    margin-left: 12%
-}
-.static_page .header .menu li:first-child {
-    margin-left: 0
-}
-.static_page .header .menu li a {
-    text-shadow: none;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    border: 1px solid white;
-    margin: 1px;
-    min-height: 2.25em;
-    line-height: 2.25em;
-    width: 14.5em;
-    padding: 1px;
-    display: block
-}
-.static_page .header .menu li a:hover,
-.static_page .header .menu li a.active {
-    border-width: 2px;
-    padding: 0;
-    font-weight: 600
-}
-.static_page .wrapper {
-    background: none
-}
+
+
+
 .static_page .container.wrapper {
     padding: 0
 }
@@ -1766,15 +1714,6 @@ only screen and (min-resolution: 144dpi) {
 @media (max-width: 767px) {
     #apply_page .form-group {
         margin-bottom: 0
-    }
-    .static_page .header .menu {
-        margin-bottom: 0
-    }
-    .static_page .header .menu li {
-        margin-bottom: 2.3em
-    }
-    .static_page .header .menu li:last-child {
-        margin-left: 0
     }
     .static_page .development {
         text-align: center
