@@ -1,0 +1,118 @@
+/* ============================ */
+/* ============================ */
+/* FOOTER */
+#footer{
+    font-family: "Open Sans", sans-serif;
+    width: 100%;
+    padding: 5em 0;
+    background: #212121;
+    color: #f7f7f7;
+}
+#footer.container-fluid {
+    padding: 5em 5.5em;
+}
+#footer a{
+    color: #f7f7f7;
+}
+
+#footer a:hover{
+    color: #818181;
+    text-decoration: none;
+}
+
+#footer p{
+    margin: 0;
+}
+
+.footer-logo {
+    display: block;
+    height: 60px;
+}
+.footer-logo img {
+    width: 160px;
+    display: block;
+}
+.foo-hidden-logo-tablet,
+.foo-hidden-logo-mobile{
+    display: none;
+}
+
+
+/* ".foo-" = ".footer-" */
+.foo-nav{
+    width: 100%;
+    padding: 0 0 0.875em;
+    margin: 0 0 0.875em;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.foo-menu{
+    float: left;
+    width: 100%;
+}
+
+.foo-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.foo-menu li{
+    float: left;
+    display: block;
+    width: 20%;
+}
+
+.foo-menu li a{
+    display: block;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+}
+.foo-social {
+    float: right;
+    width: 200px;
+    margin-top: 2em;
+    list-style: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.foo-social li{
+    float: right;
+}
+
+.foo-social li a{
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+
+    background-color: #7a7a7a;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.foo-info{
+    position: relative;
+    font-size: 0.875em;
+}
+
+
+.scroll-top-btn{
+    position: absolute;
+    display: block;
+    top: 20px;
+    left: 390px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin-left: -20px;
+
+    font-weight: normal;
+    font-size: 0.857em;
+    background: url('../img/scroll-top.png') no-repeat 50% 0;
+}
+
+/* ============================ */
+/* ============================ */

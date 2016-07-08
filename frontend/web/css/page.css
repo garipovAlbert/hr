@@ -1,0 +1,234 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600&subset=latin,cyrillic,cyrillic-ext);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic);
+html, body {
+    min-height: 100%;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+body {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+body >.wrap {
+    position: relative;
+}
+body > .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18,23,27,0.5);
+}
+#page-content {
+    font-size: 16px;
+    padding-top: 3.125em;
+    padding-bottom: 2em;
+}
+#page-content .top-nav {
+    background: rgba(8,14,18,0.5);
+    padding: 2em 0;
+    text-align: center;
+    position: relative;
+    top:0;
+    left:0;
+    width:100%;
+}
+#page-content .top-nav .btn-group {
+    display: inline-block;
+    width: 41.25em;
+}
+#page-content .top-nav .btn-group .btn-default {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    height: 3.125em;
+    line-height: 1;
+    padding: 1em 0.75em;
+    width: 13.75em;
+}
+#page-content .top-nav .btn-group .btn-default:first-child {
+    margin: 0;
+}
+#page-content .top-nav .btn-group .btn-default.active {
+    background: #b70000;
+    z-index: 2;
+    border: 1px solid #ff1812;
+
+}
+#page-content .top-nav .btn-group .btn-default:focus {
+    outline: none;
+}
+#page-content .tab-pane {
+    color: #f0f4f2;
+}
+#page-content .tab-pane h3 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 400;
+    margin: 1em 0;
+}
+#page-content .tab-pane h4 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 300;
+    margin: 1em 0;
+}
+#page-content .tab-pane h4 span {
+    display: block;
+}
+#page-content .tab-pane p {
+    text-align: center;
+}
+#page-content .tab-pane p span {
+    display: block;
+}
+#page-content .tab-pane .slider-offer {
+    width: 1000px;
+    margin: 0 auto;
+}
+#page-content .tab-pane .slider-offer img {
+    display: block;
+    width: 150px;
+    margin: 0 auto 1em;
+}
+#page-content .tab-pane .slider-offer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+}
+#page-content .tab-pane .slider-offer .owl-controls {
+    position: absolute;
+    top: 40px;
+    left:0;
+    right:0;
+    height: 40px;
+}
+#page-content .tab-pane .slider-offer .owl-controls .owl-prev {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    height: 40px;
+    width: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 6px;
+    line-height: 1;
+    background: rgba(0,0,0,0.5);
+    font-size: 1.5em;
+}
+#page-content .tab-pane .slider-offer .owl-controls .owl-next {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    height: 40px;
+    width: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 6px;
+    line-height: 1;
+    background: rgba(0,0,0,0.5);
+    font-weight: bold;
+    font-size: 1.5em;
+}
+#page-content .tab-pane .inner-content {
+    width: 829px;
+    margin: 4em auto 0;
+    background: white;
+    padding: 2em 1.5em;
+    color: #080e12;
+}
+#page-content .tab-pane .inner-content p {
+    color: #1f252b;
+    font-weight: 300;
+}
+#page-content .tab-pane .inner-content h3,
+#page-content .tab-pane .inner-content h4 {
+    margin-top: 0;
+}
+.vacancy-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.vacancy-list h5 {
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    color: #ff1812;
+    font-size: 23px;
+}
+.vacancy-list h5:first-child {
+    margin-top: 0;
+}
+.vacancy-list h5 a {
+    border-bottom: 1px dotted #ff1812;
+    color: #ff1812;
+    text-decoration: none;
+}
+.vacancy-list h5 a:hover {
+    text-decoration: none;
+}
+#page-content .tab-pane .offer-items {
+    display: table;
+}
+#page-content .tab-pane .offer-items ul {
+    display: table-row;
+}
+#page-content .tab-pane .offer-items li {
+    display: table-cell;
+    overflow: hidden;
+    padding-bottom: 1.5em;
+}
+#page-content .tab-pane .offer-items li .left {
+    width: 150px;
+    float: left;
+    margin-right: -150px;
+}
+#page-content .tab-pane .offer-items li .right {
+    width: 100%;
+    padding-left: 160px;
+    text-align: left;
+}
+#page-content .tab-pane .offer-items li .right p {
+    text-align: left;
+}
+#page-content .tab-pane .separator {
+    width: auto;
+    height: 1px;
+    border-top: 1px solid #eef0f2;
+    margin: 3em -1.5em;
+    clear: both;
+}
+@media only screen and (max-width: 1280px) {
+    #page-content .tab-pane .separator {
+        margin: 3em -11px;
+    }
+    #page-content .tab-pane .inner-content,
+    #page-content .tab-pane .slider-offer {
+        width: 100%;
+    }
+    #page-content .tab-pane .offer-items,
+    #page-content .tab-pane .offer-items ul,
+    #page-content .tab-pane .offer-items li {
+        display: block;
+    }
+
+}
