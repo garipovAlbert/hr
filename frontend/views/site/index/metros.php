@@ -14,10 +14,11 @@ $metros = Metro::find()
 ->all();
 ?>
 
-<!-- applicant.metroId -->
-<?=
-$form->field($model, 'metroId', [
-    'template' => '
+<?php if (count($metros)): ?>
+    <!-- applicant.metroId -->
+    <?=
+    $form->field($model, 'metroId', [
+        'template' => '
     <div class="form_row">
         <div class="control-group radio_buttons applicant_subway_station">
             {label}
@@ -26,17 +27,17 @@ $form->field($model, 'metroId', [
             </div>
         </div>
     </div>',
-    'labelOptions' => [
-        'class' => 'radio_buttons required control-label col-lg-12 col-md-12 col-xs-12 text-left',
-    ],
-    'options' => [
-        'class' => 'row applicant_subway_station_row expanded',
-    ],
-])
-->radioList(ArrayHelper::map($metros, 'id', 'name'), [
-    'tag' => false,
-    'item' => function($index, $label, $name, $checked, $value) {
-        $return = "
+        'labelOptions' => [
+            'class' => 'radio_buttons required control-label col-lg-12 col-md-12 col-xs-12 text-left',
+        ],
+        'options' => [
+            'class' => 'row applicant_subway_station_row expanded',
+        ],
+    ])
+    ->radioList(ArrayHelper::map($metros, 'id', 'name'), [
+        'tag' => false,
+        'item' => function($index, $label, $name, $checked, $value) {
+            $return = "
             <span class=\"radio\">
                 <label>
                     <input class=\"radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
@@ -44,8 +45,10 @@ $form->field($model, 'metroId', [
                 </label>
             </span>
         ";
-        return $return;
-    }
-])
-?>
-<!-- /applicant.metroId -->
+            return $return;
+        }
+    ])
+    ?>
+    <!-- /applicant.metroId -->
+<?php endif; ?>
+
