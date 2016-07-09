@@ -14,8 +14,10 @@ use yii\web\View;
             <div class="col-lg-8 col-md-8 col-sm-8">
                 <div class="confirmation_applicant_form col-lg-10 col-md-10 col-sm-10">
                     <div class="title text-center">Подтвердите отправление анкеты</div>
-                    <div class="confirmation_applicant_form_description text-center">Мы выслали смс-сообщение с кодом подтверждния на указанный вами номер телефона: +7 (919) 1486150. Внесите его в поле ниже, нажмите кнопку “Подтвердить” и ваша анкета будет отправлена.</div>
-
+                    <div class="confirmation_applicant_form_description text-center">
+                        Мы выслали смс-сообщение с кодом подтверждния на указанный вами номер телефона: <?= Html::encode($model->formattedPhone) ?>. 
+                        Внесите его в поле ниже, нажмите кнопку “Подтвердить” и ваша анкета будет отправлена.
+                    </div>
                     <?php
                     /* @var $form ActiveForm */
                     $form = ActiveForm::begin([

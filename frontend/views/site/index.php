@@ -4,6 +4,7 @@ use common\models\Applicant;
 use common\models\Citizenship;
 use common\models\City;
 use common\widgets\Embedjs;
+use frontend\widgets\phone\Phone;
 use yii2mod\chosen\ChosenSelect;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\BootstrapPluginAsset;
@@ -143,16 +144,16 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'lastName', [
                                 'template' => '
-                        <div class="row">
-                            <div class="form_row">
-                                <div class="control-group string required applicant_name">
-                                    {label}
-                                     <div class="controls">
-                                        {input}{error}{hint}
+                                <div class="row">
+                                    <div class="form_row">
+                                        <div class="control-group string required applicant_name">
+                                            {label}
+                                             <div class="controls">
+                                                {input}{error}{hint}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>',
+                                </div>',
                                 'labelOptions' => [
                                     'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
                                 ],
@@ -167,16 +168,16 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'firstName', [
                                 'template' => '
-                        <div class="row">
-                            <div class="form_row">
-                                <div class="control-group string required applicant_name">
-                                    {label}
-                                     <div class="controls">
-                                        {input}{error}{hint}
+                                <div class="row">
+                                    <div class="form_row">
+                                        <div class="control-group string required applicant_name">
+                                            {label}
+                                             <div class="controls">
+                                                {input}{error}{hint}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>',
+                                </div>',
                                 'labelOptions' => [
                                     'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
                                 ],
@@ -191,16 +192,16 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'age', [
                                 'template' => '
-                        <div class="row">
-                            <div class="form_row">
-                                <div class="control-group string required applicant_name">
-                                    {label}
-                                    <div class="controls">
-                                        {input}{error}{hint}
+                                <div class="row">
+                                    <div class="form_row">
+                                        <div class="control-group string required applicant_name">
+                                            {label}
+                                            <div class="controls">
+                                                {input}{error}{hint}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>',
+                                </div>',
                             ])
                             ->widget(ChosenSelect::className(), [
                                 'items' => ['' => ''] + array_combine(range(18, 60), range(18, 60)),
@@ -220,16 +221,16 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'citizenshipId', [
                                 'template' => '
-                        <div class="row">
-                            <div class="form_row">
-                                <div class="control-group radio_buttons string required applicant_citizenship">
-                                    {label}
-                                    <div class="controls">
-                                        {input}{error}{hint}
+                                <div class="row">
+                                    <div class="form_row">
+                                        <div class="control-group radio_buttons string required applicant_citizenship">
+                                            {label}
+                                            <div class="controls">
+                                                {input}{error}{hint}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>',
+                                </div>',
                                 'labelOptions' => [
                                     'class' => 'radio_buttons required control-label col-lg-5 col-md-5 col-xs-5 text-left',
                                 ],
@@ -237,13 +238,13 @@ BootstrapPluginAsset::register($this);
                             ->radioList(Citizenship::getList(), [
                                 'item' => function($index, $label, $name, $checked, $value) {
                                     $return = "
-                                <span class=\"radio\">
-                                    <label>
-                                        <input class=\"radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
-                                        <a date-input-id=\"applicant_citizenship_id_1\" class=\"radio_button_theme input_theme\" ><div class=\"theme_inner\"></div></a>{$label}
-                                    </label>
-                                </span>
-                            ";
+                                    <span class=\"radio\">
+                                        <label>
+                                            <input class=\"radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
+                                            <a date-input-id=\"applicant_citizenship_id_1\" class=\"radio_button_theme input_theme\" ><div class=\"theme_inner\"></div></a>{$label}
+                                        </label>
+                                    </span>
+                                    ";
                                     return $return;
                                 }
                             ])
@@ -256,23 +257,22 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'phone', [
                                 'template' => '
-                        <div class="row">
-                            <div class="form_row">
-                                <div class="control-group string required applicant_name">
-                                    {label}
-                                    <div class="controls">
-                                        <div class="seven" style="float:left">+7</div>
-                                        <div style="margin-left: 50px">{input}</div>
-                                        <div style="clear:both">{error}{hint}</div>
+                                <div class="row">
+                                    <div class="form_row">
+                                        <div class="control-group string required applicant_name">
+                                            {label}
+                                            <div class="controls">
+                                                {input}{error}{hint}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>',
+                                </div>',
                                 'labelOptions' => [
                                     'class' => 'select required control-label col-lg-5 col-md-5 col-xs-5 text-left',
                                 ],
+                                'enableClientValidation' => false,
                             ])
-                            ->textInput()
+                            ->widget(Phone::className())
                             ?>
                             <!-- /applicant.phone -->
 
@@ -282,16 +282,16 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'email', [
                                 'template' => '
-                        <div class="row">
-                            <div class="form_row">
-                                <div class="control-group string required applicant_name">
-                                    {label}
-                                     <div class="controls">
-                                        {input}{error}{hint}
+                                <div class="row">
+                                    <div class="form_row">
+                                        <div class="control-group string required applicant_name">
+                                            {label}
+                                             <div class="controls">
+                                                {input}{error}{hint}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>',
+                                </div>',
                                 'labelOptions' => [
                                     'class' => 'string required control-label col-lg-5 col-md-5 col-xs-5 text-left',
                                 ],
@@ -306,16 +306,16 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'info', [
                                 'template' => '
-                        <div class="row">
-                            <div class="form_row">
-                                <div class="control-group string applicant_info_from">
-                                    {label}
-                                     <div class="controls">
-                                        {input}{error}{hint}
+                                <div class="row">
+                                    <div class="form_row">
+                                        <div class="control-group string applicant_info_from">
+                                            {label}
+                                             <div class="controls">
+                                                {input}{error}{hint}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>',
+                                </div>',
                                 'labelOptions' => [
                                     'class' => 'control-label col-lg-5 col-md-5 col-xs-5 text-left',
                                 ],
@@ -334,14 +334,14 @@ BootstrapPluginAsset::register($this);
                             <?=
                             $form->field($model, 'cityId', [
                                 'template' => '
-                        <div class="form_row">
-                            <div class="control-group radio_buttons required applicant_city">
-                                {label}
-                                <div class="controls">
-                                    {input}{error}{hint}
-                                </div>
-                            </div>
-                        </div>',
+                                <div class="form_row">
+                                    <div class="control-group radio_buttons required applicant_city">
+                                        {label}
+                                        <div class="controls">
+                                            {input}{error}{hint}
+                                        </div>
+                                    </div>
+                                </div>',
                                 'labelOptions' => [
                                     'class' => 'radio_buttons required control-label col-lg-12 col-md-12 col-xs-12 text-left',
                                 ],
@@ -503,9 +503,9 @@ Embedjs::begin([
     window.closeModal = function () {
         $(".modal.fade.in").click()
     }
-    
-    
-    $('.agreement_wrapper .checkbox_button_theme').click(function(){
+
+
+    $('.agreement_wrapper .checkbox_button_theme').click(function () {
         $(this).closest('.agreement_wrapper').find('input').click();
     });
 

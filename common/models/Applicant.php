@@ -56,6 +56,16 @@ class Applicant extends BaseApplicant
     public $confirmationInput;
 
     /**
+     * @var string
+     */
+    public $phoneCode;
+
+    /**
+     * @var string
+     */
+    public $phoneNumber;
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
@@ -119,6 +129,7 @@ class Applicant extends BaseApplicant
             static::SCENARIO_FILL => [
                 'firstName', 'lastName', 'age', 'email', 'phone', 'info',
                 'citizenshipId', 'vacancyId', 'cinemaId', 'cityId', 'metroId',
+                'phoneCode', 'phoneNumber',
             ],
             static::SCENARIO_PROCESS => [
                 'status',
@@ -173,6 +184,7 @@ class Applicant extends BaseApplicant
             ['confirmationInput', 'required'],
             ['confirmationInput', 'validateConfirmation'],
             ['status', 'in', 'range' => array_keys(static::statusListSet())],
+            [['phoneCode', 'phoneNumber'], 'safe'],
         ];
     }
 
@@ -181,6 +193,17 @@ class Applicant extends BaseApplicant
         if (trim($this->confirmationInput) !== $this->confirmationCode) {
             $this->addError('confirmationInput', Yii::t('app', 'Wrong confirmation code'));
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeValidate()
+    {
+        if ($this->scenario === static::SCENARIO_FILL) {
+            $this->phone = preg_replace('/[^\d]/', '', $this->phoneCode . $this->phoneNumber);
+        }
+        return parent::beforeValidate();
     }
 
     /**
@@ -279,7 +302,10 @@ class Applicant extends BaseApplicant
     public function getFormattedPhone()
     {
         if ($this->phone) {
-            return '+7 (' . substr($this->phone, 0, 3) . ')' . substr($this->phone, 3);
+            return '+7 (' . substr($this->phone, 0, 3) . ') '
+            . substr($this->phone, 3, 3)
+            . '-' . substr($this->phone, 6, 2)
+            . '-' . substr($this->phone, 8);
         }
     }
 

@@ -19,7 +19,7 @@ $metros = Metro::find()
 $form->field($model, 'metroId', [
     'template' => '
     <div class="form_row">
-        <div class="control-group radio_buttons required applicant_subway_station">
+        <div class="control-group radio_buttons applicant_subway_station">
             {label}
             <div class="controls">
                 {input}{error}{hint}

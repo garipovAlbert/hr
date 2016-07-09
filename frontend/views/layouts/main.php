@@ -56,13 +56,11 @@ AppAsset::register($this);
                 <div id="page-content" class="row">
                     <div class="top-nav">
                         <!-- Nav tabs -->
-                        <?php
-                        $r = Yii::$app->controller->route;
-                        ?>
+                        <?php $r = Yii::$app->controller->route; ?>
                         <div class="btn-group" data-toggle="btns">
-                            <a href="<?= Url::to(['site/job']) ?>" class="btn btn-default<?= $r == 'site/job' ? ' active': '' ?>">Карьера в КАРО</a>
-                            <a href="<?= Url::to(['site/we-offer']) ?>" class="btn btn-default<?= $r == 'site/we-offer' ? ' active': '' ?>">Мы предлагаем</a>
-                            <a href="<?= Url::to(['site/index']) ?>" class="btn btn-default<?= $r == 'site/index' ? ' active': '' ?>">Заполнить заявку</a>
+                            <a href="<?= Url::to(['site/job']) ?>" class="btn btn-default<?= $r == 'site/job' ? ' active' : '' ?>">Карьера в КАРО</a>
+                            <a href="<?= Url::to(['site/we-offer']) ?>" class="btn btn-default<?= $r == 'site/we-offer' ? ' active' : '' ?>">Мы предлагаем</a>
+                            <a href="<?= Url::to(['site/index']) ?>" class="btn btn-default<?= $r == 'site/index' ? ' active' : '' ?>">Заполнить заявку</a>
                         </div>
                     </div>
                     <!-- Tab panes -->
