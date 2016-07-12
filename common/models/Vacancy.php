@@ -60,7 +60,7 @@ class Vacancy extends BaseVacancy
     public function rules()
     {
         return [
-            [['name', 'description'], 'required'],
+            [['name'], 'required'],
             ['name', 'unique'],
             ['cinemaIds', 'safe'],
             ['cinemaIdsString', 'safe'],

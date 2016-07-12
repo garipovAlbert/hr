@@ -123,7 +123,8 @@ echo GridView::widget([
                 return [
                     'formOptions' => ['action' => ['editable']],
                     'inputType' => Editable::INPUT_SELECT2,
-                    'placement' => PopoverX::ALIGN_TOP,
+                    'placement' => PopoverX::ALIGN_LEFT,
+                    'size' => PopoverX::SIZE_LARGE,
                     'options' => [
                         'pluginOptions' => [
                             'data' => $cinemaData,

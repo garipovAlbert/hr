@@ -18,13 +18,18 @@ if ($metroId) {
         'metros',
         'vacancies',
     ])
-    ->andWhere(['metro.id' => $metroId])
+    ->andWhere([
+        'metro.id' => $metroId,
+    ])
     ->andWhere('vacancy.id IS NOT NULL')
     ->all();
 } else {
     $cinemas = Cinema::find()
     ->joinWith([
         'vacancies',
+    ])
+    ->andWhere([
+        'cinema.cityId' => $cityId,
     ])
     ->andWhere('vacancy.id IS NOT NULL')
     ->all();
