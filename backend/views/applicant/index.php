@@ -43,30 +43,50 @@ $statusList = Applicant::statusList();
         <h2><?= Yii::t('app', 'Applications') ?></h2>
         <br/>
 
-        <?php
-        $statuses = [
-            Applicant::STATUS_HIRED,
-            Applicant::STATUS_DECLINED,
-            Applicant::STATUS_INVITED,
-            Applicant::STATUS_NEW,
-            Applicant::STATUS_CALL,
-            Applicant::STATUS_UNCONFIRMED,
-        ];
-        ?>
-        <table class="" style="width:400px">
-            <tr>
-                <th style="width:250px">
-                    <?= Yii::t('app', 'Total applications found') ?>
-                </th>
-                <th><?= Applicant::find()->count() ?></th>
-            </tr>
-            <?php foreach ($statuses as $status): ?>
-                <tr>
-                    <td><?= $statusList[$status] ?></td>
-                    <td><?= Applicant::find()->status($status)->count() ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+        <div class="row">
+            <div class="col-md-4">
+                <table class="" style="width:400px">
+                    <tr>
+                        <th style="width:250px">
+                            <?= Yii::t('app', 'Total applications found') ?>
+                        </th>
+                        <th><?= Applicant::find()->count() ?></th>
+                    </tr>
+                    <?php
+                    $statuses = [
+                        Applicant::STATUS_NEW,
+                        Applicant::STATUS_CALL,
+                        Applicant::STATUS_UNCONFIRMED,
+                    ];
+                    ?>
+                    <?php foreach ($statuses as $status): ?>
+                        <tr>
+                            <td><?= $statusList[$status] ?></td>
+                            <td><?= Applicant::find()->status($status)->count() ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <table class="" style="width:400px">
+                    <?php
+                    $statuses = [
+                        Applicant::STATUS_DECLINED,
+                        Applicant::STATUS_INVITED,
+                        Applicant::STATUS_HIRED,
+                    ];
+                    ?>
+                    <?php foreach ($statuses as $status): ?>
+                        <tr>
+                            <td style="width:250px"><?= $statusList[$status] ?></td>
+                            <td><?= Applicant::find()->status($status)->count() ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+
+
 
     </div>
 
@@ -224,7 +244,7 @@ $statusList = Applicant::statusList();
                             'allowClear' => true,
                         ],
                     ],
-                    'width' => '200px',
+                    'width' => '250px',
                 ],
                 [
                     'attribute' => 'status',

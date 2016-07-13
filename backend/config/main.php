@@ -69,28 +69,6 @@ return [
         ],
         'assetManager' => [
             'bundles' => [
-//                'dosamigos\editable\EditableSelect2Asset' => [
-//                    'js' => [
-//                        'bootstrap-editable-select2.js',
-//                    ],
-//                    'depends' => [
-//                        'kartik\select2\Select2Asset',
-//                        'dosamigos\editable\EditableBootstrapAsset',
-//                    ],
-//                ],
-//                'kartik\select2\Select2Asset' => [
-//                    'js' => [
-////                        'bootstrap-editable-select2.js',
-//                    ],
-//                    'depends' => [
-////                        'kartik\select2\Select2Asset',
-////                        'dosamigos\editable\EditableBootstrapAsset',
-//                    ],
-//                    'css' => [
-////                        'kartik\select2\Select2Asset',
-////                        'dosamigos\editable\EditableBootstrapAsset',
-//                    ],
-//                ],
             ],
         ],
     ],
