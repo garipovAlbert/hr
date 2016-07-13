@@ -133,7 +133,9 @@ a.desc:after {
 	background-image: url(logo-white.png);
 	background-repeat: no-repeat;
 	background-position: left center;
-	text-indent: 130px;
+	/*text-indent: 130px;*/
+	padding: 6px;
+	padding-left: 150px;
 }
 
 .navbar {

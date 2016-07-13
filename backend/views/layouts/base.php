@@ -27,7 +27,7 @@ if ($module instanceof Application) {
 
     <?php
     NavBar::begin([
-        'brandLabel' => 'KARO D.R.S.',
+        'brandLabel' => 'D.R.S.<br/><small><i>Digital Recruitment System</i></small>',
         'brandOptions' => ['class' => 'karo-logo'],
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
