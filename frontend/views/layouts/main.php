@@ -22,15 +22,17 @@ AppAsset::register($this);
         <link href="/js/owl/assets/owl.carousel.css" rel="stylesheet">
         <link href="/css/header.css" rel="stylesheet">
         <link href="/css/footer.css" rel="stylesheet">
-        <link href="/css/page.css" rel="stylesheet">
+        <link href="/css/page.css?v=2" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600&amp;subset=latin,cyrillic" rel="stylesheet">
         <link href="/js/fancybox/jquery.fancybox.css" rel="stylesheet">
         <link href="/js/jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
         <?php $this->head() ?>
 
         <link href="/static-assets/css/bootstrap/css/bootstrap.css" media="all" rel="stylesheet">
-        <link href="/static-assets/css/style.css" media="all" rel="stylesheet">
+        <link href="/static-assets/css/style.css?v=2" media="all" rel="stylesheet">
 
     </head>
     <body class="static_page" id="apply_page" style="background-image: url(/img/bg/img<?= $rand ?>.png)">

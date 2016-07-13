@@ -148,6 +148,57 @@ body > .overlay {
     font-weight: bold;
     font-size: 1.5em;
 }
+#page-content .tab-pane .inner-content  .hr-info-list ul  li span {
+    display: block;
+    position: absolute;
+    left:0;
+    font-size: 34px;
+    color: #ff1812;
+    border: 1px solid #ff1812;
+    height: 1.75em;
+    width: 1.75em;
+    text-align: center;
+    line-height: 1;
+    padding-top: 0.3em;
+    top: -0.1em;
+}
+#page-content .tab-pane .inner-content  .hr-info-list ul  li {
+    font-size: 16px;
+    padding-left: 4.75em;
+    position: relative;
+    margin-bottom: 1.8em;
+}
+#page-content .tab-pane .inner-content  .hr-info-list ul {
+    list-style: none;
+}
+#page-content .tab-pane .inner-content  .hr-info-list h6 {
+    font-size: 32px;
+    text-align: center;
+    font-weight: 300;
+}
+#page-content .tab-pane .inner-content  .hr-info-list {
+    margin: 2em -1.5em 0;
+    border-top: 1px solid #dbdee2;
+    padding: 40px 20px 20px;
+    color: #1f252b;
+    font-weight: 300;
+}
+#page-content .tab-pane .inner-content  .hr-info {
+    padding: 40px 20px 20px;
+}
+#page-content .tab-pane .inner-content  .hr-info .btn {
+    background: #ff1812 none repeat scroll 0 0;
+    border: 1px solid #ff1812;
+    color: white;
+    text-transform: uppercase;
+    height: 3.125em;
+    line-height: 1;
+    padding: 1em 0.75em;
+}
+#page-content .tab-pane .inner-content  .lead {
+    text-align: center;
+    font-size: 21px;
+}
 #page-content .tab-pane .inner-content {
     width: 829px;
     margin: 4em auto 0;

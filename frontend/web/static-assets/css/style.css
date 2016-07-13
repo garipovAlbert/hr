@@ -1568,7 +1568,6 @@ only screen and (min-resolution: 144dpi) {
     background-size: cover;
     background-color: #464646;
     color: white;
-    padding-top: 1.3em
 }
 
 
@@ -1739,16 +1738,6 @@ only screen and (min-resolution: 144dpi) {
     #apply_page .new_applicant .agreement label {
         width: 89%
     }
-    .static_page .header .menu {
-        margin-bottom: 0
-    }
-    .static_page .header .menu li {
-        margin: 0 2em 2.3em
-    }
-    .static_page .header .menu li:first-child,
-    .static_page .header .menu li:last-child {
-        margin-left: 2em
-    }
     .static_page .main_static_block {
         padding: 1.5em
     }
@@ -1799,19 +1788,6 @@ only screen and (min-resolution: 144dpi) {
     }
     .static_page {
         min-width: 320px
-    }
-    .static_page .header h1 {
-        font-size: 30px
-    }
-    .static_page .header .menu {
-        margin-bottom: 0
-    }
-    .static_page .header .menu li {
-        margin: 0 0 2em
-    }
-    .static_page .header .menu li:last-child,
-    .static_page .header .menu li:first-child {
-        margin-left: 0
     }
     .static_page .page_descr h1 {
         font-size: 30px
@@ -1865,15 +1841,6 @@ only screen and (min-resolution: 144dpi) {
     #apply_page .new_applicant .place_work .row.expanded .controls .radio {
         width: 98%
     }
-    .static_page .header .menu {
-        margin-bottom: 0
-    }
-    .static_page .header .menu li {
-        margin-bottom: 2.3em
-    }
-    .static_page .header .menu li:last-child {
-        margin-left: 0
-    }
     .static_page .main_static_block {
         padding: 2em;
         font-size: 16px
@@ -1894,15 +1861,6 @@ only screen and (min-resolution: 144dpi) {
     }
     #apply_page .work_in_karo_block .pluses_block .work_in_karo_item:nth-child(2n) {
         float: right
-    }
-    .static_page .header .menu {
-        margin-bottom: 0
-    }
-    .static_page .header .menu li {
-        margin-bottom: 2.3em
-    }
-    .static_page .header .menu li:last-child {
-        margin-left: 0
     }
     .static_page .main_static_block {
         padding: 1.5em
