@@ -103,6 +103,8 @@ class ApplicantController extends Controller
             'vacancy',
         ]);
 
+        $query->andWhere(['!=', 'status', Applicant::STATUS_UNCONFIRMED]);
+
         if (count($ids)) {
             $query->andWhere(['in', 'id', $ids]);
         }

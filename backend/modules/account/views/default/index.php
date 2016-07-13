@@ -47,8 +47,11 @@ echo GridView::widget([
     'dataProvider' => $provider,
     'filterModel' => $searchModel,
     'condensed' => true,
-    'floatHeader' => true,
+    'floatHeader' => false,
     'pjax' => true,
+    'options' => [
+        'class' => 'small',
+    ],
     'columns' => [
         [
             'attribute' => 'username',
@@ -56,11 +59,11 @@ echo GridView::widget([
                 return Html::a(Html::encode($model->username), ['update', 'id' => $model->id]);
             },
             'format' => 'raw',
-            'width' => '170px',
+//            'width' => '170px',
         ],
         [
             'attribute' => 'position',
-            'width' => '170px',
+//            'width' => '170px',
         ],
         [
             'attribute' => 'cityId',
@@ -119,7 +122,7 @@ echo GridView::widget([
                 ]);
             },
             'format' => 'raw',
-            'width' => '120px',
+//            'width' => '120px',
         ],
         [
             'attribute' => 'role',
@@ -134,7 +137,7 @@ echo GridView::widget([
                     'allowClear' => true,
                 ],
             ],
-            'width' => '120px',
+//            'width' => '120px',
         ],
         [
             'class' => ButtonGroupColumn::className(),

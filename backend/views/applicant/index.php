@@ -137,7 +137,8 @@ $statusList = Applicant::statusList();
         <?php
         $citizenshipList = Citizenship::getList();
         $vacancyList = Vacancy::getList();
-
+        $statusList = Applicant::statusList();
+        unset($statusList[Applicant::STATUS_UNCONFIRMED]);
 
 
         echo GridView::widget([
@@ -260,7 +261,7 @@ $statusList = Applicant::statusList();
                     'filterType' => GridView::FILTER_SELECT2,
                     'filterWidgetOptions' => [
                         'options' => ['placeholder' => ' '],
-                        'data' => Applicant::statusList(),
+                        'data' => $statusList,
                         'pluginOptions' => [
                             'allowClear' => true,
                         ],

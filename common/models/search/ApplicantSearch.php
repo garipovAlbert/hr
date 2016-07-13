@@ -74,6 +74,8 @@ class ApplicantSearch extends Applicant
             'vacancy',
         ]);
 
+        $query->andWhere(['!=', 'status', Applicant::STATUS_UNCONFIRMED]);
+
         $provider = new ActiveDataProvider([
             'query' => $query,
         ]);

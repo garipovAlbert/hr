@@ -2,6 +2,7 @@
 
 namespace console\controllers;
 
+use common\models\Account;
 use common\models\Applicant;
 use DateTime;
 use Yii;
@@ -167,6 +168,9 @@ class ImportController extends Controller
         }
 
 
+        $vacancies = ArrayHelper::map((new Query())->from('{{%vacancy}}')->all(), 'name', 'id');
+        $cinemas = ArrayHelper::map((new Query())->from('{{%cinema}}')->all(), 'name', 'id');
+        $citizenships = ArrayHelper::map((new Query())->from('{{%citizenship}}')->all(), 'name', 'id');
 
 
         // applicant
@@ -176,9 +180,6 @@ class ImportController extends Controller
             AUTO_INCREMENT=1;
         ")->execute();
 
-        $vacancies = ArrayHelper::map((new Query())->from('{{%vacancy}}')->all(), 'name', 'id');
-        $cinemas = ArrayHelper::map((new Query())->from('{{%cinema}}')->all(), 'name', 'id');
-        $citizenships = ArrayHelper::map((new Query())->from('{{%citizenship}}')->all(), 'name', 'id');
         $statuses = [
             'необработанная' => Applicant::STATUS_NEW,
             'принят на работу' => Applicant::STATUS_HIRED,
@@ -202,8 +203,6 @@ class ImportController extends Controller
             $tiemstamp = DateTime::createFromFormat('d.m.Y', $rawDate)->getTimestamp();
             return $tiemstamp + 60 * 60 * 12;
         };
-
-
 
         $applicantsRaw = (new Query())->from('_applicant_raw')->orderBy('id')->all();
         foreach ($applicantsRaw as $applicantRaw) {
@@ -257,7 +256,64 @@ class ImportController extends Controller
         }
 
 
+        // accounts
+        $db->createCommand()->delete('{{%account}}', ['!=', 'id', 1])->execute(); // all except admin
+        $db->createCommand("
+            ALTER TABLE {{%account}}
+            AUTO_INCREMENT=2;
+        ")->execute();
+
+        $roles = [
+            'кинотеатр' => Account::ROLE_CINEMA,
+            'контролер' => Account::ROLE_CONTROLLER,
+        ];
+        $accountsRaw = (new Query())->from('_account_raw')->all();
+        foreach ($accountsRaw as $accountRaw) {
+
+
+
+            $db->createCommand()->insert('{{%account}}', [
+                'role' => $roles[trim($accountRaw['role'])],
+                'email' => trim($accountRaw['email']),
+                'authKey' => Yii::$app->security->generateRandomString(),
+                'publicPassword' => trim($accountRaw['publicPassword']),
+                'username' => trim($accountRaw['username']),
+                'position' => trim($accountRaw['position']),
+                'createdBy' => 1,
+                'updatedBy' => 1,
+                'createdAt' => time(),
+                'updatedAt' => time(),
+            ])->execute();
+
+            $accountId = $db->lastInsertID;
+
+            $cinemasRaw = explode(',', $accountRaw['cinema']);
+
+
+            foreach ($cinemasRaw as $cinemaRaw) {
+                $cinemaRaw = trim($cinemaRaw);
+                if (isset($cinemas[$cinemaRaw])) {
+                    $db->createCommand()->insert('{{%account_cinema_link}}', [
+                        'accountId' => $accountId,
+                        'cinemaId' => $cinemas[$cinemaRaw],
+                    ])->execute();
+                }
+            }
+        }
+
         print("import: Ok!\n");
+    }
+
+    protected function getAccounts()
+    {
+        return [
+            [
+                'username' => 'Korober Nataliya',
+                'position' => 'Территориальный управляющий',
+                'email' => 'tvaextdin',
+                'publicPassword' => 'tvaextdin',
+            ]
+        ];
     }
 
     protected function getVacancies()
