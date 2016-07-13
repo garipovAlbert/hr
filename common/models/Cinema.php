@@ -130,4 +130,14 @@ class Cinema extends BaseCinema
         return $cinemaList;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function extraFields()
+    {
+        return [
+            'city',
+        ];
+    }
+
 }

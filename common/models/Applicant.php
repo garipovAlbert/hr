@@ -274,6 +274,18 @@ class Applicant extends BaseApplicant
     }
 
     /**
+     * @inheritdoc
+     */
+    public function extraFields()
+    {
+        return [
+            'cinema',
+            'citizenship',
+            'vacancy',
+        ];
+    }
+
+    /**
      * Sets status to DECLINED
      */
     public function decline()

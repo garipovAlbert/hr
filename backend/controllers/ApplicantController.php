@@ -9,6 +9,7 @@ use common\models\search\ApplicantSearch;
 use common\Rbac;
 use kartik\grid\EditableColumnAction;
 use Yii;
+use yii\base\Action;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
@@ -45,7 +46,7 @@ class ApplicantController extends Controller
             'editable' => [
                 'class' => EditableColumnAction::className(),
                 'modelClass' => Applicant::className(),
-                'findModel' => function ($id, \yii\base\Action $action) {
+                'findModel' => function ($id, Action $action) {
                     $model = $action->controller->findModel($id);
                     $model->scenario = Applicant::SCENARIO_PROCESS;
                     return $model;
@@ -106,38 +107,82 @@ class ApplicantController extends Controller
             $query->andWhere(['in', 'id', $ids]);
         }
 
+        $helperModel = new Applicant;
+
         CustomExcel::export([
-            'models' => $query->all(),
+            'models' => $query->asArray()->all(),
             'columns' => [
-                'id',
-                'createdAt:date',
                 [
-                    'attribute' => 'cityId',
-                    'value' => 'cinema.city.name',
+                    'header' => 'ID',
+                    'attribute' => 'id',
+                ],
+                [
+                    'header' => Yii::t('app', 'Date'),
+                    'attribute' => 'createdAt:date',
+                ],
+                [
+                    'header' => Yii::t('app', 'City'),
+//                    'attribute' => 'cinema.city.name',
                     'options' => [
                         'style' => 'width: 300px',
                     ],
+                    'value' => function($model) {
+                        if (isset($model['cinema']['city']['name'])) {
+                            return $model['cinema']['city']['name'];
+                        }
+                    }
                 ],
                 [
-                    'attribute' => 'cinemaId',
-                    'value' => 'cinema.name',
-                ],
-                'name',
-                'age',
-                [
-                    'attribute' => 'citizenshipId',
-                    'value' => 'citizenship.name',
-                ],
-                'formattedPhone',
-                'email',
-                [
-                    'attribute' => 'vacancyId',
-                    'value' => 'vacancy.name',
+                    'header' => Yii::t('app', 'Cinema'),
+                    'value' => function($model) {
+                        if (isset($model['cinema']['name'])) {
+                            return $model['cinema']['name'];
+                        }
+                    }
                 ],
                 [
-                    'attribute' => 'status',
-                    'value' => function(Applicant $model) use ($statusList) {
-                        return ArrayHelper::getValue($statusList, $model->status);
+                    'header' => Yii::t('app', 'Applicant Name'),
+                    'attribute' => 'name',
+                ],
+                [
+                    'header' => Yii::t('app', 'Age'),
+                    'attribute' => 'age',
+                ],
+                [
+                    'header' => Yii::t('app', 'Citizenship'),
+                    'value' => function($model) {
+                        if (isset($model['citizenship']['name'])) {
+                            return $model['citizenship']['name'];
+                        }
+                    }
+                ],
+                [
+                    'header' => Yii::t('app', 'Phone'),
+                    'value' => function($model) {
+                        if ($model['phone']) {
+                            return '+7 (' . substr($model['phone'], 0, 3) . ') '
+                            . substr($model['phone'], 3, 3)
+                            . '-' . substr($model['phone'], 6, 2)
+                            . '-' . substr($model['phone'], 8);
+                        }
+                    },
+                ],
+                [
+                    'header' => 'E-mail',
+                    'attribute' => 'email',
+                ],
+                [
+                    'header' => Yii::t('app', 'Vacancy'),
+                    'value' => function($model) {
+                        if (isset($model['vacancy']['name'])) {
+                            return $model['vacancy']['name'];
+                        }
+                    }
+                ],
+                [
+                    'header' => Yii::t('app', 'Status'),
+                    'value' => function($model) use ($statusList) {
+                        return ArrayHelper::getValue($statusList, $model['status']);
                     },
                 ],
             ],
