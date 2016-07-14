@@ -487,6 +487,21 @@ Embedjs::begin([
 
 
 
+    $(document).on('change', '.js-cinema-button', function (e) {
+        if ($(this).is(':checked')) {
+
+            var ids = $(this).data('metro-ids').split(',');
+            var $checked = $('.js-metro-button:checked');
+
+            if ($checked.length === 0 || ids.indexOf($checked.data('id') + '') === -1) {
+                $('.js-metro-button').prop('checked', false);
+                if (ids.length) {
+                    $('.js-metro-button[data-id=' + ids[0] + ']').prop('checked', true);
+                }
+            }
+
+        }
+    });
 
 
 

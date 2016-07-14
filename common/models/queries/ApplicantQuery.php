@@ -68,4 +68,14 @@ class ApplicantQuery extends ActiveQuery
         return $this;
     }
 
+    /**
+     * @param string $status
+     * @return static
+     */
+    public function exceptStatus($status)
+    {
+        $this->andWhere(['!=', 'status', $status]);
+        return $this;
+    }
+
 }

@@ -27,6 +27,7 @@ if ($metroId) {
     $cinemas = Cinema::find()
     ->joinWith([
         'vacancies',
+        'metros',
     ])
     ->andWhere([
         'cinema.cityId' => $cityId,
@@ -57,11 +58,24 @@ $form->field($model, 'cinemaId', [
 ])
 ->radioList(ArrayHelper::map($cinemas, 'id', 'name'), [
     'tag' => false,
-    'item' => function($index, $label, $name, $checked, $value) {
+    'item' => function($index, $label, $name, $checked, $value) use($cinemas) {
+        $metroIds = '';
+        foreach ($cinemas as $cinema) {
+            if ($cinema->id == $value) {
+                $ids = [];
+                foreach ($cinema->metros as $metro) {
+                    $ids[] = $metro->id;
+                }
+                $metroIds = join(',', $ids);
+            }
+//            if ($cinema->id == $value) {
+//                $metroIds = join(',', ArrayHelper::getColumn($cinema, 'metros.id'));
+//            }
+        }
         $return = "
             <span class=\"radio\">
                 <label>
-                    <input class=\"radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
+                    <input data-metro-ids=\"{$metroIds}\" class=\"js-cinema-button radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
                     <a class=\"radio_button_theme input_theme\" ><div class=\"theme_inner\"></div></a>{$label}
                 </label>
             </span>";

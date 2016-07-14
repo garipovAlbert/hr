@@ -38,13 +38,13 @@ $metros = Metro::find()
         'tag' => false,
         'item' => function($index, $label, $name, $checked, $value) {
             $return = "
-            <span class=\"radio\">
-                <label>
-                    <input class=\"radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
-                    <a class=\"radio_button_theme input_theme\" ><div class=\"theme_inner\"></div></a>{$label}
-                </label>
-            </span>
-        ";
+                <span class=\"radio\">
+                    <label>
+                        <input data-id=\"{$value}\" class=\"js-metro-button radio_buttons required form-control\" name=\"{$name}\" type=\"radio\" value=\"{$value}\" style=\"display: none;\">
+                        <a class=\"radio_button_theme input_theme\" ><div class=\"theme_inner\"></div></a>{$label}
+                    </label>
+                </span>
+            ";
             return $return;
         }
     ])

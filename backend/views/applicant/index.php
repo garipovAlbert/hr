@@ -4,6 +4,7 @@ use common\models\Applicant;
 use common\models\Cinema;
 use common\models\Citizenship;
 use common\models\City;
+use common\models\queries\ApplicantQuery;
 use common\models\search\ApplicantSearch;
 use common\models\Vacancy;
 use common\Rbac;
@@ -20,6 +21,7 @@ use yii\widgets\Breadcrumbs;
 /* @var $this View */
 /* @var $provider ActiveDataProvider */
 /* @var $searchModel ApplicantSearch */
+/* @var $countQuery ApplicantQuery */
 
 
 
@@ -50,19 +52,20 @@ $statusList = Applicant::statusList();
                         <th style="width:250px">
                             <?= Yii::t('app', 'Total applications found') ?>
                         </th>
-                        <th><?= Applicant::find()->count() ?></th>
+                        <?php $query = clone $countQuery ?>
+                        <th><?= $query->count() ?></th>
                     </tr>
                     <?php
                     $statuses = [
                         Applicant::STATUS_NEW,
                         Applicant::STATUS_CALL,
-                        Applicant::STATUS_UNCONFIRMED,
                     ];
                     ?>
                     <?php foreach ($statuses as $status): ?>
+                        <?php $query = clone $countQuery ?>
                         <tr>
                             <td><?= $statusList[$status] ?></td>
-                            <td><?= Applicant::find()->status($status)->count() ?></td>
+                            <td><?= $query->status($status)->count() ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
@@ -77,9 +80,10 @@ $statusList = Applicant::statusList();
                     ];
                     ?>
                     <?php foreach ($statuses as $status): ?>
+                        <?php $query = clone $countQuery ?>
                         <tr>
                             <td style="width:250px"><?= $statusList[$status] ?></td>
-                            <td><?= Applicant::find()->status($status)->count() ?></td>
+                            <td><?= $query->status($status)->count() ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
@@ -147,7 +151,7 @@ $statusList = Applicant::statusList();
             'filterModel' => $searchModel,
             'condensed' => true,
             'floatHeader' => true,
-            'pjax' => true,
+            'pjax' => false,
             'options' => [
                 'style' => 'font-size:90%',
             ],

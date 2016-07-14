@@ -98,6 +98,7 @@ class ApplicantSearch extends Applicant
         $query->andFilterWhere(['vacancyId' => $this->vacancyId]);
         $query->andFilterWhere(['cinemaId' => $this->cinemaId]);
         $query->andFilterWhere(['city.id' => $this->cityId]);
+        $query->andFilterWhere(['applicant.age' => $this->age]);
 
         $query->andFilterWhere(['applicant.status' => $this->status]);
 

@@ -74,7 +74,7 @@ return [
     'Hired' => 'Принят на работу',
     'Invited to interview' => 'Приглашен на собеседование',
     'Declined application' => 'Отклоненная анкета',
-    'Unconfirmed application' => 'Неподтвежденная анкета',
+    'Unconfirmed application' => 'Неподтвержденная',
     'Call to applicant' => 'Необходимо перезвонить',
     'Applicant Name' => 'Имя',
     'Applicant Info' => 'О вакансии узнал',

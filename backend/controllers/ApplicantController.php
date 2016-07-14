@@ -86,9 +86,13 @@ class ApplicantController extends Controller
             return $this->export($ids);
         }
 
+        $provider->getModels();
+        $countQuery = clone $provider->query;
+
         return $this->render('index', [
             'provider' => $provider,
             'searchModel' => $searchModel,
+            'countQuery' => $countQuery,
         ]);
     }
 
@@ -98,7 +102,16 @@ class ApplicantController extends Controller
 
         $query = Applicant::find()
         ->with([
-            'cinema.city',
+            'cinema' => function($q) {
+                $q->with([
+                    'city' => function($q) {
+                        $q->select(['id', 'name']);
+                    },
+                    'metros' => function($q) {
+                        $q->select(['id', 'name']);
+                    },
+                ]);
+            },
             'citizenship',
             'vacancy',
         ]);
@@ -109,8 +122,6 @@ class ApplicantController extends Controller
             $query->andWhere(['in', 'id', $ids]);
         }
 
-        $helperModel = new Applicant;
-
         CustomExcel::export([
             'models' => $query->asArray()->all(),
             'columns' => [
@@ -120,11 +131,12 @@ class ApplicantController extends Controller
                 ],
                 [
                     'header' => Yii::t('app', 'Date'),
-                    'attribute' => 'createdAt:date',
+                    'value' => function($model) {
+                        return Yii::$app->getFormatter()->asDate($model['createdAt']);
+                    }
                 ],
                 [
                     'header' => Yii::t('app', 'City'),
-//                    'attribute' => 'cinema.city.name',
                     'options' => [
                         'style' => 'width: 300px',
                     ],
@@ -139,6 +151,14 @@ class ApplicantController extends Controller
                     'value' => function($model) {
                         if (isset($model['cinema']['name'])) {
                             return $model['cinema']['name'];
+                        }
+                    }
+                ],
+                [
+                    'header' => Yii::t('app', 'Metro'),
+                    'value' => function($model) {
+                        if ($model['cinema']['metros']) {
+                            return join(', ', ArrayHelper::getColumn($model['cinema']['metros'], 'name'));
                         }
                     }
                 ],
