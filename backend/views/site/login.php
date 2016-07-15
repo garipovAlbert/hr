@@ -1,38 +1,54 @@
 <?php
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
 
-use yii\helpers\Html;
+use common\models\LoginForm;
 use yii\bootstrap\ActiveForm;
+use yii\web\View;
+
+/* @var $this View */
+/* @var $form ActiveForm */
+/* @var $model LoginForm */
 
 $this->title = 'Login';
-Yii::$app->controller->layout = 'blank';
+Yii::$app->controller->layout = 'login';
 ?>
 
+<?php
+$form = ActiveForm::begin([
+    'id' => 'login-form'
+]);
+?>
 
-<div class="site-login">
+<!-- email -->
+<?=
+$form->field($model, 'email', [
+    'template' => '{input}',
+    'options' => [
+        'class' => 'form-group field-loginform-email required has-error',
+    ],
+])
+->textInput([
+    'autofocus' => true,
+    'placeholder' => 'Имя пользователя',
+])
+?>
+<!-- /email -->
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<!-- password -->
+<?=
+$form->field($model, 'password', [
+    'template' => '{input}',
+    'options' => [
+        'class' => 'form-group field-loginform-email required has-error',
+    ],
+])
+->passwordInput([
+    'placeholder' => 'Пароль',
+])
+?>
+<!-- /password -->
 
-    <p>Please fill out the following fields to login:</p>
-
-    <div class="row">
-        <div class="col-xs-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-
-            <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
-
-            <?= $form->field($model, 'password')->passwordInput() ?>
-
-            <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-            <div class="form-group">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
-    </div>
-
+<div class="form-group">
+    <button name="login-button" class="btn btn-primary" type="submit">Login</button>
 </div>
+
+<?php ActiveForm::end(); ?>
