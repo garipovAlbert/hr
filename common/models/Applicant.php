@@ -129,7 +129,7 @@ class Applicant extends BaseApplicant
             static::SCENARIO_FILL => [
                 'firstName', 'lastName', 'age', 'email', 'phone', 'info',
                 'citizenshipId', 'vacancyId', 'cinemaId', 'cityId', 'metroId',
-                'phoneCode', 'phoneNumber',
+                'phoneCode', 'phoneNumber'
             ],
             static::SCENARIO_PROCESS => [
                 'status',

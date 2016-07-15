@@ -78,4 +78,5 @@ return [
     'Call to applicant' => 'Необходимо перезвонить',
     'Applicant Name' => 'Имя',
     'Applicant Info' => 'О вакансии узнал',
+    'Only for own Cinema' => 'Отображать анкеты только своего кинотеатра',
 ];

@@ -326,4 +326,13 @@ class Account extends BaseAccount implements IdentityInterface
         return $this->_cityCinemaIds;
     }
 
+    /**
+     * @return array
+     */
+    public function getCityIds()
+    {
+        $cityIds = array_unique(ArrayHelper::getColumn($this->cinemas, 'city.id'));
+        return $cityIds;
+    }
+
 }

@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Account;
 use common\models\Applicant;
 use common\models\Cinema;
 use common\models\Citizenship;
@@ -12,6 +13,7 @@ use common\widgets\Alert;
 use common\widgets\Embedjs;
 use kartik\grid\CheckboxColumn;
 use kartik\grid\GridView;
+use yii\bootstrap\ActiveForm;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -92,6 +94,45 @@ $statusList = Applicant::statusList();
 
 
 
+        <div class="row">
+            <div class="col-md-12">
+                <br/>
+                <?php
+                /* @var $form ActiveForm */
+                $form = ActiveForm::begin([
+                    'action' => ['index'],
+                    'method' => 'get',
+                    'layout' => 'horizontal'
+                ]);
+                ?>
+
+                <?=
+                $form->field($searchModel, 'showAll', ['labelOptions' => ['class' => 'control-label col-sm-4']])
+                ->dropDownList([0 => Yii::t('yii', 'No'), 1 => Yii::t('yii', 'Yes')], [
+                    'style' => 'width: 120px;'
+                ])
+                ?>
+
+                <?php ActiveForm::end(); ?>
+
+            </div>
+            <?php
+            Embedjs::begin([
+                'data' => [
+                    'showAllTriggerId' => Html::getInputId($searchModel, 'showAll'),
+                ],
+            ])
+            ?>
+            <script>
+                $('#' + data.showAllTriggerId).change(function () {
+                    $(this).closest('form').submit();
+                });
+            </script>
+            <?php Embedjs::end() ?>
+
+        </div>
+
+
     </div>
 
 </div>
@@ -143,6 +184,15 @@ $statusList = Applicant::statusList();
         $vacancyList = Vacancy::getList();
         $statusList = Applicant::statusList();
         unset($statusList[Applicant::STATUS_UNCONFIRMED]);
+
+        if (Account::current()->role === Account::ROLE_ADMIN) {
+            $cityList = City::getList();
+            $cinemaList = Cinema::getSelect2List();
+        } else {
+            $cityList = City::getList(Account::current()->getCityIds());
+            $cinemaList = Cinema::getSelect2List(Account::current()->getCityCinemaIds());
+        }
+
 
 
         echo GridView::widget([
@@ -231,7 +281,7 @@ $statusList = Applicant::statusList();
                     'filterType' => GridView::FILTER_SELECT2,
                     'filterWidgetOptions' => [
                         'options' => ['placeholder' => ' '],
-                        'data' => City::getList(),
+                        'data' => $cityList,
                         'pluginOptions' => [
                             'allowClear' => true,
                         ],
@@ -244,7 +294,7 @@ $statusList = Applicant::statusList();
                     'filterType' => GridView::FILTER_SELECT2,
                     'filterWidgetOptions' => [
                         'options' => ['placeholder' => ' '],
-                        'data' => Cinema::getSelect2List(),
+                        'data' => $cinemaList,
                         'pluginOptions' => [
                             'allowClear' => true,
                         ],

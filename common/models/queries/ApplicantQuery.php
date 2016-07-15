@@ -18,26 +18,6 @@ class ApplicantQuery extends ActiveQuery
     public function init()
     {
         parent::init();
-
-        if (Yii::$app instanceof backendApplication && Account::current()) {
-            $account = Account::current();
-            if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
-                $relatedCinemaIds = $account->getRelatedCinemaIds();
-                $cityCinemaIds = $account->getCityCinemaIds();
-
-                $this->andWhere([
-                    'or',
-                    ['in', 'applicant.cinemaId', $relatedCinemaIds],
-                    [
-                        // show to other cinema managers in city 
-                        // if the application has been sent more than 24 hours ago
-                        'and',
-                        ['in', 'applicant.cinemaId', $cityCinemaIds],
-                        ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
-                    ],
-                ]);
-            }
-        }
     }
 
     /**
@@ -75,6 +55,53 @@ class ApplicantQuery extends ActiveQuery
     public function exceptStatus($status)
     {
         $this->andWhere(['!=', 'status', $status]);
+        return $this;
+    }
+
+    /**
+     * Show applicants for only cinemas related with current user
+     * @return ApplicantQuery
+     */
+    public function onlyOwnCinema()
+    {
+        if (Yii::$app instanceof backendApplication && Account::current()) {
+            $account = Account::current();
+            if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
+                $relatedCinemaIds = $account->getRelatedCinemaIds();
+                $cityCinemaIds = $account->getCityCinemaIds();
+
+                $this->andWhere([
+                    'or',
+                    ['in', 'applicant.cinemaId', $relatedCinemaIds],
+                    [
+                        // show to other cinema managers in city 
+                        // if the application has been sent more than 24 hours ago
+                        'and',
+                        ['in', 'applicant.cinemaId', $cityCinemaIds],
+                        ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
+                    ],
+                ]);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Show applicants for only cinemas in user's city
+     * @return ApplicantQuery
+     */
+    public function onlyOwnCityCinema()
+    {
+        if (Yii::$app instanceof backendApplication && Account::current()) {
+            $account = Account::current();
+            if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
+                $cityCinemaIds = $account->getCityCinemaIds();
+
+                $this->andWhere(['in', 'applicant.cinemaId', $cityCinemaIds]);
+            }
+        }
+
         return $this;
     }
 

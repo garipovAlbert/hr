@@ -45,9 +45,14 @@ class City extends BaseCity
     /**
      * @return array
      */
-    public static function getList()
+    public static function getList(array $ids = null)
     {
-        return ArrayHelper::map(City::find()->active()->orderBy(['name' => SORT_ASC])->all(), 'id', 'name');
+        $query = City::find()->active()->orderBy(['name' => SORT_ASC]);
+        if ($ids !== null) {
+            $query->andWhere(['in', 'id', $ids]);
+        }
+
+        return ArrayHelper::map($query->all(), 'id', 'name');
     }
 
     /**

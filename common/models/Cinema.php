@@ -111,19 +111,22 @@ class Cinema extends BaseCinema
      * Returns cinema list grouped by city to use in kartik-v Select2 widget.
      * @return array
      */
-    public static function getSelect2List()
+    public static function getSelect2List(array $ids = null)
     {
-        $cities = City::find()->active()
+        $query = City::find()->active()
         ->with([
-            'cinemas' => function($q) {
+            'cinemas' => function($q) use($ids) {
                 $q->active()->orderBy(['name' => SORT_ASC]);
+                if ($ids !== null) {
+                    $q->andWhere(['in', 'id', $ids]);
+                }
             },
         ])
-        ->orderBy(['name' => SORT_ASC])
-        ->all();
+        ->orderBy(['name' => SORT_ASC]);
+
 
         $cinemaList = [];
-        foreach ($cities as $city) {
+        foreach ($query->all() as $city) {
             $cinemaList[$city->name] = ArrayHelper::map($city->cinemas, 'id', 'name');
         }
 
