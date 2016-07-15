@@ -93,45 +93,45 @@ $statusList = Applicant::statusList();
         </div>
 
 
+        <?php if (Account::current()->role !== Account::ROLE_ADMIN): ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <br/>
+                    <?php
+                    /* @var $form ActiveForm */
+                    $form = ActiveForm::begin([
+                        'action' => ['index'],
+                        'method' => 'get',
+                        'layout' => 'horizontal'
+                    ]);
+                    ?>
 
-        <div class="row">
-            <div class="col-md-12">
-                <br/>
+                    <?=
+                    $form->field($searchModel, 'showAll', ['labelOptions' => ['class' => 'control-label col-sm-4']])
+                    ->dropDownList([0 => Yii::t('yii', 'No'), 1 => Yii::t('yii', 'Yes')], [
+                        'style' => 'width: 120px;'
+                    ])
+                    ?>
+
+                    <?php ActiveForm::end(); ?>
+
+                </div>
                 <?php
-                /* @var $form ActiveForm */
-                $form = ActiveForm::begin([
-                    'action' => ['index'],
-                    'method' => 'get',
-                    'layout' => 'horizontal'
-                ]);
-                ?>
-
-                <?=
-                $form->field($searchModel, 'showAll', ['labelOptions' => ['class' => 'control-label col-sm-4']])
-                ->dropDownList([0 => Yii::t('yii', 'No'), 1 => Yii::t('yii', 'Yes')], [
-                    'style' => 'width: 120px;'
+                Embedjs::begin([
+                    'data' => [
+                        'showAllTriggerId' => Html::getInputId($searchModel, 'showAll'),
+                    ],
                 ])
                 ?>
-
-                <?php ActiveForm::end(); ?>
+                <script>
+                    $('#' + data.showAllTriggerId).change(function () {
+                        $(this).closest('form').submit();
+                    });
+                </script>
+                <?php Embedjs::end() ?>
 
             </div>
-            <?php
-            Embedjs::begin([
-                'data' => [
-                    'showAllTriggerId' => Html::getInputId($searchModel, 'showAll'),
-                ],
-            ])
-            ?>
-            <script>
-                $('#' + data.showAllTriggerId).change(function () {
-                    $(this).closest('form').submit();
-                });
-            </script>
-            <?php Embedjs::end() ?>
-
-        </div>
-
+        <?php endif; ?>
 
     </div>
 
