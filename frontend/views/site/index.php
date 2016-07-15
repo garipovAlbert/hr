@@ -490,7 +490,7 @@ Embedjs::begin([
     $(document).on('change', '.js-cinema-button', function (e) {
         if ($(this).is(':checked')) {
 
-            var ids = $(this).data('metro-ids').split(',');
+            var ids = ($(this).data('metro-ids')+'').split(',');
             var $checked = $('.js-metro-button:checked');
 
             if ($checked.length === 0 || ids.indexOf($checked.data('id') + '') === -1) {
