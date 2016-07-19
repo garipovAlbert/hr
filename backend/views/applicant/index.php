@@ -108,7 +108,7 @@ $statusList = Applicant::statusList();
 
                     <?=
                     $form->field($searchModel, 'showAll', ['labelOptions' => ['class' => 'control-label col-sm-4']])
-                    ->dropDownList([0 => Yii::t('yii', 'No'), 1 => Yii::t('yii', 'Yes')], [
+                    ->dropDownList([0 => Yii::t('yii', 'Yes'), 1 => Yii::t('yii', 'No')], [
                         'style' => 'width: 120px;'
                     ])
                     ?>
