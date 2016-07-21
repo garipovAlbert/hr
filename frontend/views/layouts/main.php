@@ -26,7 +26,7 @@ AppAsset::register($this);
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600&amp;subset=latin,cyrillic" rel="stylesheet">
         <link href="/js/fancybox/jquery.fancybox.css" rel="stylesheet">
         <link href="/js/jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
-        
+
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
         <?php $this->head() ?>
@@ -91,6 +91,11 @@ AppAsset::register($this);
                             </ul>
                         </div>
                         <div class="foo-info row">
+                            <div class="col-xs-12 col-md-5">
+                                <p>Все права защищены</p>
+                                <!--<p>Сайт разработан <a href="">terrabo_</a></p>-->
+                                <p>&copy; 2007-<?= date('Y', time()) ?> «КАРО Фильм Менеджмент»</p>
+                            </div>
                             <ul class="foo-social col-xs-6 col-md-5">
                                 <li><a class="m-fb" target="_blank" href="https://www.facebook.com/karofilm"></a></li>
                                 <li><a class="m-vk" target="_blank" href="http://vk.com/karofilm_vk"></a></li>
@@ -99,155 +104,168 @@ AppAsset::register($this);
                                 <li><a class="m-tw" href="https://twitter.com/karo_film" target="_blank"></a></li>
                                 <li class="clear"></li>
                             </ul>
-                            <div class="col-xs-12 col-md-5">
-                                <p>Все права защищены</p>
-                                <!--<p>Сайт разработан <a href="">terrabo_</a></p>-->
-                                <p>&copy; 2007-<?= date('Y', time()) ?> «КАРО Фильм Менеджмент»</p>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <?php $this->endBody() ?>
+            <?php $this->endBody() ?>
 
 <!--<script src="https://yastatic.net/jquery/2.2.3/jquery.min.js"></script>-->
 <!--<script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-        <script src="/js/fancybox/source/jquery.fancybox.pack.js"></script>
-        <script src="/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
-        <script src="/js/fancybox/source/helpers/jquery.fancybox-media.js"></script>
-        <script src="/js/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
-        <script src="/js/owl/owl.carousel.min.js"></script>
-        <script src="/js/main.js"></script>
-        <script src="/js/nicescroll/jquery.nicescroll.min.js"></script>
-        <script type="text/javascript">jQuery(document).ready(function () {
-                var isMobile = {
-                    Android: function () {
-                        return navigator.userAgent.match(/Android/i);
-                    },
-                    BlackBerry: function () {
-                        return navigator.userAgent.match(/BlackBerry/i);
-                    },
-                    iOS: function () {
-                        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-                    },
-                    Opera: function () {
-                        return navigator.userAgent.match(/Opera Mini/i);
-                    },
-                    Windows: function () {
-                        return navigator.userAgent.match(/IEMobile/i);
-                    },
-                    any: function () {
-                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-                    }
-                };
-                $(document).ready(function () {
-                    if (!isMobile.any()) {
-                        $(document).on('mouseover', '.afisha-item', function (e) {
-                            if ($(window).width() >= 639) {
-                                $(this).find('.afisha-preview-blur').removeClass('blur');
-                                $(this).addClass('hover');
-                            }
-                        });
-                        $(document).on('mouseout', '.afisha-item', function (e) {
-                            if ($(window).width() >= 639) {
-                                $(this).find('.afisha-preview-blur').addClass('blur');
-                                $(this).removeClass('hover');
-                            }
-                        });
-                    } else {
-                        $('.afisha-btn').bind('touchstart touchend', function (e) {
-                            $(this).toggleClass('hover_effect');
-                        });
-                        $('.afisha-item').click(function (e) {
-                            if (!$(this).is('.hover')) {
-                                if ($(window).width() >= 639 && !$(this).is('.hover')) {
-                                    e.preventDefault();
-                                    $('.afisha-item.hover').removeClass('hover');
+            <script src="/js/fancybox/source/jquery.fancybox.pack.js"></script>
+            <script src="/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+            <script src="/js/fancybox/source/helpers/jquery.fancybox-media.js"></script>
+            <script src="/js/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+            <script src="/js/owl/owl.carousel.min.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/nicescroll/jquery.nicescroll.min.js"></script>
+            <script type="text/javascript">
+                jQuery(document).ready(function () {
+                    var isMobile = {
+                        Android: function () {
+                            return navigator.userAgent.match(/Android/i);
+                        },
+                        BlackBerry: function () {
+                            return navigator.userAgent.match(/BlackBerry/i);
+                        },
+                        iOS: function () {
+                            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                        },
+                        Opera: function () {
+                            return navigator.userAgent.match(/Opera Mini/i);
+                        },
+                        Windows: function () {
+                            return navigator.userAgent.match(/IEMobile/i);
+                        },
+                        any: function () {
+                            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                        }
+                    };
+                    $(document).ready(function () {
+                        if (!isMobile.any()) {
+                            $(document).on('mouseover', '.afisha-item', function (e) {
+                                if ($(window).width() >= 639) {
+                                    $(this).find('.afisha-preview-blur').removeClass('blur');
                                     $(this).addClass('hover');
                                 }
-                            }
-                        });
-                    }
-                    if ($('.branding-slide').length > 1) {
-                        $('.slider-branding:first').bxSlider({
-                            mode: 'horizontal',
-                            //randomStart     :   true,
-                            auto: true,
-                            pause: 9000,
-                            slideMargin: 0,
-                            slideSelector: 'a.branding-slide',
-                            responsive: true,
-                            pager: true,
-                            adaptiveHeight: true
-                        });
-                    }
-                    $(document).on('click', '.afisha-player', function (e) {
-                        e.preventDefault();
-                        var href = $(this).attr('href'),
-                            title = $(this).attr('data-title');
-                        if (!$(this).parent().parent().is('.hover')) {
-                            $.fancybox.open({
-                                href: href,
-                                title: title,
-                                type: 'iframe',
-                                padding: 0,
-                                'scrolling': 'no',
-                                iframe: {
-                                    scrolling: 'no'
-                                },
-                                beforeShow: function () {
-                                    $('.fancybox-inner').css('overflow', 'hidden');
-                                },
-                                afterLoad: function () {
-                                    $('.fancybox-inner').css('overflow', 'hidden');
-                                },
-                                afterShow: function () {
-                                    $('.fancybox-inner').css('overflow', 'hidden');
-                                },
-                                helpers: {
-                                    overlay: {
-                                        css: {
-                                            'background': 'rgba(0, 0, 0, 0.75)'
-                                        }
+                            });
+                            $(document).on('mouseout', '.afisha-item', function (e) {
+                                if ($(window).width() >= 639) {
+                                    $(this).find('.afisha-preview-blur').addClass('blur');
+                                    $(this).removeClass('hover');
+                                }
+                            });
+                        } else {
+                            $('.afisha-btn').bind('touchstart touchend', function (e) {
+                                $(this).toggleClass('hover_effect');
+                            });
+                            $('.afisha-item').click(function (e) {
+                                if (!$(this).is('.hover')) {
+                                    if ($(window).width() >= 639 && !$(this).is('.hover')) {
+                                        e.preventDefault();
+                                        $('.afisha-item.hover').removeClass('hover');
+                                        $(this).addClass('hover');
                                     }
                                 }
                             });
                         }
+                        if ($('.branding-slide').length > 1) {
+                            $('.slider-branding:first').bxSlider({
+                                mode: 'horizontal',
+                                //randomStart     :   true,
+                                auto: true,
+                                pause: 9000,
+                                slideMargin: 0,
+                                slideSelector: 'a.branding-slide',
+                                responsive: true,
+                                pager: true,
+                                adaptiveHeight: true
+                            });
+                        }
+                        $(document).on('click', '.afisha-player', function (e) {
+                            e.preventDefault();
+                            var href = $(this).attr('href'),
+                                title = $(this).attr('data-title');
+                            if (!$(this).parent().parent().is('.hover')) {
+                                $.fancybox.open({
+                                    href: href,
+                                    title: title,
+                                    type: 'iframe',
+                                    padding: 0,
+                                    'scrolling': 'no',
+                                    iframe: {
+                                        scrolling: 'no'
+                                    },
+                                    beforeShow: function () {
+                                        $('.fancybox-inner').css('overflow', 'hidden');
+                                    },
+                                    afterLoad: function () {
+                                        $('.fancybox-inner').css('overflow', 'hidden');
+                                    },
+                                    afterShow: function () {
+                                        $('.fancybox-inner').css('overflow', 'hidden');
+                                    },
+                                    helpers: {
+                                        overlay: {
+                                            css: {
+                                                'background': 'rgba(0, 0, 0, 0.75)'
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        });
                     });
                 });
-            });
-        </script>
-
-        <?php if (YII_ENV_PROD): ?>
-            <script type="text/javascript">
-                (function (d, w, c) {
-                    (w[c] = w[c] || []).push(function () {
-                        try {
-                            w.yaCounter25495793 = new Ya.Metrika({id: 25495793, webvisor: true});
-                        } catch (e) {
-                        }
-                    });
-
-                    var n = d.getElementsByTagName("script")[0],
-                        s = d.createElement("script"),
-                        f = function () {
-                            n.parentNode.insertBefore(s, n);
-                        };
-                    s.type = "text/javascript";
-                    s.async = true;
-                    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-                    if (w.opera == "[object Opera]") {
-                        d.addEventListener("DOMContentLoaded", f, false);
-                    } else {
-                        f();
-                    }
-                })(document, window, "yandex_metrika_callbacks");
             </script>
-            <noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
-        <?php endif; ?>
+
+            <?php if (YII_ENV_PROD): ?>
+                <script type="text/javascript">
+                    /* yandex */
+                    (function (d, w, c) {
+                        (w[c] = w[c] || []).push(function () {
+                            try {
+                                w.yaCounter25495793 = new Ya.Metrika({id: 25495793, webvisor: true});
+                            } catch (e) {
+                            }
+                        });
+
+                        var n = d.getElementsByTagName("script")[0],
+                            s = d.createElement("script"),
+                            f = function () {
+                                n.parentNode.insertBefore(s, n);
+                            };
+                        s.type = "text/javascript";
+                        s.async = true;
+                        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                        if (w.opera == "[object Opera]") {
+                            d.addEventListener("DOMContentLoaded", f, false);
+                        } else {
+                            f();
+                        }
+                    })(document, window, "yandex_metrika_callbacks");
+                    /* /yandex */
+
+                    /* google */
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                    ga('create', 'UA-50718706-1', 'auto');
+                    ga('send', 'pageview');
+                    /* /google */
+                </script>
+                <noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+            <?php endif; ?>
 
 
     </body>

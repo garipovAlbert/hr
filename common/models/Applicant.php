@@ -191,10 +191,8 @@ class Applicant extends BaseApplicant
     public function validatePhone()
     {
         $count = static::find()
-        ->andWhere([
-            'phone' => $this->phone,
-            'status' => self::STATUS_NEW,
-        ])
+        ->andWhere(['phone' => $this->phone])
+        ->andWhere(['!=', 'status', self::STATUS_UNCONFIRMED])
         ->andWhere(['>', 'createdAt', time() - 60 * 60 * 24 * 30]) // 30 days
         ->count();
 
