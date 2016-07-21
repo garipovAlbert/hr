@@ -14,7 +14,7 @@ use yii\web\View;
         <title>Авторизация</title>
         <link rel="stylesheet" href="/login/bootstrap.min.css">
         <link rel="stylesheet" href="/login/site.css">
-        <link rel="stylesheet" href="/login/login.css">
+        <link rel="stylesheet" href="/login/login.css?v=2">
         <?php $this->head() ?>
     </head>
     <body>

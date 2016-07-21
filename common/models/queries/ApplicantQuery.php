@@ -68,19 +68,8 @@ class ApplicantQuery extends ActiveQuery
             $account = Account::current();
             if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
                 $relatedCinemaIds = $account->getRelatedCinemaIds();
-                $cityCinemaIds = $account->getCityCinemaIds();
 
-                $this->andWhere([
-                    'or',
-                    ['in', 'applicant.cinemaId', $relatedCinemaIds],
-                    [
-                        // show to other cinema managers in city 
-                        // if the application has been sent more than 24 hours ago
-                        'and',
-                        ['in', 'applicant.cinemaId', $cityCinemaIds],
-                        ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
-                    ],
-                ]);
+                $this->andWhere(['in', 'applicant.cinemaId', $relatedCinemaIds]);
             }
         }
 
@@ -98,7 +87,11 @@ class ApplicantQuery extends ActiveQuery
             if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
                 $cityCinemaIds = $account->getCityCinemaIds();
 
-                $this->andWhere(['in', 'applicant.cinemaId', $cityCinemaIds]);
+                $this->andWhere([
+                    'and',
+                    ['in', 'applicant.cinemaId', $cityCinemaIds],
+                    ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
+                ]);
             }
         }
 
