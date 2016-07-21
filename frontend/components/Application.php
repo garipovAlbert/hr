@@ -17,10 +17,17 @@ class Application extends baseApplication
     {
         // redirect from "/index.php" to "/"
         if (parent::beforeAction($action)) {
-            if (strpos($this->getRequest()->getUrl(), '/index.php') === 0) {
+            $url = $this->getRequest()->getUrl();
+            if (strpos($url, '/index.php') === 0) {
                 $this->response->redirect('/', 301);
                 $this->end();
             }
+            
+            if (strpos($url, '/hr') === 0 || strpos($url, '/admin') === 0) {
+                $this->response->redirect('http://hr-admin.karofilm.ru/', 301);
+                $this->end();
+            }
+            
             return true;
         } else {
             return false;
