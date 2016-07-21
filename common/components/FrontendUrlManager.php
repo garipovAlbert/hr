@@ -17,6 +17,9 @@ class FrontendUrlManager extends UrlManager
 
         $this->rules = [
             '/' => 'site/index',
+            'we_offer' => 'site/we-offer',
+            'confirm' => 'site/confirm',
+            'job' => 'site/job',
         ];
 
         parent::init();
