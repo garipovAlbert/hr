@@ -165,6 +165,7 @@ class Applicant extends BaseApplicant
             ['email', 'email'],
             ['phone', 'integer'],
             ['phone', 'string', 'min' => 10, 'max' => 10],
+            ['phone', 'validatePhone'],
             ['info', 'string'],
             ['cityId', 'safe'],
             ['metroId', 'safe'],
@@ -184,8 +185,22 @@ class Applicant extends BaseApplicant
             ['confirmationInput', 'required'],
             ['confirmationInput', 'validateConfirmation'],
             ['status', 'in', 'range' => array_keys(static::statusListSet())],
-            [['phoneCode', 'phoneNumber'], 'safe'],
         ];
+    }
+
+    public function validatePhone()
+    {
+        $count = static::find()
+        ->andWhere([
+            'phone' => $this->phone,
+            'status' => self::STATUS_NEW,
+        ])
+        ->andWhere(['>', 'createdAt', time() - 60 * 60 * 24 * 30]) // 30 days
+        ->count();
+
+        if ($count > 4) {
+            $this->addError('phone', Yii::t('app', 'Unable to send more than 4 applications per month'));
+        }
     }
 
     public function validateConfirmation()
