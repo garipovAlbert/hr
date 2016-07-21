@@ -113,6 +113,47 @@
     font-size: 0.857em;
     background: url('../img/scroll-top.png') no-repeat 50% 0;
 }
-
+.m-fb {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll 0 0;
+}
+.m-vk {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -40px 0;
+}
+.m-tw {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -20px 0;
+}
+.m-od {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -60px 0;
+}
+.m-in {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -80px 0;
+}
+.m-vib {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -100px 0;
+}
+.m-yt {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -100px 0;
+}
+.m-fb:hover {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll 0 -20px;
+}
+.m-vk:hover {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -40px -20px;
+}
+.m-tw:hover {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -20px -20px;
+}
+.m-od:hover {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -60px -20px;
+}
+.m-in:hover {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -80px -20px;
+}
+.m-vib:hover {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -100px -20px;
+}
+.m-yt:hover {
+    background: rgba(0, 0, 0, 0) url("../img/menu-social.png") no-repeat scroll -100px -20px;
+}
 /* ============================ */
 /* ============================ */
