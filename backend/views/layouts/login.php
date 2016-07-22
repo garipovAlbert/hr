@@ -31,6 +31,7 @@ use yii\web\View;
                 </div>
             </div>
 
+            <a style="display:block; width:270px; height: 120px; top:0; right:0; position: absolute" href="http://hr.karofilm.ru/"></a>
         </div>
 
         <?php $this->endBody() ?>

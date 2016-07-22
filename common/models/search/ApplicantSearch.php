@@ -26,7 +26,7 @@ class ApplicantSearch extends Applicant
     /**
      * @var int
      */
-    public $showAll = 0;
+    public $onlyOwnCinemas = 0;
 
     /**
      * @inheritdoc
@@ -35,7 +35,7 @@ class ApplicantSearch extends Applicant
     {
         return array_merge(parent::attributes(), [
             'cityId',
-            'showAll',
+            'onlyOwn',
         ]);
     }
 
@@ -48,7 +48,7 @@ class ApplicantSearch extends Applicant
             [
                 [
                     'id', 'name', 'email', 'cityId', 'cinemaId', 'vacancyId', 'citizenshipId',
-                    'status', 'createdAt', 'age', 'showAll',
+                    'status', 'createdAt', 'age', 'onlyOwnCinemas',
                 ],
                 'safe',
             ],
@@ -62,7 +62,7 @@ class ApplicantSearch extends Applicant
     {
         return array_replace(parent::attributeLabels(), [
             'createdAt' => 'Date',
-            'showAll' => Yii::t('app', 'Only for own Cinema'),
+            'onlyOwnCinemas' => Yii::t('app', 'Only for own Cinema'),
         ]);
     }
 
@@ -95,10 +95,10 @@ class ApplicantSearch extends Applicant
 
         $loaded = $this->load($params, $formName);
 
-        if ($this->showAll) {
-            $query->onlyOwnCityCinema();
-        } else {
+        if ($this->onlyOwnCinemas) {
             $query->onlyOwnCinema();
+        } else {
+            $query->onlyOwnCityCinema();
         }
 
         // load the seach form data and validate

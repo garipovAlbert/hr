@@ -86,11 +86,16 @@ class ApplicantQuery extends ActiveQuery
             $account = Account::current();
             if (in_array($account->role, [Account::ROLE_CINEMA, Account::ROLE_CONTROLLER])) {
                 $cityCinemaIds = $account->getCityCinemaIds();
+                $relatedCinemaIds = $account->getRelatedCinemaIds();
 
                 $this->andWhere([
-                    'and',
-                    ['in', 'applicant.cinemaId', $cityCinemaIds],
-                    ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
+                    'or',
+                    ['in', 'applicant.cinemaId', $relatedCinemaIds],
+                    [
+                        'and',
+                        ['in', 'applicant.cinemaId', $cityCinemaIds],
+                        ['<', 'applicant.createdAt', time() - 60 * 60 * 24],
+                    ]
                 ]);
             }
         }

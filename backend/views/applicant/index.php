@@ -107,8 +107,8 @@ $statusList = Applicant::statusList();
                     ?>
 
                     <?=
-                    $form->field($searchModel, 'showAll', ['labelOptions' => ['class' => 'control-label col-sm-4']])
-                    ->dropDownList([0 => Yii::t('yii', 'Yes'), 1 => Yii::t('yii', 'No')], [
+                    $form->field($searchModel, 'onlyOwnCinemas', ['labelOptions' => ['class' => 'control-label col-sm-4']])
+                    ->dropDownList([0 => Yii::t('yii', 'No'), 1 => Yii::t('yii', 'Yes')], [
                         'style' => 'width: 120px;'
                     ])
                     ?>
@@ -119,12 +119,12 @@ $statusList = Applicant::statusList();
                 <?php
                 Embedjs::begin([
                     'data' => [
-                        'showAllTriggerId' => Html::getInputId($searchModel, 'showAll'),
+                        'switcherId' => Html::getInputId($searchModel, 'onlyOwnCinemas'),
                     ],
                 ])
                 ?>
                 <script>
-                    $('#' + data.showAllTriggerId).change(function () {
+                    $('#' + data.switcherId).change(function () {
                         $(this).closest('form').submit();
                     });
                 </script>

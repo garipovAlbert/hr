@@ -106,7 +106,7 @@ if ($module instanceof Application) {
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; KARO 2013</p>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
