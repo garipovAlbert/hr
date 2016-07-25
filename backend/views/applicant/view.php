@@ -23,7 +23,7 @@ $this->params['breadcrumbs'] = [
 <h2><?= Yii::t('app', 'Application') ?>. <?= Html::encode($model->name) ?></h2>
 <br/>
 
-<div style="max-width: 900px">
+<div>
     <?php
     echo DetailView::widget([
         'model' => $model,
