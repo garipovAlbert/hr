@@ -135,7 +135,7 @@ class Account extends BaseAccount implements IdentityInterface
                 ->setTo($this->email)
                 ->setSubject(Yii::t('app', 'Account created'))
                 ->send();
-            } elseif (array_key_exists('publicPassword', $changedAttributes)) {
+            } else {
                 Yii::$app->mailer->compose('password-changed', [
                     'model' => $this,
                 ])
