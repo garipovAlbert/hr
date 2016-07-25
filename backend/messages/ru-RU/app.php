@@ -79,4 +79,6 @@ return [
     'Applicant Name' => 'Имя',
     'Applicant Info' => 'О вакансии узнал',
     'Only for own Cinema' => 'Отображать анкеты только своего кинотеатра',
+    'Export (selected rows)' => 'Экспортировать (выбранные записи)',
+    'Export (all rows)' => 'Экспортировать (все записи)',
 ];

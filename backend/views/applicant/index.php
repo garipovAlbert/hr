@@ -166,8 +166,8 @@ $statusList = Applicant::statusList();
             <?php endif; ?>
 
             <?=
-            Html::submitButton(Yii::t('app', 'Export'), [
-                'class' => 'btn btn-primary',
+            Html::submitButton(Yii::t('app', 'Export (all rows)'), [
+                'class' => 'btn btn-primary js-export-button',
                 'style' => 'margin-right: 10px',
                 'name' => 'export',
                 'value' => '1',
@@ -332,16 +332,19 @@ $statusList = Applicant::statusList();
             'data' => [
                 'deleteMessage' => Yii::t('app', 'Are you sure you want to delete selected applications?'),
                 'declineMessage' => Yii::t('app', 'Are you sure you want to decline selected applications?'),
+                'checkedLabel' => Yii::t('app', 'Export (selected rows)'),
+                'uncheckedLabel' => Yii::t('app', 'Export (all rows)'),
             ],
         ])
         ?>
         <script>
             var refreshButtonsState = function (keys) {
-                console.log(keys);
                 if (keys.length) {
                     $('.js-checked-button').removeAttr('disabled');
+                    $('.js-export-button').text(data.checkedLabel);
                 } else {
                     $('.js-checked-button').attr('disabled', 'disabled');
+                    $('.js-export-button').text(data.uncheckedLabel);
                 }
             };
 
