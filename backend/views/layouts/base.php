@@ -106,8 +106,8 @@ if ($module instanceof Application) {
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; KARO 2013</p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">© 2007-2016 «КАРО Фильм Менеджмент»</p>
+        <p class="pull-right"></p>
     </div>
 </footer>
 
