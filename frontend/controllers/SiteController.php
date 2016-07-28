@@ -101,6 +101,12 @@ class SiteController extends Controller
             if ($model->validate()) {
                 $model->status = Applicant::STATUS_NEW;
                 $model->save(false);
+
+                $this->view->params['googleEvent'] = [
+                    'hitType' => 'event',
+                    'eventCategory' => 'KaroHR_applicant',
+                    'eventLabel' => $model->name,
+                ];
                 return $this->render('index-success');
             }
         }

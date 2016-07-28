@@ -1,6 +1,7 @@
 <?php
 
 use frontend\assets\AppAsset;
+use yii\helpers\Json;
 use yii\helpers\Url;
 
 header('Content-Type: text/html; charset=utf-8');
@@ -264,6 +265,13 @@ AppAsset::register($this);
                     ga('send', 'pageview');
                     /* /google */
                 </script>
+
+                <?php if (isset($this->params['googleEvent'])): ?>
+                    <script type="text/javascript">
+                        ga('send', <?= Json::encode($this->params['googleEvent']) ?>);
+                    </script>
+                <?php endif; ?>
+
                 <noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
             <?php endif; ?>
 

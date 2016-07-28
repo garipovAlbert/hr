@@ -26,7 +26,7 @@ class ApplicantSearch extends Applicant
     /**
      * @var int
      */
-    public $onlyOwnCinemas = 0;
+    public $onlyOwnCinemas = 1;
 
     /**
      * @inheritdoc
