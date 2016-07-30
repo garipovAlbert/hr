@@ -196,7 +196,7 @@ class Applicant extends BaseApplicant
         ->andWhere(['>', 'createdAt', time() - 60 * 60 * 24 * 30]) // 30 days
         ->count();
 
-        if ($count > 4) {
+        if ($count >= 4) {
             $this->addError('phone', Yii::t('app', 'Unable to send more than 4 applications per month'));
         }
     }
