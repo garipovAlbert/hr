@@ -15,4 +15,5 @@ return [
     'Only cyrillic symbols allowed' => 'При заполнении этого поля недопустимо использование латинских букв, цифр, специальных символов и знаков.',
     'Your code is: {code}' => 'Ваш код для анкеты в HR-системе: {code}',
     'Unable to send more than 4 applications per month' => 'Нельзя отправить больше 4 заявок в месяц',
+    'New Application added' => 'Добавлена новая анкета',
 ];

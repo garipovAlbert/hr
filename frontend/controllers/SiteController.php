@@ -105,6 +105,7 @@ class SiteController extends Controller
                 $this->view->params['googleEvent'] = [
                     'hitType' => 'event',
                     'eventCategory' => 'KaroHR_applicant',
+                    'eventAction' => Yii::t('app', 'New Application added'),
                     'eventLabel' => $model->name,
                 ];
                 return $this->render('index-success');
